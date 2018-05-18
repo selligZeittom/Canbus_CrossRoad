@@ -1,0 +1,479 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F87K22 ]
+[d frameptr 4065 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"27 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memcpy.c
+[v _memcpy memcpy `(*.39v  1 e 2 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"50 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
+[v _Can_Isr Can_Isr `(v  1 e 1 0 ]
+"94
+[v _Can_ReadInBuffer Can_ReadInBuffer `(uc  1 s 1 Can_ReadInBuffer ]
+"127
+[v _Can_WriteOutBuffer Can_WriteOutBuffer `(uc  1 s 1 Can_WriteOutBuffer ]
+"156
+[v _Can_OutBufferStatus Can_OutBufferStatus `(uc  1 e 1 0 ]
+"169
+[v _Can_GetMessage Can_GetMessage `(uc  1 e 1 0 ]
+"200
+[v _Can_PutMessage Can_PutMessage `(uc  1 e 1 0 ]
+"237
+[v _Can_Init Can_Init `(v  1 e 1 0 ]
+"288
+[v _SPIRW SPIRW `(v  1 s 1 SPIRW ]
+[v i2_SPIRW SPIRW `(v  1 s 1 i2_SPIRW ]
+"314
+[v _Spi_ReadWrite Spi_ReadWrite `(v  1 e 1 0 ]
+"327
+[v _Spi_Write Spi_Write `(v  1 e 1 0 ]
+[v i2_Spi_Write Spi_Write `(v  1 e 1 0 ]
+"344
+[v _Can_GetStatus Can_GetStatus `(uc  1 s 1 Can_GetStatus ]
+"367
+[v _Can_ReadMessage Can_ReadMessage `(uc  1 s 1 Can_ReadMessage ]
+"421
+[v _Can_SendMessage Can_SendMessage `(uc  1 s 1 Can_SendMessage ]
+"3 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\interrupt.c
+[v _high_isr high_isr `II(v  1 e 1 0 ]
+"30 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\main.c
+[v _init init `(v  1 e 1 0 ]
+"39
+[v _readID readID `(uc  1 e 1 0 ]
+"57
+[v _main main `(i  1 e 2 0 ]
+"21 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\mcp2515.c
+[v _Mcp2515_Reset Mcp2515_Reset `(v  1 e 1 0 ]
+"38
+[v _Mcp2515_Init Mcp2515_Init `(v  1 e 1 0 ]
+"145
+[v _Mcp2515Sleep Mcp2515Sleep `(v  1 e 1 0 ]
+"164
+[v _Mcp2515ReadCanId Mcp2515ReadCanId `(v  1 e 1 0 ]
+"194
+[v _Mcp2515ReadCanMsg Mcp2515ReadCanMsg `(v  1 e 1 0 ]
+"233
+[v _Mcp2515WriteCanId Mcp2515WriteCanId `(v  1 e 1 0 ]
+[v i2_Mcp2515WriteCanId Mcp2515WriteCanId `(v  1 e 1 0 ]
+"272
+[v _Mcp2515WriteCanMsg Mcp2515WriteCanMsg `(v  1 e 1 0 ]
+"311
+[v _Mcp2515GetNextFreeTXBuf Mcp2515GetNextFreeTXBuf `(uc  1 e 1 0 ]
+"12839 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f87k22.h
+[v _TXREG TXREG `VEuc  1 e 1 @4013 ]
+"12910
+[v _SPBRG1 SPBRG1 `VEuc  1 e 1 @4015 ]
+"14884
+[v _SSPCON1 SSPCON1 `VEuc  1 e 1 @4038 ]
+"16028
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
+"16623
+[v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
+"16700
+[v _SPBRGH1 SPBRGH1 `VEuc  1 e 1 @4052 ]
+"18270
+[v _BRG161 BRG161 `VEb  1 e 0 @31531 ]
+"18276
+[v _BRGH1 BRGH1 `VEb  1 e 0 @32098 ]
+"18688
+[v _CKE1 CKE1 `VEb  1 e 0 @32318 ]
+"18694
+[v _CKP1 CKP1 `VEb  1 e 0 @32308 ]
+"18782
+[v _CREN1 CREN1 `VEb  1 e 0 @32092 ]
+"19118
+[v _INT3IE INT3IE `VEb  1 e 0 @32645 ]
+"19120
+[v _INT3IF INT3IF `VEb  1 e 0 @32642 ]
+"19132
+[v _INTEDG3 INTEDG3 `VEb  1 e 0 @32651 ]
+"19236
+[v _LATD1 LATD1 `VEb  1 e 0 @31841 ]
+"19276
+[v _LATF6 LATF6 `VEb  1 e 0 @31862 ]
+"19278
+[v _LATF7 LATF7 `VEb  1 e 0 @31863 ]
+"19280
+[v _LATG0 LATG0 `VEb  1 e 0 @31864 ]
+"19790
+[v _PLLEN PLLEN `VEb  1 e 0 @31966 ]
+"19868
+[v _RB3 RB3 `VEb  1 e 0 @31755 ]
+"20246
+[v _SPEN1 SPEN1 `VEb  1 e 0 @32095 ]
+"20274
+[v _SSP1IF SSP1IF `VEb  1 e 0 @31987 ]
+"20290
+[v _SSPEN1 SSPEN1 `VEb  1 e 0 @32309 ]
+"20296
+[v _SSPIF SSPIF `VEb  1 e 0 @31987 ]
+"20384
+[v _SYNC1 SYNC1 `VEb  1 e 0 @32100 ]
+"20792
+[v _TRISC3 TRISC3 `VEb  1 e 0 @31907 ]
+"20794
+[v _TRISC4 TRISC4 `VEb  1 e 0 @31908 ]
+"20796
+[v _TRISC5 TRISC5 `VEb  1 e 0 @31909 ]
+"20804
+[v _TRISD1 TRISD1 `VEb  1 e 0 @31913 ]
+"20844
+[v _TRISF6 TRISF6 `VEb  1 e 0 @31934 ]
+"20846
+[v _TRISF7 TRISF7 `VEb  1 e 0 @31935 ]
+"20848
+[v _TRISG0 TRISG0 `VEb  1 e 0 @31936 ]
+"20964
+[v _TXEN1 TXEN1 `VEb  1 e 0 @32101 ]
+"20970
+[v _TXIF TXIF `VEb  1 e 0 @31988 ]
+[s S39 CANSPEED 7 `uc 1 brp 1 0 `uc 1 sjw 1 1 `uc 1 prseg 1 2 `uc 1 phseg1 1 3 `uc 1 phseg2 1 4 `uc 1 sam 1 5 `uc 1 btlmode 1 6 ]
+"21 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
+[v _canSpeed125k canSpeed125k `CS39  1 e 7 0 ]
+[s S31 CANMESSAGE 17 `uc 1 extended_identifier 1 0 `ul 1 identifier 4 1 `uc 1 dlc 1 5 `[8]uc 1 dta 8 6 `uc 1 rtr 1 14 `uc 1 filhit 1 15 `uc 1 txPrio 1 16 ]
+"30
+[v _rxBuffer rxBuffer `[4]S31  1 e 68 0 ]
+"31
+[v _rxBufferPtrIn rxBufferPtrIn `uc  1 e 1 0 ]
+"32
+[v _rxBufferPtrOut rxBufferPtrOut `uc  1 e 1 0 ]
+"33
+[v _rxBufferCount rxBufferCount `uc  1 e 1 0 ]
+"35
+[v _txBuffer txBuffer `[4]S31  1 e 68 0 ]
+"36
+[v _txBufferPtrIn txBufferPtrIn `uc  1 e 1 0 ]
+"37
+[v _txBufferPtrOut txBufferPtrOut `uc  1 e 1 0 ]
+"38
+[v _txBufferCount txBufferCount `uc  1 e 1 0 ]
+"40
+[v _nbTx0 nbTx0 `VEuc  1 e 1 0 ]
+"41
+[v _nbTx1 nbTx1 `VEuc  1 e 1 0 ]
+"42
+[v _nbTx2 nbTx2 `VEuc  1 e 1 0 ]
+"21 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\main.c
+[v _id id `uc  1 e 1 0 ]
+[s S21 CANFILTER 33 `ul 1 mask0 4 0 `ul 1 mask1 4 4 `ul 1 filter0 4 8 `ul 1 filter1 4 12 `ul 1 filter2 4 16 `ul 1 filter3 4 20 `ul 1 filter4 4 24 `ul 1 filter5 4 28 `uc 1 ext 1 32 ]
+"25
+[v _filter filter `S21  1 e 33 0 ]
+"26
+[v _message message `S31  1 e 17 0 ]
+"57
+[v _main main `(i  1 e 2 0 ]
+{
+"60
+} 0
+"30
+[v _init init `(v  1 e 1 0 ]
+{
+"37
+} 0
+"39
+[v _readID readID `(uc  1 e 1 0 ]
+{
+"40
+[v readID@retVal retVal `uc  1 a 1 5 ]
+"56
+} 0
+"200 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
+[v _Can_PutMessage Can_PutMessage `(uc  1 e 1 0 ]
+{
+"202
+[v Can_PutMessage@i i `uc  1 a 1 4 ]
+[s S31 CANMESSAGE 17 `uc 1 extended_identifier 1 0 `ul 1 identifier 4 1 `uc 1 dlc 1 5 `[8]uc 1 dta 8 6 `uc 1 rtr 1 14 `uc 1 filhit 1 15 `uc 1 txPrio 1 16 ]
+"200
+[v Can_PutMessage@msgPtr msgPtr `*.39S31  1 p 2 0 ]
+"227
+} 0
+"169
+[v _Can_GetMessage Can_GetMessage `(uc  1 e 1 0 ]
+{
+"171
+[v Can_GetMessage@i i `uc  1 a 1 4 ]
+[s S31 CANMESSAGE 17 `uc 1 extended_identifier 1 0 `ul 1 identifier 4 1 `uc 1 dlc 1 5 `[8]uc 1 dta 8 6 `uc 1 rtr 1 14 `uc 1 filhit 1 15 `uc 1 txPrio 1 16 ]
+"169
+[v Can_GetMessage@msgPtr msgPtr `*.39S31  1 p 2 0 ]
+"190
+} 0
+"237
+[v _Can_Init Can_Init `(v  1 e 1 0 ]
+{
+[s S39 CANSPEED 7 `uc 1 brp 1 0 `uc 1 sjw 1 1 `uc 1 prseg 1 2 `uc 1 phseg1 1 3 `uc 1 phseg2 1 4 `uc 1 sam 1 5 `uc 1 btlmode 1 6 ]
+[v Can_Init@speedCfg speedCfg `*.32CS39  1 p 2 60 ]
+[s S21 CANFILTER 33 `ul 1 mask0 4 0 `ul 1 mask1 4 4 `ul 1 filter0 4 8 `ul 1 filter1 4 12 `ul 1 filter2 4 16 `ul 1 filter3 4 20 `ul 1 filter4 4 24 `ul 1 filter5 4 28 `uc 1 ext 1 32 ]
+"238
+[v Can_Init@filterCfg filterCfg `*.39S21  1 p 2 62 ]
+"262
+} 0
+"38 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\mcp2515.c
+[v _Mcp2515_Init Mcp2515_Init `(v  1 e 1 0 ]
+{
+"41
+[v Mcp2515_Init@cmdMask4 cmdMask4 `[4]uc  1 a 4 53 ]
+"42
+[v Mcp2515_Init@cmdWrite3 cmdWrite3 `[3]uc  1 a 3 57 ]
+"40
+[v Mcp2515_Init@i i `uc  1 a 1 52 ]
+[s S39 CANSPEED 7 `uc 1 brp 1 0 `uc 1 sjw 1 1 `uc 1 prseg 1 2 `uc 1 phseg1 1 3 `uc 1 phseg2 1 4 `uc 1 sam 1 5 `uc 1 btlmode 1 6 ]
+"38
+[v Mcp2515_Init@speedCfg speedCfg `*.32CS39  1 p 2 35 ]
+[s S21 CANFILTER 33 `ul 1 mask0 4 0 `ul 1 mask1 4 4 `ul 1 filter0 4 8 `ul 1 filter1 4 12 `ul 1 filter2 4 16 `ul 1 filter3 4 20 `ul 1 filter4 4 24 `ul 1 filter5 4 28 `uc 1 ext 1 32 ]
+[v Mcp2515_Init@filterCfg filterCfg `*.39S21  1 p 2 37 ]
+"40
+[v Mcp2515_Init@F8112 F8112 `[4]uc  1 s 4 F8112 ]
+"41
+[v Mcp2515_Init@F8114 F8114 `[3]uc  1 s 3 F8114 ]
+"143
+} 0
+"21
+[v _Mcp2515_Reset Mcp2515_Reset `(v  1 e 1 0 ]
+{
+"23
+[v Mcp2515_Reset@i i `ul  1 a 4 19 ]
+"24
+[v Mcp2515_Reset@cmd cmd `uc  1 a 1 18 ]
+"28
+} 0
+"233
+[v _Mcp2515WriteCanId Mcp2515WriteCanId `(v  1 e 1 0 ]
+{
+[v Mcp2515WriteCanId@mcp_addr mcp_addr `uc  1 a 1 wreg ]
+"236
+[v Mcp2515WriteCanId@buf buf `[6]uc  1 a 6 27 ]
+"235
+[v Mcp2515WriteCanId@canid canid `ui  1 a 2 33 ]
+"233
+[v Mcp2515WriteCanId@mcp_addr mcp_addr `uc  1 a 1 wreg ]
+[v Mcp2515WriteCanId@ext ext `uc  1 p 1 18 ]
+[v Mcp2515WriteCanId@can_id can_id `ul  1 p 4 19 ]
+"238
+[v Mcp2515WriteCanId@mcp_addr mcp_addr `uc  1 a 1 26 ]
+"262
+} 0
+"327 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
+[v _Spi_Write Spi_Write `(v  1 e 1 0 ]
+{
+[v Spi_Write@tx tx `*.39uc  1 p 2 12 ]
+[v Spi_Write@size size `ul  1 p 4 14 ]
+"330
+} 0
+"288
+[v _SPIRW SPIRW `(v  1 s 1 SPIRW ]
+{
+"290
+[v SPIRW@i i `ul  1 a 4 8 ]
+"288
+[v SPIRW@tx tx `*.39Cuc  1 p 2 0 ]
+[v SPIRW@rx rx `*.39uc  1 p 2 2 ]
+[v SPIRW@size size `ul  1 p 4 4 ]
+"304
+} 0
+"3 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\interrupt.c
+[v _high_isr high_isr `II(v  1 e 1 0 ]
+{
+"14
+} 0
+"50 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
+[v _Can_Isr Can_Isr `(v  1 e 1 0 ]
+{
+"53
+[v Can_Isr@retCode retCode `uc  1 a 1 72 ]
+"52
+[v Can_Isr@nbTxBuf nbTxBuf `uc  1 s 1 nbTxBuf ]
+"84
+} 0
+"127
+[v _Can_WriteOutBuffer Can_WriteOutBuffer `(uc  1 s 1 Can_WriteOutBuffer ]
+{
+"133
+} 0
+"421
+[v _Can_SendMessage Can_SendMessage `(uc  1 s 1 Can_SendMessage ]
+{
+"424
+[v Can_SendMessage@buf buf `[4]uc  1 a 4 55 ]
+"423
+[v Can_SendMessage@txbuf_n txbuf_n `uc  1 a 1 60 ]
+[v Can_SendMessage@res res `uc  1 a 1 59 ]
+[s S31 CANMESSAGE 17 `uc 1 extended_identifier 1 0 `ul 1 identifier 4 1 `uc 1 dlc 1 5 `[8]uc 1 dta 8 6 `uc 1 rtr 1 14 `uc 1 filhit 1 15 `uc 1 txPrio 1 16 ]
+"421
+[v Can_SendMessage@msg msg `*.39CS31  1 p 2 53 ]
+"446
+} 0
+"272 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\mcp2515.c
+[v _Mcp2515WriteCanMsg Mcp2515WriteCanMsg `(v  1 e 1 0 ]
+{
+[v Mcp2515WriteCanMsg@buffer_sidh_addr buffer_sidh_addr `Cuc  1 a 1 wreg ]
+"276
+[v Mcp2515WriteCanMsg@buf buf `[10]uc  1 a 10 39 ]
+"275
+[v Mcp2515WriteCanMsg@i i `uc  1 a 1 52 ]
+[v Mcp2515WriteCanMsg@mcp_addr mcp_addr `uc  1 a 1 51 ]
+[v Mcp2515WriteCanMsg@dlc dlc `uc  1 a 1 50 ]
+"272
+[v Mcp2515WriteCanMsg@buffer_sidh_addr buffer_sidh_addr `Cuc  1 a 1 wreg ]
+[s S31 CANMESSAGE 17 `uc 1 extended_identifier 1 0 `ul 1 identifier 4 1 `uc 1 dlc 1 5 `[8]uc 1 dta 8 6 `uc 1 rtr 1 14 `uc 1 filhit 1 15 `uc 1 txPrio 1 16 ]
+"273
+[v Mcp2515WriteCanMsg@msg msg `*.39CS31  1 p 2 35 ]
+"277
+[v Mcp2515WriteCanMsg@buffer_sidh_addr buffer_sidh_addr `Cuc  1 a 1 49 ]
+"301
+} 0
+"233
+[v i2_Mcp2515WriteCanId Mcp2515WriteCanId `(v  1 e 1 0 ]
+{
+[v i2Mcp2515WriteCanId@mcp_addr mcp_addr `uc  1 a 1 wreg ]
+[v i2Mcp2515WriteCanId@buf Mcp2515WriteCanId `[6]uc  1 a 6 27 ]
+[v i2Mcp2515WriteCanId@canid Mcp2515WriteCanId `ui  1 a 2 33 ]
+[v i2Mcp2515WriteCanId@mcp_addr mcp_addr `uc  1 a 1 wreg ]
+[v i2Mcp2515WriteCanId@ext ext `uc  1 p 1 18 ]
+[v i2Mcp2515WriteCanId@can_id can_id `ul  1 p 4 19 ]
+"238
+[v i2Mcp2515WriteCanId@mcp_addr mcp_addr `uc  1 a 1 26 ]
+"262
+} 0
+"311
+[v _Mcp2515GetNextFreeTXBuf Mcp2515GetNextFreeTXBuf `(uc  1 e 1 0 ]
+{
+"315
+[v Mcp2515GetNextFreeTXBuf@buf buf `[3]uc  1 a 3 24 ]
+"314
+[v Mcp2515GetNextFreeTXBuf@ctrlregs ctrlregs `[3]uc  1 a 3 21 ]
+"313
+[v Mcp2515GetNextFreeTXBuf@i i `uc  1 a 1 27 ]
+"311
+[v Mcp2515GetNextFreeTXBuf@txbuf_n txbuf_n `*.39uc  1 p 2 18 ]
+"313
+[v Mcp2515GetNextFreeTXBuf@F8153 F8153 `[3]uc  1 s 3 F8153 ]
+"332
+} 0
+"94 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
+[v _Can_ReadInBuffer Can_ReadInBuffer `(uc  1 s 1 Can_ReadInBuffer ]
+{
+"96
+[v Can_ReadInBuffer@i i `uc  1 a 1 70 ]
+"98
+[v Can_ReadInBuffer@rdStatus rdStatus `uc  1 a 1 69 ]
+"97
+[v Can_ReadInBuffer@error error `uc  1 a 1 68 ]
+"117
+} 0
+"367
+[v _Can_ReadMessage Can_ReadMessage `(uc  1 s 1 Can_ReadMessage ]
+{
+"369
+[v Can_ReadMessage@buf buf `[4]uc  1 a 4 64 ]
+[s S31 CANMESSAGE 17 `uc 1 extended_identifier 1 0 `ul 1 identifier 4 1 `uc 1 dlc 1 5 `[8]uc 1 dta 8 6 `uc 1 rtr 1 14 `uc 1 filhit 1 15 `uc 1 txPrio 1 16 ]
+"367
+[v Can_ReadMessage@msg msg `*.39S31  1 p 2 62 ]
+"408
+} 0
+"327
+[v i2_Spi_Write Spi_Write `(v  1 e 1 0 ]
+{
+[v i2Spi_Write@tx tx `*.39uc  1 p 2 12 ]
+[v i2Spi_Write@size size `ul  1 p 4 14 ]
+"330
+} 0
+"194 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\mcp2515.c
+[v _Mcp2515ReadCanMsg Mcp2515ReadCanMsg `(v  1 e 1 0 ]
+{
+[v Mcp2515ReadCanMsg@mcp_addr mcp_addr `Cuc  1 a 1 wreg ]
+"197
+[v Mcp2515ReadCanMsg@cmd cmd `[10]uc  1 a 10 51 ]
+"194
+[v Mcp2515ReadCanMsg@mcp_addr mcp_addr `Cuc  1 a 1 wreg ]
+[s S31 CANMESSAGE 17 `uc 1 extended_identifier 1 0 `ul 1 identifier 4 1 `uc 1 dlc 1 5 `[8]uc 1 dta 8 6 `uc 1 rtr 1 14 `uc 1 filhit 1 15 `uc 1 txPrio 1 16 ]
+"195
+[v Mcp2515ReadCanMsg@msg msg `*.39S31  1 p 2 47 ]
+"203
+[v Mcp2515ReadCanMsg@mcp_addr mcp_addr `Cuc  1 a 1 61 ]
+"223
+} 0
+"27 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memcpy.c
+[v _memcpy memcpy `(*.39v  1 e 2 0 ]
+{
+"31
+[v memcpy@s s `*.39Cuc  1 a 2 8 ]
+"30
+[v memcpy@d d `*.39uc  1 a 2 6 ]
+"32
+[v memcpy@tmp tmp `uc  1 a 1 10 ]
+"27
+[v memcpy@d1 d1 `*.39v  1 p 2 0 ]
+[v memcpy@s1 s1 `*.39Cv  1 p 2 2 ]
+[v memcpy@n n `ui  1 p 2 4 ]
+"41
+} 0
+"164 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\mcp2515.c
+[v _Mcp2515ReadCanId Mcp2515ReadCanId `(v  1 e 1 0 ]
+{
+[v Mcp2515ReadCanId@mcp_addr mcp_addr `Cuc  1 a 1 wreg ]
+"167
+[v Mcp2515ReadCanId@msg msg `[6]uc  1 a 6 41 ]
+"164
+[v Mcp2515ReadCanId@mcp_addr mcp_addr `Cuc  1 a 1 wreg ]
+"165
+[v Mcp2515ReadCanId@ext ext `*.39uc  1 p 2 18 ]
+[v Mcp2515ReadCanId@can_id can_id `*.39ul  1 p 2 20 ]
+"166
+[v Mcp2515ReadCanId@F8123 F8123 `[6]uc  1 s 6 F8123 ]
+[v Mcp2515ReadCanId@mcp_addr mcp_addr `Cuc  1 a 1 40 ]
+"184
+} 0
+"156 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
+[v _Can_OutBufferStatus Can_OutBufferStatus `(uc  1 e 1 0 ]
+{
+"159
+} 0
+"344
+[v _Can_GetStatus Can_GetStatus `(uc  1 s 1 Can_GetStatus ]
+{
+"348
+[v Can_GetStatus@msg4 msg4 `[4]uc  1 a 4 18 ]
+"347
+[v Can_GetStatus@msg msg `[3]uc  1 a 3 22 ]
+"346
+[v Can_GetStatus@status status `uc  1 a 1 25 ]
+[v Can_GetStatus@F8262 F8262 `[3]uc  1 s 3 F8262 ]
+"347
+[v Can_GetStatus@F8264 F8264 `[4]uc  1 s 4 F8264 ]
+"355
+} 0
+"314
+[v _Spi_ReadWrite Spi_ReadWrite `(v  1 e 1 0 ]
+{
+[v Spi_ReadWrite@rx_tx rx_tx `*.39uc  1 p 2 12 ]
+[v Spi_ReadWrite@size size `ul  1 p 4 14 ]
+"317
+} 0
+"288
+[v i2_SPIRW SPIRW `(v  1 s 1 i2_SPIRW ]
+{
+[v i2SPIRW@i SPIRW `ul  1 a 4 8 ]
+[v i2SPIRW@tx tx `*.39Cuc  1 p 2 0 ]
+[v i2SPIRW@rx rx `*.39uc  1 p 2 2 ]
+[v i2SPIRW@size size `ul  1 p 4 4 ]
+"304
+} 0
