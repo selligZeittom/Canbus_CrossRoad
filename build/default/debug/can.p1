@@ -52,6 +52,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _Mcp2515_Init `(v ~T0 @X0 0 ef2`*CS827`*S828 ]
 "19132 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f87k22.h
 [v _INTEDG3 `Vb ~T0 @X0 0 e@32651 ]
+"19774
+[v _PEIE `Vb ~T0 @X0 0 e@32662 ]
+"19010
+[v _GIE `Vb ~T0 @X0 0 e@32663 ]
 "77 mcp2515.h
 [v _Mcp2515Sleep `(v ~T0 @X0 0 ef ]
 "19236 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f87k22.h
@@ -8060,64 +8064,70 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;can.c: 260: INTEDG3 = 0;
 "260
 [e = _INTEDG3 -> -> 0 `i `b ]
-[; ;can.c: 262: }
-"262
+[; ;can.c: 264: PEIE = 1;
+"264
+[e = _PEIE -> -> 1 `i `b ]
+[; ;can.c: 265: GIE = 1;
+"265
+[e = _GIE -> -> 1 `i `b ]
+[; ;can.c: 267: }
+"267
 [e :UE 862 ]
 }
-"272
+"277
 [v _Can_PowerOff `(v ~T0 @X0 1 ef ]
-"273
+"278
 {
-[; ;can.c: 272: void Can_PowerOff(void)
-[; ;can.c: 273: {
+[; ;can.c: 277: void Can_PowerOff(void)
+[; ;can.c: 278: {
 [e :U _Can_PowerOff ]
 [f ]
-[; ;can.c: 274: Mcp2515Sleep();
-"274
+[; ;can.c: 279: Mcp2515Sleep();
+"279
 [e ( _Mcp2515Sleep ..  ]
-[; ;can.c: 275: LATF7 = 1;
-"275
+[; ;can.c: 280: LATF7 = 1;
+"280
 [e = _LATF7 -> -> 1 `i `b ]
-[; ;can.c: 276: }
-"276
+[; ;can.c: 281: }
+"281
 [e :UE 863 ]
 }
-"288
+"293
 [v _SPIRW `(v ~T0 @X0 1 sf3`*Cuc`*uc`ul ]
-"289
+"294
 {
-[; ;can.c: 288: static void SPIRW(const uint8_t *tx, uint8_t *rx, uint32_t size)
-[; ;can.c: 289: {
+[; ;can.c: 293: static void SPIRW(const uint8_t *tx, uint8_t *rx, uint32_t size)
+[; ;can.c: 294: {
 [e :U _SPIRW ]
-"288
+"293
 [v _tx `*Cuc ~T0 @X0 1 r1 ]
 [v _rx `*uc ~T0 @X0 1 r2 ]
 [v _size `ul ~T0 @X0 1 r3 ]
-"289
-[f ]
-"290
-[v _i `ul ~T0 @X0 1 a ]
-[; ;can.c: 290: uint32_t i;
-[; ;can.c: 292: SSPCON1 = 0b00111010;
-"292
-[e = _SSPCON1 -> -> 58 `i `uc ]
-[; ;can.c: 294: LATD1 = 0;
 "294
-[e = _LATD1 -> -> 0 `i `b ]
-[; ;can.c: 295: for(i=0;i<size;i++)
+[f ]
 "295
+[v _i `ul ~T0 @X0 1 a ]
+[; ;can.c: 295: uint32_t i;
+[; ;can.c: 297: SSPCON1 = 0b00111010;
+"297
+[e = _SSPCON1 -> -> 58 `i `uc ]
+[; ;can.c: 299: LATD1 = 0;
+"299
+[e = _LATD1 -> -> 0 `i `b ]
+[; ;can.c: 300: for(i=0;i<size;i++)
+"300
 {
 [e = _i -> -> -> 0 `i `l `ul ]
 [e $U 868  ]
-"296
+"301
 [e :U 865 ]
-[; ;can.c: 296: {
+[; ;can.c: 301: {
 {
-[; ;can.c: 297: SSPBUF = tx[i];
-"297
+[; ;can.c: 302: SSPBUF = tx[i];
+"302
 [e = _SSPBUF *U + _tx * -> _i `ux -> -> # *U _tx `ui `ux ]
-[; ;can.c: 298: while(SSPIF == 0){}
-"298
+[; ;can.c: 303: while(SSPIF == 0){}
+"303
 [e $U 869  ]
 [e :U 870 ]
 {
@@ -8125,98 +8135,98 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 869 ]
 [e $ == -> _SSPIF `i -> 0 `i 870  ]
 [e :U 871 ]
-[; ;can.c: 299: SSP1IF = 0;
-"299
+[; ;can.c: 304: SSP1IF = 0;
+"304
 [e = _SSP1IF -> -> 0 `i `b ]
-[; ;can.c: 300: if(rx != 0)
-"300
+[; ;can.c: 305: if(rx != 0)
+"305
 [e $ ! != _rx -> -> 0 `i `*uc 872  ]
-[; ;can.c: 301: rx[i] = SSPBUF;
-"301
+[; ;can.c: 306: rx[i] = SSPBUF;
+"306
 [e = *U + _rx * -> _i `ux -> -> # *U _rx `ui `ux _SSPBUF ]
 [e :U 872 ]
-"302
+"307
 }
-"295
+"300
 [e ++ _i -> -> -> 1 `i `l `ul ]
 [e :U 868 ]
 [e $ < _i _size 865  ]
 [e :U 866 ]
-"302
+"307
 }
-[; ;can.c: 302: }
-[; ;can.c: 303: LATD1 = 1;
-"303
+[; ;can.c: 307: }
+[; ;can.c: 308: LATD1 = 1;
+"308
 [e = _LATD1 -> -> 1 `i `b ]
-[; ;can.c: 304: }
-"304
+[; ;can.c: 309: }
+"309
 [e :UE 864 ]
 }
-"314
+"319
 [v _Spi_ReadWrite `(v ~T0 @X0 1 ef2`*uc`ul ]
-"315
+"320
 {
-[; ;can.c: 314: void Spi_ReadWrite(uint8_t * rx_tx, uint32_t size)
-[; ;can.c: 315: {
+[; ;can.c: 319: void Spi_ReadWrite(uint8_t * rx_tx, uint32_t size)
+[; ;can.c: 320: {
 [e :U _Spi_ReadWrite ]
-"314
+"319
 [v _rx_tx `*uc ~T0 @X0 1 r1 ]
 [v _size `ul ~T0 @X0 1 r2 ]
-"315
+"320
 [f ]
-[; ;can.c: 316: SPIRW(rx_tx, rx_tx, size);
-"316
+[; ;can.c: 321: SPIRW(rx_tx, rx_tx, size);
+"321
 [e ( _SPIRW (3 , , -> _rx_tx `*Cuc _rx_tx _size ]
-[; ;can.c: 317: }
-"317
+[; ;can.c: 322: }
+"322
 [e :UE 873 ]
 }
-"327
+"332
 [v _Spi_Write `(v ~T0 @X0 1 ef2`*uc`ul ]
-"328
+"333
 {
-[; ;can.c: 327: void Spi_Write(uint8_t * tx, uint32_t size)
-[; ;can.c: 328: {
+[; ;can.c: 332: void Spi_Write(uint8_t * tx, uint32_t size)
+[; ;can.c: 333: {
 [e :U _Spi_Write ]
-"327
+"332
 [v _tx `*uc ~T0 @X0 1 r1 ]
 [v _size `ul ~T0 @X0 1 r2 ]
-"328
+"333
 [f ]
-[; ;can.c: 329: SPIRW(tx, 0, size);
-"329
+[; ;can.c: 334: SPIRW(tx, 0, size);
+"334
 [e ( _SPIRW (3 , , -> _tx `*Cuc -> -> 0 `i `*uc _size ]
-[; ;can.c: 330: }
-"330
+[; ;can.c: 335: }
+"335
 [e :UE 874 ]
 }
-"344
+"349
 [v _Can_GetStatus `(uc ~T0 @X0 1 sf ]
-"345
+"350
 {
-[; ;can.c: 344: static uint8_t Can_GetStatus(void)
-[; ;can.c: 345: {
+[; ;can.c: 349: static uint8_t Can_GetStatus(void)
+[; ;can.c: 350: {
 [e :U _Can_GetStatus ]
 [f ]
-"346
+"351
 [v _status `uc ~T0 @X0 1 a ]
 [v F8262 `uc ~T0 @X0 -> 0 `x s ]
 [i F8262
 :U ..
-"347
+"352
 -> -> 3 `i `uc
 -> -> 44 `i `uc
 -> -> 0 `i `uc
 ..
 ]
 [v _msg `uc ~T0 @X0 3  a ]
-[; ;can.c: 346: uint8_t status;
-[; ;can.c: 347: uint8_t msg[]={0x03,0x2C,0};
+[; ;can.c: 351: uint8_t status;
+[; ;can.c: 352: uint8_t msg[]={0x03,0x2C,0};
 [e = _msg F8262 ]
 [v F8264 `uc ~T0 @X0 -> 0 `x s ]
 [i F8264
 :U ..
-"348
+"353
 -> -> 5 `i `uc
 -> -> 44 `i `uc
 -> -> 28 `i `uc
@@ -8224,228 +8234,228 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _msg4 `uc ~T0 @X0 4  a ]
-[; ;can.c: 348: uint8_t msg4[]={0x05,0x2C,0x1C,0};
+[; ;can.c: 353: uint8_t msg4[]={0x05,0x2C,0x1C,0};
 [e = _msg4 F8264 ]
-[; ;can.c: 350: Spi_ReadWrite(msg,sizeof(msg));
-"350
+[; ;can.c: 355: Spi_ReadWrite(msg,sizeof(msg));
+"355
 [e ( _Spi_ReadWrite (2 , &U _msg -> -> # _msg `ui `ul ]
-[; ;can.c: 351: status = msg[2];
-"351
+[; ;can.c: 356: status = msg[2];
+"356
 [e = _status *U + &U _msg * -> -> -> 2 `i `ui `ux -> -> # *U &U _msg `ui `ux ]
-[; ;can.c: 352: msg4[2] = status & 0x1C;
-"352
+[; ;can.c: 357: msg4[2] = status & 0x1C;
+"357
 [e = *U + &U _msg4 * -> -> -> 2 `i `ui `ux -> -> # *U &U _msg4 `ui `ux -> & -> _status `i -> 28 `i `uc ]
-[; ;can.c: 353: Spi_ReadWrite(msg4,sizeof(msg4));
-"353
+[; ;can.c: 358: Spi_ReadWrite(msg4,sizeof(msg4));
+"358
 [e ( _Spi_ReadWrite (2 , &U _msg4 -> -> # _msg4 `ui `ul ]
-[; ;can.c: 354: return status;
-"354
+[; ;can.c: 359: return status;
+"359
 [e ) _status ]
 [e $UE 875  ]
-[; ;can.c: 355: }
-"355
+[; ;can.c: 360: }
+"360
 [e :UE 875 ]
 }
-"367
-[v _Can_ReadMessage `(uc ~T0 @X0 1 sf1`*S829 ]
-"368
-{
-[; ;can.c: 367: static uint8_t Can_ReadMessage(struct CANMESSAGE *msg)
-[; ;can.c: 368: {
-[e :U _Can_ReadMessage ]
-"367
-[v _msg `*S829 ~T0 @X0 1 r1 ]
-"368
-[f ]
-"369
-[v _buf `uc ~T0 @X0 -> 4 `i a ]
-[; ;can.c: 369: uint8_t buf[4];
-[; ;can.c: 371: buf[0] = 0xA0;
-"371
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 160 `i `uc ]
-[; ;can.c: 372: Spi_ReadWrite(buf,2);
 "372
-[e ( _Spi_ReadWrite (2 , &U _buf -> -> -> 2 `i `l `ul ]
-[; ;can.c: 374: if ( buf[1] & (1<<0) )
-"374
-[e $ ! != & -> *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux `i << -> 1 `i -> 0 `i -> 0 `i 877  ]
-[; ;can.c: 375: {
-"375
+[v _Can_ReadMessage `(uc ~T0 @X0 1 sf1`*S829 ]
+"373
 {
-[; ;can.c: 376: Mcp2515ReadCanMsg( (0x61), msg);
+[; ;can.c: 372: static uint8_t Can_ReadMessage(struct CANMESSAGE *msg)
+[; ;can.c: 373: {
+[e :U _Can_ReadMessage ]
+"372
+[v _msg `*S829 ~T0 @X0 1 r1 ]
+"373
+[f ]
+"374
+[v _buf `uc ~T0 @X0 -> 4 `i a ]
+[; ;can.c: 374: uint8_t buf[4];
+[; ;can.c: 376: buf[0] = 0xA0;
 "376
-[e ( _Mcp2515ReadCanMsg (2 , -> -> 97 `i `uc _msg ]
-[; ;can.c: 377: buf[0] = 0x05;
+[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 160 `i `uc ]
+[; ;can.c: 377: Spi_ReadWrite(buf,2);
 "377
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 5 `i `uc ]
-[; ;can.c: 378: buf[1] = 0x2C;
-"378
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 44 `i `uc ]
-[; ;can.c: 379: buf[2] = 0x01;
+[e ( _Spi_ReadWrite (2 , &U _buf -> -> -> 2 `i `l `ul ]
+[; ;can.c: 379: if ( buf[1] & (1<<0) )
 "379
-[e = *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 1 `i `uc ]
-[; ;can.c: 380: buf[3] = 0;
+[e $ ! != & -> *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux `i << -> 1 `i -> 0 `i -> 0 `i 877  ]
+[; ;can.c: 380: {
 "380
-[e = *U + &U _buf * -> -> -> 3 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 0 `i `uc ]
-[; ;can.c: 381: Spi_Write(buf,4);
+{
+[; ;can.c: 381: Mcp2515ReadCanMsg( (0x61), msg);
 "381
-[e ( _Spi_Write (2 , &U _buf -> -> -> 4 `i `l `ul ]
+[e ( _Mcp2515ReadCanMsg (2 , -> -> 97 `i `uc _msg ]
 [; ;can.c: 382: buf[0] = 0x05;
 "382
 [e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 5 `i `uc ]
-[; ;can.c: 383: buf[1] = 0x2B;
+[; ;can.c: 383: buf[1] = 0x2C;
 "383
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 43 `i `uc ]
+[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 44 `i `uc ]
 [; ;can.c: 384: buf[2] = 0x01;
 "384
 [e = *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 1 `i `uc ]
-[; ;can.c: 385: buf[3] = 0xFF;
+[; ;can.c: 385: buf[3] = 0;
 "385
-[e = *U + &U _buf * -> -> -> 3 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 255 `i `uc ]
+[e = *U + &U _buf * -> -> -> 3 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 0 `i `uc ]
 [; ;can.c: 386: Spi_Write(buf,4);
 "386
 [e ( _Spi_Write (2 , &U _buf -> -> -> 4 `i `l `ul ]
-[; ;can.c: 387: return (0);
+[; ;can.c: 387: buf[0] = 0x05;
 "387
+[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 5 `i `uc ]
+[; ;can.c: 388: buf[1] = 0x2B;
+"388
+[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 43 `i `uc ]
+[; ;can.c: 389: buf[2] = 0x01;
+"389
+[e = *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 1 `i `uc ]
+[; ;can.c: 390: buf[3] = 0xFF;
+"390
+[e = *U + &U _buf * -> -> -> 3 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 255 `i `uc ]
+[; ;can.c: 391: Spi_Write(buf,4);
+"391
+[e ( _Spi_Write (2 , &U _buf -> -> -> 4 `i `l `ul ]
+[; ;can.c: 392: return (0);
+"392
 [e ) -> -> 0 `i `uc ]
 [e $UE 876  ]
-"388
-}
-[; ;can.c: 388: }
-[e $U 878  ]
-"390
-[e :U 877 ]
-[; ;can.c: 390: else if ( buf[1] & (1<<1) )
-[e $ ! != & -> *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux `i << -> 1 `i -> 1 `i -> 0 `i 879  ]
-[; ;can.c: 391: {
-"391
-{
-[; ;can.c: 393: Mcp2515ReadCanMsg( (0x71), msg);
 "393
-[e ( _Mcp2515ReadCanMsg (2 , -> -> 113 `i `uc _msg ]
-[; ;can.c: 394: buf[0] = 0x05;
-"394
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 5 `i `uc ]
-[; ;can.c: 395: buf[1] = 0x2C;
+}
+[; ;can.c: 393: }
+[e $U 878  ]
 "395
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 44 `i `uc ]
-[; ;can.c: 396: buf[2] = 0x02;
+[e :U 877 ]
+[; ;can.c: 395: else if ( buf[1] & (1<<1) )
+[e $ ! != & -> *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux `i << -> 1 `i -> 1 `i -> 0 `i 879  ]
+[; ;can.c: 396: {
 "396
-[e = *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 2 `i `uc ]
-[; ;can.c: 397: buf[3] = 0;
-"397
-[e = *U + &U _buf * -> -> -> 3 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 0 `i `uc ]
-[; ;can.c: 398: Spi_Write(buf,4);
+{
+[; ;can.c: 398: Mcp2515ReadCanMsg( (0x71), msg);
 "398
-[e ( _Spi_Write (2 , &U _buf -> -> -> 4 `i `l `ul ]
+[e ( _Mcp2515ReadCanMsg (2 , -> -> 113 `i `uc _msg ]
 [; ;can.c: 399: buf[0] = 0x05;
 "399
 [e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 5 `i `uc ]
-[; ;can.c: 400: buf[1] = 0x2B;
+[; ;can.c: 400: buf[1] = 0x2C;
 "400
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 43 `i `uc ]
+[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 44 `i `uc ]
 [; ;can.c: 401: buf[2] = 0x02;
 "401
 [e = *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 2 `i `uc ]
-[; ;can.c: 402: buf[3] = 0xFF;
+[; ;can.c: 402: buf[3] = 0;
 "402
-[e = *U + &U _buf * -> -> -> 3 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 255 `i `uc ]
+[e = *U + &U _buf * -> -> -> 3 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 0 `i `uc ]
 [; ;can.c: 403: Spi_Write(buf,4);
 "403
 [e ( _Spi_Write (2 , &U _buf -> -> -> 4 `i `l `ul ]
-[; ;can.c: 404: return (0);
+[; ;can.c: 404: buf[0] = 0x05;
 "404
+[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 5 `i `uc ]
+[; ;can.c: 405: buf[1] = 0x2B;
+"405
+[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 43 `i `uc ]
+[; ;can.c: 406: buf[2] = 0x02;
+"406
+[e = *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 2 `i `uc ]
+[; ;can.c: 407: buf[3] = 0xFF;
+"407
+[e = *U + &U _buf * -> -> -> 3 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 255 `i `uc ]
+[; ;can.c: 408: Spi_Write(buf,4);
+"408
+[e ( _Spi_Write (2 , &U _buf -> -> -> 4 `i `l `ul ]
+[; ;can.c: 409: return (0);
+"409
 [e ) -> -> 0 `i `uc ]
 [e $UE 876  ]
-"405
+"410
 }
 [e :U 879 ]
-"407
+"412
 [e :U 878 ]
-[; ;can.c: 405: }
-[; ;can.c: 407: return (4);
+[; ;can.c: 410: }
+[; ;can.c: 412: return (4);
 [e ) -> -> 4 `i `uc ]
 [e $UE 876  ]
-[; ;can.c: 408: }
-"408
+[; ;can.c: 413: }
+"413
 [e :UE 876 ]
 }
-"421
+"426
 [v _Can_SendMessage `(uc ~T0 @X0 1 sf1`*CS829 ]
-"422
+"427
 {
-[; ;can.c: 421: static uint8_t Can_SendMessage(const struct CANMESSAGE * msg)
-[; ;can.c: 422: {
+[; ;can.c: 426: static uint8_t Can_SendMessage(const struct CANMESSAGE * msg)
+[; ;can.c: 427: {
 [e :U _Can_SendMessage ]
-"421
+"426
 [v _msg `*CS829 ~T0 @X0 1 r1 ]
-"422
+"427
 [f ]
-"423
+"428
 [v _res `uc ~T0 @X0 1 a ]
 [v _txbuf_n `uc ~T0 @X0 1 a ]
-"424
-[v _buf `uc ~T0 @X0 -> 4 `i a ]
-[; ;can.c: 423: uint8_t res, txbuf_n;
-[; ;can.c: 424: uint8_t buf[4];
-[; ;can.c: 427: do
-"427
-[e :U 883 ]
-[; ;can.c: 428: {
-"428
-{
-[; ;can.c: 429: res = Mcp2515GetNextFreeTXBuf(&txbuf_n);
 "429
+[v _buf `uc ~T0 @X0 -> 4 `i a ]
+[; ;can.c: 428: uint8_t res, txbuf_n;
+[; ;can.c: 429: uint8_t buf[4];
+[; ;can.c: 432: do
+"432
+[e :U 883 ]
+[; ;can.c: 433: {
+"433
+{
+[; ;can.c: 434: res = Mcp2515GetNextFreeTXBuf(&txbuf_n);
+"434
 [e = _res ( _Mcp2515GetNextFreeTXBuf (1 &U _txbuf_n ]
-"431
+"436
 }
-[; ;can.c: 431: } while (res == (2));
+[; ;can.c: 436: } while (res == (2));
 [e $ == -> _res `i -> 2 `i 883  ]
 [e :U 882 ]
-[; ;can.c: 433: if (res != (2))
-"433
-[e $ ! != -> _res `i -> 2 `i 884  ]
-[; ;can.c: 434: {
-"434
-{
-[; ;can.c: 435: Mcp2515WriteCanMsg( txbuf_n, msg);
-"435
-[e ( _Mcp2515WriteCanMsg (2 , _txbuf_n _msg ]
-[; ;can.c: 436: buf[0] = 0x02;
-"436
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 2 `i `uc ]
-[; ;can.c: 437: buf[1] = txbuf_n-1;
-"437
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> - -> _txbuf_n `i -> 1 `i `uc ]
-[; ;can.c: 438: buf[2] = 0x08 | msg->txPrio;
+[; ;can.c: 438: if (res != (2))
 "438
-[e = *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> | -> 8 `i -> . *U _msg 6 `i `uc ]
-[; ;can.c: 439: Spi_Write(buf,3);
+[e $ ! != -> _res `i -> 2 `i 884  ]
+[; ;can.c: 439: {
 "439
-[e ( _Spi_Write (2 , &U _buf -> -> -> 3 `i `l `ul ]
-[; ;can.c: 440: return (0);
+{
+[; ;can.c: 440: Mcp2515WriteCanMsg( txbuf_n, msg);
 "440
+[e ( _Mcp2515WriteCanMsg (2 , _txbuf_n _msg ]
+[; ;can.c: 441: buf[0] = 0x02;
+"441
+[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 2 `i `uc ]
+[; ;can.c: 442: buf[1] = txbuf_n-1;
+"442
+[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> - -> _txbuf_n `i -> 1 `i `uc ]
+[; ;can.c: 443: buf[2] = 0x08 | msg->txPrio;
+"443
+[e = *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> | -> 8 `i -> . *U _msg 6 `i `uc ]
+[; ;can.c: 444: Spi_Write(buf,3);
+"444
+[e ( _Spi_Write (2 , &U _buf -> -> -> 3 `i `l `ul ]
+[; ;can.c: 445: return (0);
+"445
 [e ) -> -> 0 `i `uc ]
 [e $UE 880  ]
-"441
+"446
 }
-[; ;can.c: 441: }
+[; ;can.c: 446: }
 [e $U 885  ]
-"442
+"447
 [e :U 884 ]
-[; ;can.c: 442: else
-[; ;can.c: 443: {
-"443
+[; ;can.c: 447: else
+[; ;can.c: 448: {
+"448
 {
-[; ;can.c: 444: return (2);
-"444
+[; ;can.c: 449: return (2);
+"449
 [e ) -> -> 2 `i `uc ]
 [e $UE 880  ]
-"445
+"450
 }
 [e :U 885 ]
-[; ;can.c: 445: }
-[; ;can.c: 446: }
-"446
+[; ;can.c: 450: }
+[; ;can.c: 451: }
+"451
 [e :UE 880 ]
 }

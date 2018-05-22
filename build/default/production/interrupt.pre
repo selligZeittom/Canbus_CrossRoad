@@ -9747,4 +9747,14 @@ INT3IF = 1;
 }
 
 }
+if(TMR0IF == 1){
+
+T0CONbits.TMR0ON = 1;
+
+# 22
+TMR0IF = 0;
+TMR0 = 0xe17b;
+T0CONbits.TMR0ON = 1;
+
+}
 }

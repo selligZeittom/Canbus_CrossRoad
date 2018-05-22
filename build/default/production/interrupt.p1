@@ -7,6 +7,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _Can_Isr `(v ~T0 @X0 0 ef ]
 "19868 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f87k22.h
 [v _RB3 `Vb ~T0 @X0 0 e@31755 ]
+"20594
+[v _TMR0IF `Vb ~T0 @X0 0 e@32658 ]
+"16726
+[s S744 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S744 . T0PS PSA T0SE T0CS T08BIT TMR0ON ]
+"16734
+[s S745 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S745 . T0PS0 T0PS1 T0PS2 ]
+"16725
+[u S743 `S744 1 `S745 1 ]
+[n S743 . . . ]
+"16740
+[v _T0CONbits `VS743 ~T0 @X0 0 e@4053 ]
+"16790
+[v _TMR0 `Vus ~T0 @X0 0 e@4054 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7251,7 +7266,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 827 ]
 [; ;interrupt.c: 11: }
 [; ;interrupt.c: 13: }
-[; ;interrupt.c: 14: }
+[; ;interrupt.c: 14: if(TMR0IF == 1){
 "14
+[e $ ! == -> _TMR0IF `i -> 1 `i 829  ]
+{
+[; ;interrupt.c: 16: T0CONbits.TMR0ON = 1;
+"16
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+[; ;interrupt.c: 22: TMR0IF = 0;
+"22
+[e = _TMR0IF -> -> 0 `i `b ]
+[; ;interrupt.c: 23: TMR0 = 0xe17b;
+"23
+[e = _TMR0 -> -> 57723 `ui `us ]
+[; ;interrupt.c: 24: T0CONbits.TMR0ON = 1;
+"24
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+"26
+}
+[e :U 829 ]
+[; ;interrupt.c: 26: }
+[; ;interrupt.c: 27: }
+"27
 [e :UE 826 ]
 }

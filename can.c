@@ -258,6 +258,11 @@ void Can_Init(const struct CANSPEED * speedCfg,
 	Mcp2515_Init(speedCfg,filterCfg);		// init CAN interface
     CAN_INTE = 1;
     CAN_INTEDGE = 0;
+  //----------------------------------------------------------------------------
+  // enable general interrupt
+  //----------------------------------------------------------------------------
+    PEIE = 1;
+    GIE = 1;
     
 }
 

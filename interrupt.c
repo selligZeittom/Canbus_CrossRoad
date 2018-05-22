@@ -11,4 +11,17 @@ void interrupt high_isr(void){
     }
     
   }
+      if(TMR0IF == 1){
+        // disable timer 0
+        T0CONbits.TMR0ON = 1;
+        
+        // action to do
+
+        
+        // reset timer 0
+        TMR0IF = 0;
+        TMR0 = 0xe17b;
+        T0CONbits.TMR0ON = 1;
+        
+      }
 }

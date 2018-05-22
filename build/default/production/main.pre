@@ -9867,44 +9867,149 @@ static uint8_t Can_WriteOutBuffer(void);
 # 353
 void Can_Isr(void);
 
-# 21 "main.c"
+# 23 "main.c"
 uint8_t id = 0;
 
-# 25
+
+uint8_t bottomRight = 0;
+uint8_t topRight = 0;
+uint8_t topLeft = 0;
+uint8_t bottomLeft = 0;
+
+
+uint8_t conflictTable[12][12];
+
+# 36
 struct CANFILTER filter = { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0};
 struct CANMESSAGE message = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
+struct CANMESSAGE messageTx = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
 
 uint8_t readID(void);
+void readConflictInfo(void);
+void resetData(void);
+void sendTrafficLight(uint8_t , uint8_t );
+void sendPedestrianLight(uint8_t , uint8_t);
 
 void init(void){
 Can_Init( &canSpeed125k , &filter);
+PEIE = 1;
+GIE = 1;
 id = readID();
 filter.mask0 = 0X00F;
 filter.filter0 = id;
 Can_Init( &canSpeed125k , &filter);
+readConflictInfo();
 
+
+T0CONbits.T08BIT = 0;
+T0CONbits.T0CS = 0;
+T0CONbits.PSA = 0;
+T0CONbits.T0PS = 0x7;
+TMR0 = 0xe17b;
+T0CONbits.TMR0ON = 1;
 }
 
 uint8_t readID(void){
 uint8_t retVal = 0;
 
 
-message.identifier = ((10<<7) | 0xF) ;
-message.dta[0] = 0;
+messageTx.identifier = ((10<<7) | 0xF) ;
+resetData();
 message.rtr = 1;
 
 
-Can_PutMessage(&message);
+Can_PutMessage(&messageTx);
 
 
 while(Can_GetMessage(&message) != 0){};
 
 retVal = message.dta[0];
 
+resetData();
+
 return retVal;
 }
+
+void readConflictInfo(void){
+
+
+resetData();
+messageTx.rtr = 1;
+
+
+int i;
+int j;
+for (i = 0 ; i < 12 ; i++){
+
+messageTx.identifier = ((8<<7) | (i << 4) | id);
+
+
+Can_PutMessage(&messageTx);
+
+while(Can_GetMessage(&message) != 0){};
+
+
+for ( j = 0 ; j < 3 ; j ++){
+conflictTable[i][(4*j) + 0] = (message.dta[j] & 0x03);
+conflictTable[i][(4*j) + 1] = (message.dta[j] & 0x0c) >> 2;
+conflictTable[i][(4*j) + 2] = (message.dta[j] & 0x30) >> 4;
+conflictTable[i][(4*j) + 3] = (message.dta[j] & 0xc0) >> 6;
+}
+
+resetData();
+}
+}
+
+# 122
+void sendTrafficLight(uint8_t trafficLight, uint8_t color){
+
+
+messageTx.identifier = ((0<<7) | (trafficLight << 4) | id );
+messageTx.rtr = 0;
+messageTx.dta[0] = color;
+messageTx.dlc = 1;
+
+
+Can_PutMessage(&messageTx);
+
+}
+
+# 140
+void sendPedestrianLight(uint8_t trafficLight , uint8_t color){
+
+messageTx.identifier = ((1<<7) | (trafficLight << 4) | id );
+messageTx.rtr = 0;
+messageTx.dta[0] = color;
+messageTx.dlc = 1;
+
+
+Can_PutMessage(&messageTx);
+}
+
+# 155
+void sendWarningLight(uint8_t trafficLight , uint8_t state){
+
+messageTx.identifier = ((2<<7) | (trafficLight << 4) | id );
+messageTx.rtr = 0;
+messageTx.dta[0] = state;
+messageTx.dlc = 1;
+
+
+Can_PutMessage(&messageTx);
+}
+void resetData(void){
+int i;
+for (i = 0 ; i < 4 ; i++){
+message.dta[i] = 0;
+}
+}
+
 int main(int argc, char** argv) {
 init();
+sendTrafficLight(1,3);
+sendWarningLight(0,1);
+sendPedestrianLight(0,2);
+while(1){};
 return (0);
 }
 

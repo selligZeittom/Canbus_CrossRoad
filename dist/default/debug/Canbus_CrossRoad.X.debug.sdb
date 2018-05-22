@@ -23,6 +23,8 @@
 [v ___fldiv __fldiv `(d  1 e 3 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "50 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
@@ -39,27 +41,31 @@
 [v _Can_PutMessage Can_PutMessage `(uc  1 e 1 0 ]
 "237
 [v _Can_Init Can_Init `(v  1 e 1 0 ]
-"288
+"293
 [v _SPIRW SPIRW `(v  1 s 1 SPIRW ]
 [v i2_SPIRW SPIRW `(v  1 s 1 i2_SPIRW ]
-"314
+"319
 [v _Spi_ReadWrite Spi_ReadWrite `(v  1 e 1 0 ]
-"327
+"332
 [v _Spi_Write Spi_Write `(v  1 e 1 0 ]
 [v i2_Spi_Write Spi_Write `(v  1 e 1 0 ]
-"344
+"349
 [v _Can_GetStatus Can_GetStatus `(uc  1 s 1 Can_GetStatus ]
-"367
+"372
 [v _Can_ReadMessage Can_ReadMessage `(uc  1 s 1 Can_ReadMessage ]
-"421
+"426
 [v _Can_SendMessage Can_SendMessage `(uc  1 s 1 Can_SendMessage ]
 "3 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\interrupt.c
 [v _high_isr high_isr `II(v  1 e 1 0 ]
-"30 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\main.c
+"44 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\main.c
 [v _init init `(v  1 e 1 0 ]
-"41
+"55
 [v _readID readID `(uc  1 e 1 0 ]
-"59
+"76
+[v _readConflictInfo readConflictInfo `(v  1 e 1 0 ]
+"105
+[v _resetData resetData `(v  1 e 1 0 ]
+"112
 [v _main main `(i  1 e 2 0 ]
 "21 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\mcp2515.c
 [v _Mcp2515_Reset Mcp2515_Reset `(v  1 e 1 0 ]
@@ -176,29 +182,59 @@
 [v _nbTx1 nbTx1 `VEuc  1 e 1 0 ]
 "42
 [v _nbTx2 nbTx2 `VEuc  1 e 1 0 ]
-"21 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\main.c
+"23 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\main.c
 [v _id id `uc  1 e 1 0 ]
+"32
+[v _conflictTable conflictTable `[12][12]uc  1 e 144 0 ]
 [s S21 CANFILTER 33 `ul 1 mask0 4 0 `ul 1 mask1 4 4 `ul 1 filter0 4 8 `ul 1 filter1 4 12 `ul 1 filter2 4 16 `ul 1 filter3 4 20 `ul 1 filter4 4 24 `ul 1 filter5 4 28 `uc 1 ext 1 32 ]
-"25
+"36
 [v _filter filter `S21  1 e 33 0 ]
-"26
+"37
 [v _message message `S31  1 e 17 0 ]
-"59
+"38
+[v _messageTx messageTx `S31  1 e 17 0 ]
+"112
 [v _main main `(i  1 e 2 0 ]
 {
-"62
+"116
 } 0
-"30
+"44
 [v _init init `(v  1 e 1 0 ]
 {
-"39
+"53
 } 0
-"41
+"55
 [v _readID readID `(uc  1 e 1 0 ]
 {
-"42
+"56
 [v readID@retVal retVal `uc  1 a 1 5 ]
-"58
+"74
+} 0
+"76
+[v _readConflictInfo readConflictInfo `(v  1 e 1 0 ]
+{
+"84
+[v readConflictInfo@j j `i  1 a 2 14 ]
+"83
+[v readConflictInfo@i i `i  1 a 2 12 ]
+"104
+} 0
+"105
+[v _resetData resetData `(v  1 e 1 0 ]
+{
+"106
+[v resetData@i i `i  1 a 2 0 ]
+"110
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
 } 0
 "200 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
 [v _Can_PutMessage Can_PutMessage `(uc  1 e 1 0 ]
@@ -228,7 +264,7 @@
 [s S21 CANFILTER 33 `ul 1 mask0 4 0 `ul 1 mask1 4 4 `ul 1 filter0 4 8 `ul 1 filter1 4 12 `ul 1 filter2 4 16 `ul 1 filter3 4 20 `ul 1 filter4 4 24 `ul 1 filter5 4 28 `uc 1 ext 1 32 ]
 "238
 [v Can_Init@filterCfg filterCfg `*.39S21  1 p 2 62 ]
-"262
+"267
 } 0
 "38 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\mcp2515.c
 [v _Mcp2515_Init Mcp2515_Init `(v  1 e 1 0 ]
@@ -275,23 +311,23 @@
 [v Mcp2515WriteCanId@mcp_addr mcp_addr `uc  1 a 1 26 ]
 "262
 } 0
-"327 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
+"332 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
 [v _Spi_Write Spi_Write `(v  1 e 1 0 ]
 {
 [v Spi_Write@tx tx `*.39uc  1 p 2 12 ]
 [v Spi_Write@size size `ul  1 p 4 14 ]
-"330
+"335
 } 0
-"288
+"293
 [v _SPIRW SPIRW `(v  1 s 1 SPIRW ]
 {
-"290
+"295
 [v SPIRW@i i `ul  1 a 4 8 ]
-"288
+"293
 [v SPIRW@tx tx `*.39Cuc  1 p 2 0 ]
 [v SPIRW@rx rx `*.39uc  1 p 2 2 ]
 [v SPIRW@size size `ul  1 p 4 4 ]
-"304
+"309
 } 0
 "3 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\interrupt.c
 [v _high_isr high_isr `II(v  1 e 1 0 ]
@@ -312,18 +348,18 @@
 {
 "133
 } 0
-"421
+"426
 [v _Can_SendMessage Can_SendMessage `(uc  1 s 1 Can_SendMessage ]
 {
-"424
+"429
 [v Can_SendMessage@buf buf `[4]uc  1 a 4 55 ]
-"423
+"428
 [v Can_SendMessage@txbuf_n txbuf_n `uc  1 a 1 60 ]
 [v Can_SendMessage@res res `uc  1 a 1 59 ]
 [s S31 CANMESSAGE 17 `uc 1 extended_identifier 1 0 `ul 1 identifier 4 1 `uc 1 dlc 1 5 `[8]uc 1 dta 8 6 `uc 1 rtr 1 14 `uc 1 filhit 1 15 `uc 1 txPrio 1 16 ]
-"421
+"426
 [v Can_SendMessage@msg msg `*.39CS31  1 p 2 53 ]
-"446
+"451
 } 0
 "272 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\mcp2515.c
 [v _Mcp2515WriteCanMsg Mcp2515WriteCanMsg `(v  1 e 1 0 ]
@@ -383,22 +419,22 @@
 [v Can_ReadInBuffer@error error `uc  1 a 1 68 ]
 "117
 } 0
-"367
+"372
 [v _Can_ReadMessage Can_ReadMessage `(uc  1 s 1 Can_ReadMessage ]
 {
-"369
+"374
 [v Can_ReadMessage@buf buf `[4]uc  1 a 4 64 ]
 [s S31 CANMESSAGE 17 `uc 1 extended_identifier 1 0 `ul 1 identifier 4 1 `uc 1 dlc 1 5 `[8]uc 1 dta 8 6 `uc 1 rtr 1 14 `uc 1 filhit 1 15 `uc 1 txPrio 1 16 ]
-"367
+"372
 [v Can_ReadMessage@msg msg `*.39S31  1 p 2 62 ]
-"408
+"413
 } 0
-"327
+"332
 [v i2_Spi_Write Spi_Write `(v  1 e 1 0 ]
 {
 [v i2Spi_Write@tx tx `*.39uc  1 p 2 12 ]
 [v i2Spi_Write@size size `ul  1 p 4 14 ]
-"330
+"335
 } 0
 "194 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\mcp2515.c
 [v _Mcp2515ReadCanMsg Mcp2515ReadCanMsg `(v  1 e 1 0 ]
@@ -451,33 +487,33 @@
 {
 "159
 } 0
-"344
+"349
 [v _Can_GetStatus Can_GetStatus `(uc  1 s 1 Can_GetStatus ]
 {
-"348
+"353
 [v Can_GetStatus@msg4 msg4 `[4]uc  1 a 4 18 ]
-"347
+"352
 [v Can_GetStatus@msg msg `[3]uc  1 a 3 22 ]
-"346
+"351
 [v Can_GetStatus@status status `uc  1 a 1 25 ]
 [v Can_GetStatus@F8262 F8262 `[3]uc  1 s 3 F8262 ]
-"347
+"352
 [v Can_GetStatus@F8264 F8264 `[4]uc  1 s 4 F8264 ]
-"355
+"360
 } 0
-"314
+"319
 [v _Spi_ReadWrite Spi_ReadWrite `(v  1 e 1 0 ]
 {
 [v Spi_ReadWrite@rx_tx rx_tx `*.39uc  1 p 2 12 ]
 [v Spi_ReadWrite@size size `ul  1 p 4 14 ]
-"317
+"322
 } 0
-"288
+"293
 [v i2_SPIRW SPIRW `(v  1 s 1 i2_SPIRW ]
 {
 [v i2SPIRW@i SPIRW `ul  1 a 4 8 ]
 [v i2SPIRW@tx tx `*.39Cuc  1 p 2 0 ]
 [v i2SPIRW@rx rx `*.39uc  1 p 2 2 ]
 [v i2SPIRW@size size `ul  1 p 4 4 ]
-"304
+"309
 } 0

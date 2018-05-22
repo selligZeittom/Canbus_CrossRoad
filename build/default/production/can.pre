@@ -10077,16 +10077,21 @@ Mcp2515_Init(speedCfg,filterCfg);
 INT3IE = 1;
 INTEDG3 = 0;
 
+
+
+PEIE = 1;
+GIE = 1;
+
 }
 
-# 272
+# 277
 void Can_PowerOff(void)
 {
 Mcp2515Sleep();
 LATF7 = 1;
 }
 
-# 288
+# 293
 static void SPIRW(const uint8_t *tx, uint8_t *rx, uint32_t size)
 {
 uint32_t i;
@@ -10105,19 +10110,19 @@ rx[i] = SSPBUF;
 LATD1 = 1;
 }
 
-# 314
+# 319
 void Spi_ReadWrite(uint8_t * rx_tx, uint32_t size)
 {
 SPIRW(rx_tx, rx_tx, size);
 }
 
-# 327
+# 332
 void Spi_Write(uint8_t * tx, uint32_t size)
 {
 SPIRW(tx, 0, size);
 }
 
-# 344
+# 349
 static uint8_t Can_GetStatus(void)
 {
 uint8_t status;
@@ -10131,7 +10136,7 @@ Spi_ReadWrite(msg4,sizeof(msg4));
 return status;
 }
 
-# 367
+# 372
 static uint8_t Can_ReadMessage(struct CANMESSAGE *msg)
 {
 uint8_t buf[4];
@@ -10175,7 +10180,7 @@ return (0);
 return (4);
 }
 
-# 421
+# 426
 static uint8_t Can_SendMessage(const struct CANMESSAGE * msg)
 {
 uint8_t res, txbuf_n;
