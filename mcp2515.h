@@ -1,4 +1,4 @@
-// C'est la fête du slip
+// C'est la fête de la culotte
 #ifndef MCP2515_H_
 #define MCP2515_H_
 
