@@ -1,3 +1,4 @@
+// C'est la fête du slip
 #ifndef MCP2515_H_
 #define MCP2515_H_
 
@@ -75,6 +76,9 @@ void mcp2515_start_transmit(const uint8_t mcp_addr);
 uint8_t Mcp2515GetNextFreeTXBuf(uint8_t *txbuf_n);
 
 void Mcp2515Sleep(void);
+
+// C'est la fête du slip
+// C'est la fête du slip
 
 #ifdef MCPDEBUG
 void mcp2515_dumpExtendedStatus(void);
