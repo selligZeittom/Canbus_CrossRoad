@@ -1,4 +1,4 @@
-// C'est la fête de la culotte
+// C'est super mais moins vulgaire
 #ifndef MCP2515_H_
 #define MCP2515_H_
 
