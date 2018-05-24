@@ -7,6 +7,9 @@
 #include "mcp2515_defs.h"
 //#include "can.h"
 
+
+// Trop cool
+
 #define MCP_CS_PORT PORTB
 #define MCP_CS_DDR  DDRB
 #define MCP_CS_BIT  PB0
