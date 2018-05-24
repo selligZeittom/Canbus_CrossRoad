@@ -9867,7 +9867,52 @@ static uint8_t Can_WriteOutBuffer(void);
 # 353
 void Can_Isr(void);
 
-# 23 "main.c"
+# 46 "logic.h"
+uint8_t durationLights[12];
+
+
+uint8_t colorLights[12];
+
+
+uint8_t occupancyPaths[12];
+
+# 63
+uint8_t priorityUser[12];
+
+
+uint8_t numberWaitingUsers = 0;
+
+# 71
+void initLogic();
+
+# 77
+void firstRound();
+
+# 83
+void secondRound();
+
+# 89
+void onTimeout();
+
+# 96
+void setLight(uint8_t light, uint8_t color);
+
+# 102
+void setWarningLight(uint8_t light, uint8_t state);
+
+# 108
+void setPriority(uint8_t carPerson);
+
+# 115
+void decrPriority(uint8_t user);
+
+# 123
+void shiftPriority();
+
+# 131
+uint8_t getConflict(uint8_t carPersonConcerned, uint8_t carPersonToLookAt);
+
+# 21 "function.h"
 uint8_t id = 0;
 
 
@@ -9877,139 +9922,93 @@ uint8_t topLeft = 0;
 uint8_t bottomLeft = 0;
 
 
-uint8_t conflictTable[12][12];
-
-# 36
 struct CANFILTER filter = { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0};
 struct CANMESSAGE message = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
 struct CANMESSAGE messageTx = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
 
+# 39
+uint8_t conflicts[12][12];
+
+void init(void);
 uint8_t readID(void);
 void readConflictInfo(void);
 void resetData(void);
 void sendTrafficLight(uint8_t , uint8_t );
 void sendPedestrianLight(uint8_t , uint8_t);
+void sendWarningLight(uint8_t trafficLight , uint8_t state);
+uint8_t requestPed(uint8_t ped);
 
-void init(void){
-Can_Init( &canSpeed125k , &filter);
-PEIE = 1;
-GIE = 1;
-id = readID();
-filter.mask0 = 0X00F;
-filter.filter0 = id;
-Can_Init( &canSpeed125k , &filter);
-readConflictInfo();
-
-
-T0CONbits.T08BIT = 0;
-T0CONbits.T0CS = 0;
-T0CONbits.PSA = 0;
-T0CONbits.T0PS = 0x7;
-TMR0 = 0xe17b;
-T0CONbits.TMR0ON = 1;
-}
-
-uint8_t readID(void){
-uint8_t retVal = 0;
-
-
-messageTx.identifier = ((10<<7) | 0xF) ;
-resetData();
-message.rtr = 1;
-
-
-Can_PutMessage(&messageTx);
-
-
-while(Can_GetMessage(&message) != 0){};
-
-retVal = message.dta[0];
-
-resetData();
-
-return retVal;
-}
-
-void readConflictInfo(void){
-
-
-resetData();
-messageTx.rtr = 1;
-
-
-int i;
-int j;
-for (i = 0 ; i < 12 ; i++){
-
-messageTx.identifier = ((8<<7) | (i << 4) | id);
-
-
-Can_PutMessage(&messageTx);
-
-while(Can_GetMessage(&message) != 0){};
-
-
-for ( j = 0 ; j < 3 ; j ++){
-conflictTable[i][(4*j) + 0] = (message.dta[j] & 0x03);
-conflictTable[i][(4*j) + 1] = (message.dta[j] & 0x0c) >> 2;
-conflictTable[i][(4*j) + 2] = (message.dta[j] & 0x30) >> 4;
-conflictTable[i][(4*j) + 3] = (message.dta[j] & 0xc0) >> 6;
-}
-
-resetData();
-}
-}
-
-# 122
-void sendTrafficLight(uint8_t trafficLight, uint8_t color){
-
-
-messageTx.identifier = ((0<<7) | (trafficLight << 4) | id );
-messageTx.rtr = 0;
-messageTx.dta[0] = color;
-messageTx.dlc = 1;
-
-
-Can_PutMessage(&messageTx);
-
-}
-
-# 140
-void sendPedestrianLight(uint8_t trafficLight , uint8_t color){
-
-messageTx.identifier = ((1<<7) | (trafficLight << 4) | id );
-messageTx.rtr = 0;
-messageTx.dta[0] = color;
-messageTx.dlc = 1;
-
-
-Can_PutMessage(&messageTx);
-}
-
-# 155
-void sendWarningLight(uint8_t trafficLight , uint8_t state){
-
-messageTx.identifier = ((2<<7) | (trafficLight << 4) | id );
-messageTx.rtr = 0;
-messageTx.dta[0] = state;
-messageTx.dlc = 1;
-
-
-Can_PutMessage(&messageTx);
-}
-void resetData(void){
-int i;
-for (i = 0 ; i < 4 ; i++){
-message.dta[i] = 0;
-}
-}
-
+# 14 "main.c"
 int main(int argc, char** argv) {
 init();
-sendTrafficLight(1,3);
-sendWarningLight(0,1);
-sendPedestrianLight(0,2);
-while(1){};
+initLogic();
+
+# 23
+while(1){
+
+if(Can_InBufferStatus != 0){
+
+Can_GetMessage(&message);
+
+
+uint16_t cmd = (message.identifier & 0b11110000000);
+uint8_t user = (message.identifier & 0b00001110000) >> 4;
+
+switch(cmd)
+{
+case (3<<7) :
+
+if(occupancyPaths[user] == 1 && message.dta[0] == 0)
+{
+decrPriority(user);
+}
+occupancyPaths[user] = message.dta[0];
+
+uint8_t isAlreadyWaiting = 0;
+for(uint8_t i = 0; i < 12;i++)
+{
+if(priorityUser[i] == user)
+{
+isAlreadyWaiting = 1;
+}
+}
+
+if(isAlreadyWaiting == 0)
+{
+setPriority(user);
+}
+
+break;
+case (4<<7) :
+user+=8;
+if(occupancyPaths[user] == 1 && message.dta[0] == 0)
+{
+decrPriority(user);
+}
+occupancyPaths[user] = message.dta[0];
+
+uint8_t isAlreadyWaiting = 0;
+for(uint8_t i = 0; i < 12;i++)
+{
+if(priorityUser[i] == user)
+{
+isAlreadyWaiting = 1;
+}
+}
+
+if(isAlreadyWaiting == 0)
+{
+setPriority(user);
+}
+break;
+default:
+break;
+
+}
+}
+
+
+};
 return (0);
 }
 

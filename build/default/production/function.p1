@@ -1,21 +1,48 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"142 ../../Desktop/can.h
-[v _Spi_Write `(v ~T0 @X0 0 ef2`*uc`ul ]
-"65
-[s S823 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S823 CANSPEED brp sjw prseg phseg1 phseg2 sam btlmode ]
-"83
+"83 can.h
 [s S824 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `uc 1 ]
 [n S824 CANFILTER mask0 mask1 filter0 filter1 filter2 filter3 filter4 filter5 ext ]
-"55 ../../Desktop/mcp2515.h
-[v _Mcp2515WriteCanId `(v ~T0 @X0 0 ef3`uc`uc`ul ]
-"140 ../../Desktop/can.h
-[v _Spi_ReadWrite `(v ~T0 @X0 0 ef2`*uc`ul ]
 "103
 [s S825 `uc 1 `ul 1 `uc 1 `uc -> 8 `i `uc 1 `uc 1 `uc 1 ]
 [n S825 CANMESSAGE extended_identifier identifier dlc dta rtr filhit txPrio ]
-"14 C:\Program Files (x86)\Microchip\xc8\v1.42\include\string.h
-[v _memcpy `(*v ~T0 @X0 0 ef3`*v`*Cv`ui ]
+"65
+[s S823 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S823 CANSPEED brp sjw prseg phseg1 phseg2 sam btlmode ]
+"197
+[v _Can_Init `(v ~T0 @X0 0 ef2`*CS823`*S824 ]
+"133
+[v _canSpeed125k `CS823 ~T0 @X0 0 e ]
+"19774 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f87k22.h
+[v _PEIE `Vb ~T0 @X0 0 e@32662 ]
+"19010
+[v _GIE `Vb ~T0 @X0 0 e@32663 ]
+"42 function.h
+[v _readID `(uc ~T0 @X0 0 ef ]
+"43
+[v _readConflictInfo `(v ~T0 @X0 0 ef ]
+"16726 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f87k22.h
+[s S744 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S744 . T0PS PSA T0SE T0CS T08BIT TMR0ON ]
+"16734
+[s S745 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S745 . T0PS0 T0PS1 T0PS2 ]
+"16725
+[u S743 `S744 1 `S745 1 ]
+[n S743 . . . ]
+"16740
+[v _T0CONbits `VS743 ~T0 @X0 0 e@4053 ]
+"20594
+[v _TMR0IF `Vb ~T0 @X0 0 e@32658 ]
+"20592
+[v _TMR0IE `Vb ~T0 @X0 0 e@32661 ]
+"16790
+[v _TMR0 `Vus ~T0 @X0 0 e@4054 ]
+"44 function.h
+[v _resetData `(v ~T0 @X0 0 ef ]
+"301 can.h
+[v _Can_PutMessage `(uc ~T0 @X0 0 ef1`*S825 ]
+"280
+[v _Can_GetMessage `(uc ~T0 @X0 0 ef1`*S825 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7223,799 +7250,435 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;can.h: 314: static uint8_t Can_ReadInBuffer(void);
 [; ;can.h: 327: static uint8_t Can_WriteOutBuffer(void);
 [; ;can.h: 353: void Can_Isr(void);
-[; ;mcp2515.h: 34: void mcp2515_reset(void);
-[; ;mcp2515.h: 36: uint8_t mcp2515_readRegister(const uint8_t address);
-[; ;mcp2515.h: 37: void mcp2515_setRegisterS(const uint8_t address,
-[; ;mcp2515.h: 38: const uint8_t values[],
-[; ;mcp2515.h: 39: const uint8_t n);
-[; ;mcp2515.h: 41: void mcp2515_setRegister(const uint8_t address,
-[; ;mcp2515.h: 42: const uint8_t value);
-[; ;mcp2515.h: 43: void mcp2515_setRegisterS(const uint8_t address,
-[; ;mcp2515.h: 44: const uint8_t values[],
-[; ;mcp2515.h: 45: const uint8_t n);
-[; ;mcp2515.h: 46: void mcp2515_modifyRegister(const uint8_t address, const uint8_t mask,
-[; ;mcp2515.h: 47: const uint8_t data);
-[; ;mcp2515.h: 49: uint8_t mcp2515_readStatus(void);
-[; ;mcp2515.h: 50: uint8_t mcp2515_RXStatus(void);
-[; ;mcp2515.h: 52: uint8_t mcp2515_setCANCTRL_Mode(const uint8_t newmode);
-[; ;mcp2515.h: 54: void Mcp2515_Init(const struct CANSPEED * speedCfg,struct CANFILTER * filterCfg);
-[; ;mcp2515.h: 55: void Mcp2515WriteCanId(uint8_t mcp_addr, uint8_t ext,uint32_t can_id );
-[; ;mcp2515.h: 61: void mcp2515_read_can_id( const uint8_t mcp_addr,
-[; ;mcp2515.h: 62: uint8_t* ext, uint32_t* can_id );
-[; ;mcp2515.h: 64: void Mcp2515ReadCanMsg( const uint8_t buffer_sidh_addr,
-[; ;mcp2515.h: 65: struct CANMESSAGE* msg);
-[; ;mcp2515.h: 70: void Mcp2515WriteCanMsg( const uint8_t buffer_sidh_addr,
-[; ;mcp2515.h: 71: const struct CANMESSAGE* msg);
-[; ;mcp2515.h: 73: void mcp2515_start_transmit(const uint8_t mcp_addr);
-[; ;mcp2515.h: 75: uint8_t Mcp2515GetNextFreeTXBuf(uint8_t *txbuf_n);
-[; ;mcp2515.h: 77: void Mcp2515Sleep(void);
-[; ;mcp2515.h: 80: void mcp2515_dumpExtendedStatus(void);
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
-[; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
-[; ;string.h: 16: extern void * memset(void *, int, size_t);
-[; ;string.h: 36: extern char * strcat(char *, const char *);
-[; ;string.h: 37: extern char * strcpy(char *, const char *);
-[; ;string.h: 38: extern char * strncat(char *, const char *, size_t);
-[; ;string.h: 39: extern char * strncpy(char *, const char *, size_t);
-[; ;string.h: 40: extern char * strdup(const char *);
-[; ;string.h: 41: extern char * strtok(char *, const char *);
-[; ;string.h: 44: extern int memcmp(const void *, const void *, size_t);
-[; ;string.h: 45: extern int strcmp(const char *, const char *);
-[; ;string.h: 46: extern int stricmp(const char *, const char *);
-[; ;string.h: 47: extern int strncmp(const char *, const char *, size_t);
-[; ;string.h: 48: extern int strnicmp(const char *, const char *, size_t);
-[; ;string.h: 49: extern void * memchr(const void *, int, size_t);
-[; ;string.h: 50: extern size_t strcspn(const char *, const char *);
-[; ;string.h: 51: extern char * strpbrk(const char *, const char *);
-[; ;string.h: 52: extern size_t strspn(const char *, const char *);
-[; ;string.h: 53: extern char * strstr(const char *, const char *);
-[; ;string.h: 54: extern char * stristr(const char *, const char *);
-[; ;string.h: 55: extern char * strerror(int);
-[; ;string.h: 56: extern size_t strlen(const char *);
-[; ;string.h: 57: extern char * strchr(const char *, int);
-[; ;string.h: 58: extern char * strichr(const char *, int);
-[; ;string.h: 59: extern char * strrchr(const char *, int);
-[; ;string.h: 60: extern char * strrichr(const char *, int);
-"21 ../../Desktop/mcp2515.c
-[v _Mcp2515_Reset `(v ~T0 @X0 1 ef ]
-"22
-{
-[; ;mcp2515.c: 21: void Mcp2515_Reset(void)
-[; ;mcp2515.c: 22: {
-[e :U _Mcp2515_Reset ]
-[f ]
-"23
-[v _i `ul ~T0 @X0 1 a ]
+"21 function.h
+[v _id `uc ~T0 @X0 1 e ]
+[i _id
+-> -> 0 `i `uc
+]
+[; ;function.h: 21: uint8_t id = 0;
 "24
-[v _cmd `uc ~T0 @X0 1 a ]
-[; ;mcp2515.c: 23: uint32_t i;
-[; ;mcp2515.c: 24: uint8_t cmd = 0xC0;
-[e = _cmd -> -> 192 `i `uc ]
-[; ;mcp2515.c: 26: Spi_Write(&cmd,sizeof(cmd));
+[v _bottomRight `uc ~T0 @X0 1 e ]
+[i _bottomRight
+-> -> 0 `i `uc
+]
+[; ;function.h: 24: uint8_t bottomRight = 0;
+"25
+[v _topRight `uc ~T0 @X0 1 e ]
+[i _topRight
+-> -> 0 `i `uc
+]
+[; ;function.h: 25: uint8_t topRight = 0;
 "26
-[e ( _Spi_Write (2 , &U _cmd -> -> # _cmd `ui `ul ]
-[; ;mcp2515.c: 27: for(i=0;i<10000;i++){}
+[v _topLeft `uc ~T0 @X0 1 e ]
+[i _topLeft
+-> -> 0 `i `uc
+]
+[; ;function.h: 26: uint8_t topLeft = 0;
 "27
+[v _bottomLeft `uc ~T0 @X0 1 e ]
+[i _bottomLeft
+-> -> 0 `i `uc
+]
+[; ;function.h: 27: uint8_t bottomLeft = 0;
+"30
+[v _filter `S824 ~T0 @X0 1 e ]
+[i _filter
+:U ..
+:U ..
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> 0 `i `uc
+..
+..
+]
+[; ;function.h: 30: struct CANFILTER filter = { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0};
+"31
+[v _message `S825 ~T0 @X0 1 e ]
+[i _message
+:U ..
+:U ..
+-> -> 0 `i `uc
+-> -> -> 0 `i `l `ul
+-> -> 0 `i `uc
+:U ..
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+..
+]
+[; ;function.h: 31: struct CANMESSAGE message = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
+"32
+[v _messageTx `S825 ~T0 @X0 1 e ]
+[i _messageTx
+:U ..
+:U ..
+-> -> 0 `i `uc
+-> -> -> 0 `i `l `ul
+-> -> 0 `i `uc
+:U ..
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+..
+]
+[; ;function.h: 32: struct CANMESSAGE messageTx = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
+[v F7978 `uc ~T0 @X0 -> 12 `i t ]
+"39
+[v _conflicts `F7978 ~T0 @X0 -> 12 `i e ]
+[; ;function.h: 39: uint8_t conflicts[12][12];
+[; ;function.h: 41: void init(void);
+[; ;function.h: 42: uint8_t readID(void);
+[; ;function.h: 43: void readConflictInfo(void);
+[; ;function.h: 44: void resetData(void);
+[; ;function.h: 45: void sendTrafficLight(uint8_t , uint8_t );
+[; ;function.h: 46: void sendPedestrianLight(uint8_t , uint8_t);
+[; ;function.h: 47: void sendWarningLight(uint8_t trafficLight , uint8_t state);
+[; ;function.h: 48: uint8_t requestPed(uint8_t ped);
+"3 function.c
+[v _init `(v ~T0 @X0 1 ef ]
 {
-[e = _i -> -> -> 0 `i `l `ul ]
-[e $ < _i -> -> -> 10000 `i `l `ul 827  ]
-[e $U 828  ]
-[e :U 827 ]
-{
-}
-[e ++ _i -> -> -> 1 `i `l `ul ]
-[e $ < _i -> -> -> 10000 `i `l `ul 827  ]
-[e :U 828 ]
-}
-[; ;mcp2515.c: 28: }
-"28
+[; ;function.c: 3: void init(void){
+[e :U _init ]
+[f ]
+[; ;function.c: 4: Can_Init( &canSpeed125k , &filter);
+"4
+[e ( _Can_Init (2 , &U _canSpeed125k &U _filter ]
+[; ;function.c: 5: PEIE = 1;
+"5
+[e = _PEIE -> -> 1 `i `b ]
+[; ;function.c: 6: GIE = 1;
+"6
+[e = _GIE -> -> 1 `i `b ]
+[; ;function.c: 7: id = readID();
+"7
+[e = _id ( _readID ..  ]
+[; ;function.c: 8: filter.mask0 = 0X00F;
+"8
+[e = . _filter 0 -> -> -> 15 `i `l `ul ]
+[; ;function.c: 9: filter.filter0 = id;
+"9
+[e = . _filter 2 -> _id `ul ]
+[; ;function.c: 10: Can_Init( &canSpeed125k , &filter);
+"10
+[e ( _Can_Init (2 , &U _canSpeed125k &U _filter ]
+[; ;function.c: 11: readConflictInfo();
+"11
+[e ( _readConflictInfo ..  ]
+[; ;function.c: 15: T0CONbits.T08BIT = 0;
+"15
+[e = . . _T0CONbits 0 4 -> -> 0 `i `uc ]
+[; ;function.c: 16: T0CONbits.T0CS = 0;
+"16
+[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
+[; ;function.c: 17: T0CONbits.PSA = 0;
+"17
+[e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
+[; ;function.c: 18: T0CONbits.T0PS = 0x7;
+"18
+[e = . . _T0CONbits 0 0 -> -> 7 `i `uc ]
+[; ;function.c: 19: TMR0IF = 0;
+"19
+[e = _TMR0IF -> -> 0 `i `b ]
+[; ;function.c: 20: TMR0IE = 1;
+"20
+[e = _TMR0IE -> -> 1 `i `b ]
+[; ;function.c: 21: TMR0 = 0xe17b;
+"21
+[e = _TMR0 -> -> 57723 `ui `us ]
+[; ;function.c: 22: T0CONbits.TMR0ON = 1;
+"22
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+[; ;function.c: 23: }
+"23
 [e :UE 826 ]
 }
-"38
-[v _Mcp2515_Init `(v ~T0 @X0 1 ef2`*CS823`*S824 ]
-"39
+"25
+[v _readID `(uc ~T0 @X0 1 ef ]
 {
-[; ;mcp2515.c: 38: void Mcp2515_Init(const struct CANSPEED * speedCfg,struct CANFILTER * filterCfg)
-[; ;mcp2515.c: 39: {
-[e :U _Mcp2515_Init ]
-"38
-[v _speedCfg `*CS823 ~T0 @X0 1 r1 ]
-[v _filterCfg `*S824 ~T0 @X0 1 r2 ]
-"39
+[; ;function.c: 25: uint8_t readID(void){
+[e :U _readID ]
 [f ]
-"40
-[v _i `uc ~T0 @X0 1 a ]
-[v F8112 `uc ~T0 @X0 -> 0 `x s ]
-[i F8112
-:U ..
+"26
+[v _retVal `uc ~T0 @X0 1 a ]
+[; ;function.c: 26: uint8_t retVal = 0;
+[e = _retVal -> -> 0 `i `uc ]
+[; ;function.c: 29: messageTx.identifier = ((10<<7) | 0xF) ;
+"29
+[e = . _messageTx 1 -> -> | << -> 10 `i -> 7 `i -> 15 `i `l `ul ]
+[; ;function.c: 30: resetData();
+"30
+[e ( _resetData ..  ]
+[; ;function.c: 31: messageTx.rtr = 1;
+"31
+[e = . _messageTx 4 -> -> 1 `i `uc ]
+[; ;function.c: 34: Can_PutMessage(&messageTx);
+"34
+[e ( _Can_PutMessage (1 &U _messageTx ]
+[; ;function.c: 37: while(Can_GetMessage(&message) != 0){};
+"37
+[e $U 828  ]
+[e :U 829 ]
+{
+}
+[e :U 828 ]
+[e $ != -> ( _Can_GetMessage (1 &U _message `i -> 0 `i 829  ]
+[e :U 830 ]
+[; ;function.c: 39: retVal = message.dta[0];
+"39
+[e = _retVal *U + &U . _message 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _message 3 `ui `ux ]
+[; ;function.c: 41: resetData();
 "41
--> -> 5 `i `uc
--> -> 15 `i `uc
--> -> 224 `i `uc
--> -> 128 `i `uc
-..
-]
-[v _cmdMask4 `uc ~T0 @X0 4  a ]
-[; ;mcp2515.c: 40: uint8_t i;
-[; ;mcp2515.c: 41: uint8_t cmdMask4[]={0x05,0x0F,0xE0,0x80};
-[e = _cmdMask4 F8112 ]
-[v F8114 `uc ~T0 @X0 -> 0 `x s ]
-[i F8114
-:U ..
-"42
--> -> 2 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-..
-]
-[v _cmdWrite3 `uc ~T0 @X0 3  a ]
-[; ;mcp2515.c: 42: uint8_t cmdWrite3[]={0x02,0,0};
-[e = _cmdWrite3 F8114 ]
-[; ;mcp2515.c: 44: Mcp2515_Reset();
+[e ( _resetData ..  ]
+[; ;function.c: 43: return retVal;
+"43
+[e ) _retVal ]
+[e $UE 827  ]
+[; ;function.c: 44: }
 "44
-[e ( _Mcp2515_Reset ..  ]
-[; ;mcp2515.c: 48: Spi_Write(cmdMask4,sizeof(cmdMask4));
-"48
-[e ( _Spi_Write (2 , &U _cmdMask4 -> -> # _cmdMask4 `ui `ul ]
-[; ;mcp2515.c: 52: cmdWrite3[1] = 0x2A;
-"52
-[e = *U + &U _cmdWrite3 * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdWrite3 `ui `ux -> -> 42 `i `uc ]
-[; ;mcp2515.c: 53: cmdWrite3[2] = speedCfg->brp | speedCfg->sjw << 6;
+[e :UE 827 ]
+}
+"46
+[v _readConflictInfo `(v ~T0 @X0 1 ef ]
+{
+[; ;function.c: 46: void readConflictInfo(void){
+[e :U _readConflictInfo ]
+[f ]
+[; ;function.c: 49: resetData();
+"49
+[e ( _resetData ..  ]
+[; ;function.c: 50: messageTx.rtr = 1;
+"50
+[e = . _messageTx 4 -> -> 1 `i `uc ]
 "53
-[e = *U + &U _cmdWrite3 * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmdWrite3 `ui `ux -> | -> . *U _speedCfg 0 `i << -> . *U _speedCfg 1 `i -> 6 `i `uc ]
-[; ;mcp2515.c: 54: Spi_Write(cmdWrite3,sizeof(cmdWrite3));
+[v _i `i ~T0 @X0 1 a ]
 "54
-[e ( _Spi_Write (2 , &U _cmdWrite3 -> -> # _cmdWrite3 `ui `ul ]
-[; ;mcp2515.c: 56: cmdWrite3[1] = 0x29;
-"56
-[e = *U + &U _cmdWrite3 * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdWrite3 `ui `ux -> -> 41 `i `uc ]
-[; ;mcp2515.c: 57: cmdWrite3[2] = speedCfg->prseg
-[; ;mcp2515.c: 58: | speedCfg->phseg1 << 3
-[; ;mcp2515.c: 59: | speedCfg->sam << 6
-[; ;mcp2515.c: 60: | speedCfg->btlmode << 7;
-"60
-[e = *U + &U _cmdWrite3 * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmdWrite3 `ui `ux -> | | | -> . *U _speedCfg 2 `i << -> . *U _speedCfg 3 `i -> 3 `i << -> . *U _speedCfg 5 `i -> 6 `i << -> . *U _speedCfg 6 `i -> 7 `i `uc ]
-[; ;mcp2515.c: 61: Spi_Write(cmdWrite3,sizeof(cmdWrite3));
-"61
-[e ( _Spi_Write (2 , &U _cmdWrite3 -> -> # _cmdWrite3 `ui `ul ]
-[; ;mcp2515.c: 63: cmdWrite3[1] = 0x28;
-"63
-[e = *U + &U _cmdWrite3 * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdWrite3 `ui `ux -> -> 40 `i `uc ]
-[; ;mcp2515.c: 64: cmdWrite3[2] = speedCfg->phseg2 | speedCfg->sjw << 6;
-"64
-[e = *U + &U _cmdWrite3 * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmdWrite3 `ui `ux -> | -> . *U _speedCfg 4 `i << -> . *U _speedCfg 1 `i -> 6 `i `uc ]
-[; ;mcp2515.c: 65: Spi_Write(cmdWrite3,sizeof(cmdWrite3));
-"65
-[e ( _Spi_Write (2 , &U _cmdWrite3 -> -> # _cmdWrite3 `ui `ul ]
-[; ;mcp2515.c: 69: Mcp2515WriteCanId(0x20,filterCfg->ext,filterCfg->mask0);
-"69
-[e ( _Mcp2515WriteCanId (3 , , -> -> 32 `i `uc . *U _filterCfg 8 . *U _filterCfg 0 ]
-[; ;mcp2515.c: 70: Mcp2515WriteCanId(0x24,filterCfg->ext,filterCfg->mask1);
-"70
-[e ( _Mcp2515WriteCanId (3 , , -> -> 36 `i `uc . *U _filterCfg 8 . *U _filterCfg 1 ]
-[; ;mcp2515.c: 71: Mcp2515WriteCanId(0x00,filterCfg->ext,filterCfg->filter0);
-"71
-[e ( _Mcp2515WriteCanId (3 , , -> -> 0 `i `uc . *U _filterCfg 8 . *U _filterCfg 2 ]
-[; ;mcp2515.c: 72: Mcp2515WriteCanId(0x04,filterCfg->ext,filterCfg->filter1);
-"72
-[e ( _Mcp2515WriteCanId (3 , , -> -> 4 `i `uc . *U _filterCfg 8 . *U _filterCfg 3 ]
-[; ;mcp2515.c: 73: Mcp2515WriteCanId(0x08,filterCfg->ext,filterCfg->filter2);
-"73
-[e ( _Mcp2515WriteCanId (3 , , -> -> 8 `i `uc . *U _filterCfg 8 . *U _filterCfg 4 ]
-[; ;mcp2515.c: 74: Mcp2515WriteCanId(0x10,filterCfg->ext,filterCfg->filter3);
-"74
-[e ( _Mcp2515WriteCanId (3 , , -> -> 16 `i `uc . *U _filterCfg 8 . *U _filterCfg 5 ]
-[; ;mcp2515.c: 75: Mcp2515WriteCanId(0x14,filterCfg->ext,filterCfg->filter4);
-"75
-[e ( _Mcp2515WriteCanId (3 , , -> -> 20 `i `uc . *U _filterCfg 8 . *U _filterCfg 6 ]
-[; ;mcp2515.c: 76: Mcp2515WriteCanId(0x18,filterCfg->ext,filterCfg->filter5);
-"76
-[e ( _Mcp2515WriteCanId (3 , , -> -> 24 `i `uc . *U _filterCfg 8 . *U _filterCfg 7 ]
-[; ;mcp2515.c: 80: cmdWrite3[2] = 0;
-"80
-[e = *U + &U _cmdWrite3 * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmdWrite3 `ui `ux -> -> 0 `i `uc ]
-[; ;mcp2515.c: 81: for (i = 0; i < 14; i++)
-"81
+[v _j `i ~T0 @X0 1 a ]
+[; ;function.c: 53: int i;
+[; ;function.c: 54: int j;
+[; ;function.c: 55: for (i = 0 ; i < 12 ; i++){
+"55
 {
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 14 `i 831  ]
-[e $U 832  ]
-"82
-[e :U 831 ]
-[; ;mcp2515.c: 82: {
-{
-[; ;mcp2515.c: 83: cmdWrite3[1] = 0x30 + i;
-"83
-[e = *U + &U _cmdWrite3 * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdWrite3 `ui `ux -> + -> 48 `i -> _i `i `uc ]
-[; ;mcp2515.c: 84: Spi_Write(cmdWrite3,sizeof(cmdWrite3));
-"84
-[e ( _Spi_Write (2 , &U _cmdWrite3 -> -> # _cmdWrite3 `ui `ul ]
-[; ;mcp2515.c: 85: cmdWrite3[1] = 0x40 + i;
-"85
-[e = *U + &U _cmdWrite3 * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdWrite3 `ui `ux -> + -> 64 `i -> _i `i `uc ]
-[; ;mcp2515.c: 86: Spi_Write(cmdWrite3,sizeof(cmdWrite3));
-"86
-[e ( _Spi_Write (2 , &U _cmdWrite3 -> -> # _cmdWrite3 `ui `ul ]
-[; ;mcp2515.c: 87: cmdWrite3[1] = 0x50 + i;
-"87
-[e = *U + &U _cmdWrite3 * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdWrite3 `ui `ux -> + -> 80 `i -> _i `i `uc ]
-[; ;mcp2515.c: 88: Spi_Write(cmdWrite3,sizeof(cmdWrite3));
-"88
-[e ( _Spi_Write (2 , &U _cmdWrite3 -> -> # _cmdWrite3 `ui `ul ]
-"89
-}
-"81
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 14 `i 831  ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 12 `i 832  ]
+[e $U 833  ]
 [e :U 832 ]
-"89
-}
-[; ;mcp2515.c: 89: }
-[; ;mcp2515.c: 93: cmdWrite3[2] = 0;
-"93
-[e = *U + &U _cmdWrite3 * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmdWrite3 `ui `ux -> -> 0 `i `uc ]
-[; ;mcp2515.c: 94: cmdWrite3[1] = 0x60;
-"94
-[e = *U + &U _cmdWrite3 * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdWrite3 `ui `ux -> -> 96 `i `uc ]
-[; ;mcp2515.c: 95: Spi_Write(cmdWrite3,sizeof(cmdWrite3));
-"95
-[e ( _Spi_Write (2 , &U _cmdWrite3 -> -> # _cmdWrite3 `ui `ul ]
-[; ;mcp2515.c: 96: cmdWrite3[1] = 0x70;
-"96
-[e = *U + &U _cmdWrite3 * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdWrite3 `ui `ux -> -> 112 `i `uc ]
-[; ;mcp2515.c: 97: Spi_Write(cmdWrite3,sizeof(cmdWrite3));
-"97
-[e ( _Spi_Write (2 , &U _cmdWrite3 -> -> # _cmdWrite3 `ui `ul ]
-[; ;mcp2515.c: 101: cmdMask4[1] = 0x60;
-"101
-[e = *U + &U _cmdMask4 * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 96 `i `uc ]
-[; ;mcp2515.c: 102: cmdMask4[2] = 0x60 | (1<<2);
-"102
-[e = *U + &U _cmdMask4 * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> | -> 96 `i << -> 1 `i -> 2 `i `uc ]
-[; ;mcp2515.c: 103: if(filterCfg->ext == 0)
-"103
-[e $ ! == -> . *U _filterCfg 8 `i -> 0 `i 834  ]
-[; ;mcp2515.c: 104: {
-"104
 {
-[; ;mcp2515.c: 105: cmdMask4[3] = 0x20 | (1<<2);
-"105
-[e = *U + &U _cmdMask4 * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> | -> 32 `i << -> 1 `i -> 2 `i `uc ]
-"106
-}
-[; ;mcp2515.c: 106: }
+[; ;function.c: 57: messageTx.identifier = ((8<<7) | (i << 4) | id);
+"57
+[e = . _messageTx 1 -> -> | | << -> 8 `i -> 7 `i << _i -> 4 `i -> _id `i `l `ul ]
+[; ;function.c: 60: Can_PutMessage(&messageTx);
+"60
+[e ( _Can_PutMessage (1 &U _messageTx ]
+[; ;function.c: 62: while(Can_GetMessage(&message) != 0){};
+"62
 [e $U 835  ]
-"107
-[e :U 834 ]
-[; ;mcp2515.c: 107: else
-[; ;mcp2515.c: 108: {
-"108
+[e :U 836 ]
 {
-[; ;mcp2515.c: 109: cmdMask4[3] = 0x40 | (1<<2);
-"109
-[e = *U + &U _cmdMask4 * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> | -> 64 `i << -> 1 `i -> 2 `i `uc ]
-"110
 }
 [e :U 835 ]
-[; ;mcp2515.c: 110: }
-[; ;mcp2515.c: 111: Spi_Write(cmdMask4,sizeof(cmdMask4));
-"111
-[e ( _Spi_Write (2 , &U _cmdMask4 -> -> # _cmdMask4 `ui `ul ]
-[; ;mcp2515.c: 115: cmdMask4[1] = 0x70;
-"115
-[e = *U + &U _cmdMask4 * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 112 `i `uc ]
-[; ;mcp2515.c: 116: cmdMask4[2] = 0x60;
-"116
-[e = *U + &U _cmdMask4 * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 96 `i `uc ]
-[; ;mcp2515.c: 117: if(filterCfg->ext == 0)
-"117
-[e $ ! == -> . *U _filterCfg 8 `i -> 0 `i 836  ]
-[; ;mcp2515.c: 118: {
-"118
-{
-[; ;mcp2515.c: 119: cmdMask4[3] = 0x20;
-"119
-[e = *U + &U _cmdMask4 * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 32 `i `uc ]
-"120
-}
-[; ;mcp2515.c: 120: }
-[e $U 837  ]
-"121
-[e :U 836 ]
-[; ;mcp2515.c: 121: else
-[; ;mcp2515.c: 122: {
-"122
-{
-[; ;mcp2515.c: 123: cmdMask4[3] = 0x40;
-"123
-[e = *U + &U _cmdMask4 * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 64 `i `uc ]
-"124
-}
+[e $ != -> ( _Can_GetMessage (1 &U _message `i -> 0 `i 836  ]
 [e :U 837 ]
-[; ;mcp2515.c: 124: }
-[; ;mcp2515.c: 125: Spi_Write(cmdMask4,sizeof(cmdMask4));
-"125
-[e ( _Spi_Write (2 , &U _cmdMask4 -> -> # _cmdMask4 `ui `ul ]
-[; ;mcp2515.c: 129: cmdMask4[0] = 0x05;
-"129
-[e = *U + &U _cmdMask4 * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 5 `i `uc ]
-[; ;mcp2515.c: 130: cmdMask4[1] = 0x2B;
-"130
-[e = *U + &U _cmdMask4 * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 43 `i `uc ]
-[; ;mcp2515.c: 131: cmdMask4[2] = 0x1F;
-"131
-[e = *U + &U _cmdMask4 * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 31 `i `uc ]
-[; ;mcp2515.c: 132: cmdMask4[3] = 0x1F;
-"132
-[e = *U + &U _cmdMask4 * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 31 `i `uc ]
-[; ;mcp2515.c: 133: Spi_Write(cmdMask4,sizeof(cmdMask4));
-"133
-[e ( _Spi_Write (2 , &U _cmdMask4 -> -> # _cmdMask4 `ui `ul ]
-[; ;mcp2515.c: 137: cmdMask4[0] = 0x05;
-"137
-[e = *U + &U _cmdMask4 * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 5 `i `uc ]
-[; ;mcp2515.c: 138: cmdMask4[1] = 0x0F;
-"138
-[e = *U + &U _cmdMask4 * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 15 `i `uc ]
-[; ;mcp2515.c: 139: cmdMask4[2] = 0xE0;
-"139
-[e = *U + &U _cmdMask4 * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 224 `i `uc ]
-[; ;mcp2515.c: 140: cmdMask4[3] = 0x00;
-"140
-[e = *U + &U _cmdMask4 * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 0 `i `uc ]
-[; ;mcp2515.c: 141: Spi_Write(cmdMask4,sizeof(cmdMask4));
-"141
-[e ( _Spi_Write (2 , &U _cmdMask4 -> -> # _cmdMask4 `ui `ul ]
-[; ;mcp2515.c: 143: }
-"143
-[e :UE 830 ]
-}
-"145
-[v _Mcp2515Sleep `(v ~T0 @X0 1 ef ]
-"146
+[; ;function.c: 65: for ( j = 0 ; j < 3 ; j ++){
+"65
 {
-[; ;mcp2515.c: 145: void Mcp2515Sleep(void)
-[; ;mcp2515.c: 146: {
-[e :U _Mcp2515Sleep ]
+[e = _j -> 0 `i ]
+[e $ < _j -> 3 `i 838  ]
+[e $U 839  ]
+[e :U 838 ]
+{
+[; ;function.c: 66: conflicts[i][(4*j) + 0] = (message.dta[j] & 0x03);
+"66
+[e = *U + &U *U + &U _conflicts * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflicts `ui -> -> 12 `i `ui `ux * -> -> + * -> 4 `i _j -> 0 `i `ui `ux -> -> # *U &U *U + &U _conflicts * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflicts `ui -> -> 12 `i `ui `ux `ui `ux -> & -> *U + &U . _message 3 * -> -> _j `ui `ux -> -> # *U &U . _message 3 `ui `ux `i -> 3 `i `uc ]
+[; ;function.c: 67: conflicts[i][(4*j) + 1] = (message.dta[j] & 0x0c) >> 2;
+"67
+[e = *U + &U *U + &U _conflicts * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflicts `ui -> -> 12 `i `ui `ux * -> -> + * -> 4 `i _j -> 1 `i `ui `ux -> -> # *U &U *U + &U _conflicts * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflicts `ui -> -> 12 `i `ui `ux `ui `ux -> >> & -> *U + &U . _message 3 * -> -> _j `ui `ux -> -> # *U &U . _message 3 `ui `ux `i -> 12 `i -> 2 `i `uc ]
+[; ;function.c: 68: conflicts[i][(4*j) + 2] = (message.dta[j] & 0x30) >> 4;
+"68
+[e = *U + &U *U + &U _conflicts * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflicts `ui -> -> 12 `i `ui `ux * -> -> + * -> 4 `i _j -> 2 `i `ui `ux -> -> # *U &U *U + &U _conflicts * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflicts `ui -> -> 12 `i `ui `ux `ui `ux -> >> & -> *U + &U . _message 3 * -> -> _j `ui `ux -> -> # *U &U . _message 3 `ui `ux `i -> 48 `i -> 4 `i `uc ]
+[; ;function.c: 69: conflicts[i][(4*j) + 3] = (message.dta[j] & 0xc0) >> 6;
+"69
+[e = *U + &U *U + &U _conflicts * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflicts `ui -> -> 12 `i `ui `ux * -> -> + * -> 4 `i _j -> 3 `i `ui `ux -> -> # *U &U *U + &U _conflicts * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflicts `ui -> -> 12 `i `ui `ux `ui `ux -> >> & -> *U + &U . _message 3 * -> -> _j `ui `ux -> -> # *U &U . _message 3 `ui `ux `i -> 192 `i -> 6 `i `uc ]
+"70
+}
+"65
+[e ++ _j -> 1 `i ]
+[e $ < _j -> 3 `i 838  ]
+[e :U 839 ]
+"70
+}
+[; ;function.c: 70: }
+[; ;function.c: 72: resetData();
+"72
+[e ( _resetData ..  ]
+"73
+}
+"55
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 12 `i 832  ]
+[e :U 833 ]
+"73
+}
+[; ;function.c: 73: }
+[; ;function.c: 74: }
+"74
+[e :UE 831 ]
+}
+"82
+[v _sendTrafficLight `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[; ;function.c: 82: void sendTrafficLight(uint8_t trafficLight, uint8_t color){
+[e :U _sendTrafficLight ]
+[v _trafficLight `uc ~T0 @X0 1 r1 ]
+[v _color `uc ~T0 @X0 1 r2 ]
 [f ]
-[v F8117 `uc ~T0 @X0 -> 0 `x s ]
-[i F8117
-:U ..
-"147
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-..
-]
-[v _cmdMask4 `uc ~T0 @X0 3  a ]
-[; ;mcp2515.c: 147: uint8_t cmdMask4[]={0,0,0};
-[e = _cmdMask4 F8117 ]
-[; ;mcp2515.c: 149: cmdMask4[0] = 0x02;
-"149
-[e = *U + &U _cmdMask4 * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 2 `i `uc ]
-[; ;mcp2515.c: 150: cmdMask4[1] = 0x0F;
-"150
-[e = *U + &U _cmdMask4 * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 15 `i `uc ]
-[; ;mcp2515.c: 151: cmdMask4[2] = 0x20;
-"151
-[e = *U + &U _cmdMask4 * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmdMask4 `ui `ux -> -> 32 `i `uc ]
-[; ;mcp2515.c: 152: Spi_Write(cmdMask4,sizeof(cmdMask4));
-"152
-[e ( _Spi_Write (2 , &U _cmdMask4 -> -> # _cmdMask4 `ui `ul ]
-[; ;mcp2515.c: 154: }
-"154
-[e :UE 838 ]
-}
-"164
-[v _Mcp2515ReadCanId `(v ~T0 @X0 1 ef3`Cuc`*uc`*ul ]
-"166
-{
-[; ;mcp2515.c: 164: void Mcp2515ReadCanId( const uint8_t mcp_addr,
-[; ;mcp2515.c: 165: uint8_t* ext, uint32_t* can_id )
-[; ;mcp2515.c: 166: {
-[e :U _Mcp2515ReadCanId ]
-"164
-[v _mcp_addr `Cuc ~T0 @X0 1 r1 ]
-"165
-[v _ext `*uc ~T0 @X0 1 r2 ]
-[v _can_id `*ul ~T0 @X0 1 r3 ]
-"166
-[f ]
-[v F8123 `uc ~T0 @X0 -> 0 `x s ]
-[i F8123
-:U ..
-"167
--> -> 3 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-..
-]
-[v _msg `uc ~T0 @X0 6  a ]
-[; ;mcp2515.c: 167: uint8_t msg[]={0x03,0,0,0,0,0};
-[e = _msg F8123 ]
-[; ;mcp2515.c: 169: msg[1] = mcp_addr;
-"169
-[e = *U + &U _msg * -> -> -> 1 `i `ui `ux -> -> # *U &U _msg `ui `ux _mcp_addr ]
-[; ;mcp2515.c: 170: *ext = 0;
-"170
-[e = *U _ext -> -> 0 `i `uc ]
-[; ;mcp2515.c: 171: *can_id = 0;
-"171
-[e = *U _can_id -> -> -> 0 `i `l `ul ]
-[; ;mcp2515.c: 172: Spi_ReadWrite(msg,sizeof(msg));
-"172
-[e ( _Spi_ReadWrite (2 , &U _msg -> -> # _msg `ui `ul ]
-[; ;mcp2515.c: 174: *can_id = (msg[0+2]<<3) + (msg[1+2]>>5);
-"174
-[e = *U _can_id -> -> + << -> *U + &U _msg * -> -> + -> 0 `i -> 2 `i `ui `ux -> -> # *U &U _msg `ui `ux `i -> 3 `i >> -> *U + &U _msg * -> -> + -> 1 `i -> 2 `i `ui `ux -> -> # *U &U _msg `ui `ux `i -> 5 `i `l `ul ]
-[; ;mcp2515.c: 176: if ( (msg[1+2] & 0x08) == 0x08 )
-"176
-[e $ ! == & -> *U + &U _msg * -> -> + -> 1 `i -> 2 `i `ui `ux -> -> # *U &U _msg `ui `ux `i -> 8 `i -> 8 `i 840  ]
-[; ;mcp2515.c: 177: {
-"177
-{
-[; ;mcp2515.c: 179: *can_id = (*can_id<<2) + (msg[1+2] & 0x03);
-"179
-[e = *U _can_id + << *U _can_id -> 2 `i -> -> & -> *U + &U _msg * -> -> + -> 1 `i -> 2 `i `ui `ux -> -> # *U &U _msg `ui `ux `i -> 3 `i `l `ul ]
-[; ;mcp2515.c: 180: *can_id <<= 16;
-"180
-[e =<< *U _can_id -> 16 `i ]
-[; ;mcp2515.c: 181: *can_id = *can_id +(msg[2+2]<<8) + msg[3+2];
-"181
-[e = *U _can_id + + *U _can_id -> -> << -> *U + &U _msg * -> -> + -> 2 `i -> 2 `i `ui `ux -> -> # *U &U _msg `ui `ux `i -> 8 `i `l `ul -> *U + &U _msg * -> -> + -> 3 `i -> 2 `i `ui `ux -> -> # *U &U _msg `ui `ux `ul ]
-[; ;mcp2515.c: 182: *ext = 1;
-"182
-[e = *U _ext -> -> 1 `i `uc ]
-"183
-}
-[e :U 840 ]
-[; ;mcp2515.c: 183: }
-[; ;mcp2515.c: 184: }
-"184
-[e :UE 839 ]
-}
-"194
-[v _Mcp2515ReadCanMsg `(v ~T0 @X0 1 ef2`Cuc`*S825 ]
-"196
-{
-[; ;mcp2515.c: 194: void Mcp2515ReadCanMsg( const uint8_t mcp_addr,
-[; ;mcp2515.c: 195: struct CANMESSAGE* msg)
-[; ;mcp2515.c: 196: {
-[e :U _Mcp2515ReadCanMsg ]
-"194
-[v _mcp_addr `Cuc ~T0 @X0 1 r1 ]
-"195
-[v _msg `*S825 ~T0 @X0 1 r2 ]
-"196
-[f ]
-"197
-[v _cmd `uc ~T0 @X0 -> 10 `i a ]
-[; ;mcp2515.c: 197: uint8_t cmd[10];
-[; ;mcp2515.c: 202: Mcp2515ReadCanId( mcp_addr, &(msg->extended_identifier),
-[; ;mcp2515.c: 203: &(msg->identifier) );
-"203
-[e ( _Mcp2515ReadCanId (3 , , _mcp_addr &U . *U _msg 0 &U . *U _msg 1 ]
-[; ;mcp2515.c: 205: cmd[0] = 0x03;
-"205
-[e = *U + &U _cmd * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmd `ui `ux -> -> 3 `i `uc ]
-[; ;mcp2515.c: 206: cmd[1] = mcp_addr-1;
-"206
-[e = *U + &U _cmd * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmd `ui `ux -> - -> _mcp_addr `i -> 1 `i `uc ]
-[; ;mcp2515.c: 207: Spi_ReadWrite(cmd,3);
-"207
-[e ( _Spi_ReadWrite (2 , &U _cmd -> -> -> 3 `i `l `ul ]
-[; ;mcp2515.c: 208: msg->rtr = 0;
-"208
-[e = . *U _msg 4 -> -> 0 `i `uc ]
-[; ;mcp2515.c: 209: if (cmd[2] & 0x08)
-"209
-[e $ ! != & -> *U + &U _cmd * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmd `ui `ux `i -> 8 `i -> 0 `i 842  ]
-[; ;mcp2515.c: 210: {
-"210
-{
-[; ;mcp2515.c: 211: msg->rtr = 1;
-"211
-[e = . *U _msg 4 -> -> 1 `i `uc ]
-"212
-}
-[e :U 842 ]
-[; ;mcp2515.c: 212: }
-[; ;mcp2515.c: 214: cmd[0] = 0x03;
-"214
-[e = *U + &U _cmd * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmd `ui `ux -> -> 3 `i `uc ]
-[; ;mcp2515.c: 215: cmd[1] = mcp_addr+4;
-"215
-[e = *U + &U _cmd * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmd `ui `ux -> + -> _mcp_addr `i -> 4 `i `uc ]
-[; ;mcp2515.c: 216: Spi_ReadWrite(cmd,3);
-"216
-[e ( _Spi_ReadWrite (2 , &U _cmd -> -> -> 3 `i `l `ul ]
-[; ;mcp2515.c: 217: msg->dlc = cmd[2] & 0x0F;
-"217
-[e = . *U _msg 2 -> & -> *U + &U _cmd * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmd `ui `ux `i -> 15 `i `uc ]
-[; ;mcp2515.c: 219: cmd[0] = 0x03;
-"219
-[e = *U + &U _cmd * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmd `ui `ux -> -> 3 `i `uc ]
-[; ;mcp2515.c: 220: cmd[1] = mcp_addr+5;
-"220
-[e = *U + &U _cmd * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmd `ui `ux -> + -> _mcp_addr `i -> 5 `i `uc ]
-[; ;mcp2515.c: 221: Spi_ReadWrite(cmd,msg->dlc + 2);
-"221
-[e ( _Spi_ReadWrite (2 , &U _cmd -> -> + -> . *U _msg 2 `i -> 2 `i `l `ul ]
-[; ;mcp2515.c: 222: memcpy((void *)msg->dta,(const void *)&cmd[2],msg->dlc);
-"222
-[e ( _memcpy (3 , , -> &U . *U _msg 3 `*v -> &U *U + &U _cmd * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmd `ui `ux `*Cv -> . *U _msg 2 `ui ]
-[; ;mcp2515.c: 223: }
-"223
+[; ;function.c: 85: messageTx.identifier = ((0<<7) | (trafficLight << 4) | id );
+"85
+[e = . _messageTx 1 -> -> | | << -> 0 `i -> 7 `i << -> _trafficLight `i -> 4 `i -> _id `i `l `ul ]
+[; ;function.c: 86: messageTx.rtr = 0;
+"86
+[e = . _messageTx 4 -> -> 0 `i `uc ]
+[; ;function.c: 87: messageTx.dta[0] = color;
+"87
+[e = *U + &U . _messageTx 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _messageTx 3 `ui `ux _color ]
+[; ;function.c: 88: messageTx.dlc = 1;
+"88
+[e = . _messageTx 2 -> -> 1 `i `uc ]
+[; ;function.c: 91: Can_PutMessage(&messageTx);
+"91
+[e ( _Can_PutMessage (1 &U _messageTx ]
+[; ;function.c: 93: }
+"93
 [e :UE 841 ]
 }
-"233
-[v _Mcp2515WriteCanId `(v ~T0 @X0 1 ef3`uc`uc`ul ]
-"234
+"100
+[v _sendPedestrianLight `(v ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;mcp2515.c: 233: void Mcp2515WriteCanId(uint8_t mcp_addr, uint8_t ext,uint32_t can_id )
-[; ;mcp2515.c: 234: {
-[e :U _Mcp2515WriteCanId ]
-"233
-[v _mcp_addr `uc ~T0 @X0 1 r1 ]
-[v _ext `uc ~T0 @X0 1 r2 ]
-[v _can_id `ul ~T0 @X0 1 r3 ]
-"234
+[; ;function.c: 100: void sendPedestrianLight(uint8_t trafficLight , uint8_t color){
+[e :U _sendPedestrianLight ]
+[v _trafficLight `uc ~T0 @X0 1 r1 ]
+[v _color `uc ~T0 @X0 1 r2 ]
 [f ]
-"235
-[v _canid `ui ~T0 @X0 1 a ]
-"236
-[v _buf `uc ~T0 @X0 -> 6 `i a ]
-[; ;mcp2515.c: 235: uint16_t canid;
-[; ;mcp2515.c: 236: uint8_t buf[6];
-[; ;mcp2515.c: 238: canid = (uint16_t)(can_id & 0x0FFFF);
-"238
-[e = _canid -> & _can_id -> -> 65535 `ui `ul `ui ]
-[; ;mcp2515.c: 240: buf[0] = 0x02;
-"240
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 2 `i `uc ]
-[; ;mcp2515.c: 241: buf[1] = mcp_addr;
-"241
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux _mcp_addr ]
-[; ;mcp2515.c: 243: if ( ext == 1)
-"243
-[e $ ! == -> _ext `i -> 1 `i 844  ]
-[; ;mcp2515.c: 244: {
-"244
-{
-[; ;mcp2515.c: 245: buf[3+2] = (uint8_t) (canid & 0xFF);
-"245
-[e = *U + &U _buf * -> -> + -> 3 `i -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> & _canid -> -> 255 `i `ui `uc ]
-[; ;mcp2515.c: 246: buf[2+2] = (uint8_t) (canid >> 8);
-"246
-[e = *U + &U _buf * -> -> + -> 2 `i -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> >> _canid -> 8 `i `uc ]
-[; ;mcp2515.c: 247: canid = (uint16_t)( can_id / 0x10000L );
-"247
-[e = _canid -> / _can_id -> -> 65536 `l `ul `ui ]
-[; ;mcp2515.c: 248: buf[1+2] = (uint8_t) (canid & 0x03);
-"248
-[e = *U + &U _buf * -> -> + -> 1 `i -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> & _canid -> -> 3 `i `ui `uc ]
-[; ;mcp2515.c: 249: buf[1+2] += (uint8_t) ((canid & 0x1C )*8);
-"249
-[e =+ *U + &U _buf * -> -> + -> 1 `i -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> * & _canid -> -> 28 `i `ui -> -> 8 `i `ui `uc ]
-[; ;mcp2515.c: 250: buf[1+2] |= 0x08;
-"250
-[e =| *U + &U _buf * -> -> + -> 1 `i -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 8 `i `uc ]
-[; ;mcp2515.c: 251: buf[0+2] = (uint8_t) (canid / 32 );
-"251
-[e = *U + &U _buf * -> -> + -> 0 `i -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> / _canid -> -> 32 `i `ui `uc ]
-"252
+[; ;function.c: 102: messageTx.identifier = ((1<<7) | (trafficLight << 4) | id );
+"102
+[e = . _messageTx 1 -> -> | | << -> 1 `i -> 7 `i << -> _trafficLight `i -> 4 `i -> _id `i `l `ul ]
+[; ;function.c: 103: messageTx.rtr = 0;
+"103
+[e = . _messageTx 4 -> -> 0 `i `uc ]
+[; ;function.c: 104: messageTx.dta[0] = color;
+"104
+[e = *U + &U . _messageTx 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _messageTx 3 `ui `ux _color ]
+[; ;function.c: 105: messageTx.dlc = 1;
+"105
+[e = . _messageTx 2 -> -> 1 `i `uc ]
+[; ;function.c: 108: Can_PutMessage(&messageTx);
+"108
+[e ( _Can_PutMessage (1 &U _messageTx ]
+[; ;function.c: 109: }
+"109
+[e :UE 842 ]
 }
-[; ;mcp2515.c: 252: }
-[e $U 845  ]
-"254
-[e :U 844 ]
-[; ;mcp2515.c: 254: else
-[; ;mcp2515.c: 255: {
-"255
+"115
+[v _sendWarningLight `(v ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;mcp2515.c: 256: buf[0+2] = (uint8_t) (canid >> 3);
-"256
-[e = *U + &U _buf * -> -> + -> 0 `i -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> >> _canid -> 3 `i `uc ]
-[; ;mcp2515.c: 257: buf[1+2] = (uint8_t) ((canid & 0x07 )*32);
-"257
-[e = *U + &U _buf * -> -> + -> 1 `i -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> * & _canid -> -> 7 `i `ui -> -> 32 `i `ui `uc ]
-[; ;mcp2515.c: 258: buf[3+2] = 0;
-"258
-[e = *U + &U _buf * -> -> + -> 3 `i -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 0 `i `uc ]
-[; ;mcp2515.c: 259: buf[2+2] = 0;
-"259
-[e = *U + &U _buf * -> -> + -> 2 `i -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 0 `i `uc ]
-"260
-}
-[e :U 845 ]
-[; ;mcp2515.c: 260: }
-[; ;mcp2515.c: 261: Spi_Write(buf,6);
-"261
-[e ( _Spi_Write (2 , &U _buf -> -> -> 6 `i `l `ul ]
-[; ;mcp2515.c: 262: }
-"262
+[; ;function.c: 115: void sendWarningLight(uint8_t trafficLight , uint8_t state){
+[e :U _sendWarningLight ]
+[v _trafficLight `uc ~T0 @X0 1 r1 ]
+[v _state `uc ~T0 @X0 1 r2 ]
+[f ]
+[; ;function.c: 117: messageTx.identifier = ((2<<7) | (trafficLight << 4) | id );
+"117
+[e = . _messageTx 1 -> -> | | << -> 2 `i -> 7 `i << -> _trafficLight `i -> 4 `i -> _id `i `l `ul ]
+[; ;function.c: 118: messageTx.rtr = 0;
+"118
+[e = . _messageTx 4 -> -> 0 `i `uc ]
+[; ;function.c: 119: messageTx.dta[0] = state;
+"119
+[e = *U + &U . _messageTx 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _messageTx 3 `ui `ux _state ]
+[; ;function.c: 120: messageTx.dlc = 1;
+"120
+[e = . _messageTx 2 -> -> 1 `i `uc ]
+[; ;function.c: 123: Can_PutMessage(&messageTx);
+"123
+[e ( _Can_PutMessage (1 &U _messageTx ]
+[; ;function.c: 124: }
+"124
 [e :UE 843 ]
 }
-"272
-[v _Mcp2515WriteCanMsg `(v ~T0 @X0 1 ef2`Cuc`*CS825 ]
-"274
+"126
+[v _requestPed `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;mcp2515.c: 272: void Mcp2515WriteCanMsg( const uint8_t buffer_sidh_addr,
-[; ;mcp2515.c: 273: const struct CANMESSAGE* msg)
-[; ;mcp2515.c: 274: {
-[e :U _Mcp2515WriteCanMsg ]
-"272
-[v _buffer_sidh_addr `Cuc ~T0 @X0 1 r1 ]
-"273
-[v _msg `*CS825 ~T0 @X0 1 r2 ]
-"274
+[; ;function.c: 126: uint8_t requestPed(uint8_t ped){
+[e :U _requestPed ]
+[v _ped `uc ~T0 @X0 1 r1 ]
 [f ]
-"275
-[v _mcp_addr `uc ~T0 @X0 1 a ]
-[v _i `uc ~T0 @X0 1 a ]
-[v _dlc `uc ~T0 @X0 1 a ]
-"276
-[v _buf `uc ~T0 @X0 -> 10 `i a ]
-[; ;mcp2515.c: 275: uint8_t mcp_addr, i, dlc;
-[; ;mcp2515.c: 276: uint8_t buf[10];
-[; ;mcp2515.c: 277: mcp_addr = buffer_sidh_addr;
-"277
-[e = _mcp_addr _buffer_sidh_addr ]
-[; ;mcp2515.c: 279: buf[0] = 0x02;
-"279
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 2 `i `uc ]
-[; ;mcp2515.c: 280: buf[1] = mcp_addr+5;
-"280
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> + -> _mcp_addr `i -> 5 `i `uc ]
-[; ;mcp2515.c: 282: for(i=0;i<msg->dlc;i++)
-"282
+[; ;function.c: 128: messageTx.identifier = ((4<<7) | ((ped-8) << 4) | id );
+"128
+[e = . _messageTx 1 -> -> | | << -> 4 `i -> 7 `i << - -> _ped `i -> 8 `i -> 4 `i -> _id `i `l `ul ]
+[; ;function.c: 129: messageTx.rtr = 1;
+"129
+[e = . _messageTx 4 -> -> 1 `i `uc ]
+[; ;function.c: 132: Can_PutMessage(&messageTx);
+"132
+[e ( _Can_PutMessage (1 &U _messageTx ]
+[; ;function.c: 135: while(Can_GetMessage(&message) != 0){};
+"135
+[e $U 845  ]
+[e :U 846 ]
 {
-[e = _i -> -> 0 `i `uc ]
-[e $U 850  ]
-"283
+}
+[e :U 845 ]
+[e $ != -> ( _Can_GetMessage (1 &U _message `i -> 0 `i 846  ]
 [e :U 847 ]
-[; ;mcp2515.c: 283: {
+[; ;function.c: 137: return message.dta[0];
+"137
+[e ) *U + &U . _message 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _message 3 `ui `ux ]
+[e $UE 844  ]
+[; ;function.c: 138: }
+"138
+[e :UE 844 ]
+}
+"139
+[v _resetData `(v ~T0 @X0 1 ef ]
 {
-[; ;mcp2515.c: 284: buf[i+2] = msg->dta[i];
-"284
-[e = *U + &U _buf * -> -> + -> _i `i -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux *U + &U . *U _msg 3 * -> _i `ux -> -> # *U &U . *U _msg 3 `ui `ux ]
-"285
-}
-"282
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 850 ]
-[e $ < -> _i `i -> . *U _msg 2 `i 847  ]
-[e :U 848 ]
-"285
-}
-[; ;mcp2515.c: 285: }
-[; ;mcp2515.c: 286: Spi_Write(buf,msg->dlc + 2);
-"286
-[e ( _Spi_Write (2 , &U _buf -> -> + -> . *U _msg 2 `i -> 2 `i `l `ul ]
-[; ;mcp2515.c: 288: Mcp2515WriteCanId( mcp_addr,
-[; ;mcp2515.c: 289: msg->extended_identifier,
-[; ;mcp2515.c: 290: msg->identifier );
-"290
-[e ( _Mcp2515WriteCanId (3 , , _mcp_addr . *U _msg 0 . *U _msg 1 ]
-[; ;mcp2515.c: 291: dlc = msg->dlc;
-"291
-[e = _dlc . *U _msg 2 ]
-[; ;mcp2515.c: 293: if ( msg->rtr == 1)
-"293
-[e $ ! == -> . *U _msg 4 `i -> 1 `i 851  ]
-[; ;mcp2515.c: 294: {
-"294
-{
-[; ;mcp2515.c: 295: dlc = msg->dlc | 0x40;
-"295
-[e = _dlc -> | -> . *U _msg 2 `i -> 64 `i `uc ]
-"296
-}
-[e :U 851 ]
-[; ;mcp2515.c: 296: }
-[; ;mcp2515.c: 297: buf[0] = 0x02;
-"297
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 2 `i `uc ]
-[; ;mcp2515.c: 298: buf[1] = mcp_addr+4;
-"298
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> + -> _mcp_addr `i -> 4 `i `uc ]
-[; ;mcp2515.c: 299: buf[2] = dlc;
-"299
-[e = *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux _dlc ]
-[; ;mcp2515.c: 300: Spi_Write(buf,3);
-"300
-[e ( _Spi_Write (2 , &U _buf -> -> -> 3 `i `l `ul ]
-[; ;mcp2515.c: 301: }
-"301
-[e :UE 846 ]
-}
-"311
-[v _Mcp2515GetNextFreeTXBuf `(uc ~T0 @X0 1 ef1`*uc ]
-"312
-{
-[; ;mcp2515.c: 311: uint8_t Mcp2515GetNextFreeTXBuf(uint8_t *txbuf_n)
-[; ;mcp2515.c: 312: {
-[e :U _Mcp2515GetNextFreeTXBuf ]
-"311
-[v _txbuf_n `*uc ~T0 @X0 1 r1 ]
-"312
+[; ;function.c: 139: void resetData(void){
+[e :U _resetData ]
 [f ]
-"313
-[v _i `uc ~T0 @X0 1 a ]
-[v F8153 `uc ~T0 @X0 -> 3 `i s ]
-[i F8153
-:U ..
-"314
--> -> 48 `i `uc
--> -> 64 `i `uc
--> -> 80 `i `uc
-..
-]
-[v _ctrlregs `uc ~T0 @X0 -> 3 `i a ]
-[; ;mcp2515.c: 313: uint8_t i;
-[; ;mcp2515.c: 314: uint8_t ctrlregs[(3)] = {0x30,0x40,0x50};
-[e = _ctrlregs F8153 ]
-"315
-[v _buf `uc ~T0 @X0 -> 3 `i a ]
-[; ;mcp2515.c: 315: uint8_t buf[3];
-[; ;mcp2515.c: 316: *txbuf_n = 0x00;
-"316
-[e = *U _txbuf_n -> -> 0 `i `uc ]
-[; ;mcp2515.c: 319: for (i=0; i<(3); i++)
-"319
+"140
+[v _i `i ~T0 @X0 1 a ]
+[; ;function.c: 140: int i;
+[; ;function.c: 141: for (i = 0 ; i < 4 ; i++){
+"141
 {
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 3 `i 853  ]
-[e $U 854  ]
-"320
-[e :U 853 ]
-[; ;mcp2515.c: 320: {
+[e = _i -> 0 `i ]
+[e $ < _i -> 4 `i 849  ]
+[e $U 850  ]
+[e :U 849 ]
 {
-[; ;mcp2515.c: 321: buf[0] = 0x03;
-"321
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 3 `i `uc ]
-[; ;mcp2515.c: 322: buf[1] = ctrlregs[i];
-"322
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux *U + &U _ctrlregs * -> _i `ux -> -> # *U &U _ctrlregs `ui `ux ]
-[; ;mcp2515.c: 323: Spi_ReadWrite(buf,3);
-"323
-[e ( _Spi_ReadWrite (2 , &U _buf -> -> -> 3 `i `l `ul ]
-[; ;mcp2515.c: 325: if ( (buf[2] & 0x08) == 0 )
-"325
-[e $ ! == & -> *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux `i -> 8 `i -> 0 `i 856  ]
-[; ;mcp2515.c: 326: {
-"326
-{
-[; ;mcp2515.c: 327: *txbuf_n = ctrlregs[i]+1;
-"327
-[e = *U _txbuf_n -> + -> *U + &U _ctrlregs * -> _i `ux -> -> # *U &U _ctrlregs `ui `ux `i -> 1 `i `uc ]
-[; ;mcp2515.c: 328: return (0);
-"328
-[e ) -> -> 0 `i `uc ]
-[e $UE 852  ]
-"329
+[; ;function.c: 142: message.dta[i] = 0;
+"142
+[e = *U + &U . _message 3 * -> -> _i `ui `ux -> -> # *U &U . _message 3 `ui `ux -> -> 0 `i `uc ]
+"143
 }
-[e :U 856 ]
-"330
+"141
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 4 `i 849  ]
+[e :U 850 ]
+"143
 }
-"319
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 3 `i 853  ]
-[e :U 854 ]
-"330
-}
-[; ;mcp2515.c: 329: }
-[; ;mcp2515.c: 330: }
-[; ;mcp2515.c: 331: return (2);
-"331
-[e ) -> -> 2 `i `uc ]
-[e $UE 852  ]
-[; ;mcp2515.c: 332: }
-"332
-[e :UE 852 ]
+[; ;function.c: 143: }
+[; ;function.c: 144: }
+"144
+[e :UE 848 ]
 }

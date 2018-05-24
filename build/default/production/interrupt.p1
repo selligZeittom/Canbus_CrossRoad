@@ -20,7 +20,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S743 . . . ]
 "16740
 [v _T0CONbits `VS743 ~T0 @X0 0 e@4053 ]
-"16790
+"89 logic.h
+[v _onTimeout `(v ~T0 @X0 0 ef ]
+"16790 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f87k22.h
 [v _TMR0 `Vus ~T0 @X0 0 e@4054 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -7229,64 +7231,95 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;can.h: 314: static uint8_t Can_ReadInBuffer(void);
 [; ;can.h: 327: static uint8_t Can_WriteOutBuffer(void);
 [; ;can.h: 353: void Can_Isr(void);
+"46 logic.h
+[v _durationLights `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 46: uint8_t durationLights[12];
+"49
+[v _colorLights `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 49: uint8_t colorLights[12];
+"52
+[v _occupancyPaths `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 52: uint8_t occupancyPaths[12];
+"63
+[v _priorityUser `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 63: uint8_t priorityUser[12];
+"66
+[v _numberWaitingUsers `uc ~T0 @X0 1 e ]
+[i _numberWaitingUsers
+-> -> 0 `i `uc
+]
+[; ;logic.h: 66: uint8_t numberWaitingUsers = 0;
+[; ;logic.h: 71: void initLogic();
+[; ;logic.h: 77: void firstRound();
+[; ;logic.h: 83: void secondRound();
+[; ;logic.h: 89: void onTimeout();
+[; ;logic.h: 96: void setLight(uint8_t light, uint8_t color);
+[; ;logic.h: 102: void setWarningLight(uint8_t light, uint8_t state);
+[; ;logic.h: 108: void setPriority(uint8_t carPerson);
+[; ;logic.h: 115: void decrPriority(uint8_t user);
+[; ;logic.h: 123: void shiftPriority();
+[; ;logic.h: 131: uint8_t getConflict(uint8_t carPersonConcerned, uint8_t carPersonToLookAt);
 [v $root$_high_isr `(v ~T0 @X0 0 e ]
-[v F7971 `(v ~T0 @X0 1 tf ]
-"3 interrupt.c
-[v _high_isr `IF7971 ~T0 @X0 1 e ]
+[v F7994 `(v ~T0 @X0 1 tf ]
+"5 interrupt.c
+[v _high_isr `IF7994 ~T0 @X0 1 e ]
 {
-[; ;interrupt.c: 3: void interrupt high_isr(void){
+[; ;interrupt.c: 5: void interrupt high_isr(void){
 [e :U _high_isr ]
 [f ]
-[; ;interrupt.c: 4: if((INT3IF == 1)&&(INT3IE == 1))
-"4
-[e $ ! && == -> _INT3IF `i -> 1 `i == -> _INT3IE `i -> 1 `i 827  ]
-[; ;interrupt.c: 5: {
-"5
-{
-[; ;interrupt.c: 6: INT3IF = 0;
+[; ;interrupt.c: 6: if((INT3IF == 1)&&(INT3IE == 1))
 "6
-[e = _INT3IF -> -> 0 `i `b ]
-[; ;interrupt.c: 7: Can_Isr();
+[e $ ! && == -> _INT3IF `i -> 1 `i == -> _INT3IE `i -> 1 `i 827  ]
+[; ;interrupt.c: 7: {
 "7
-[e ( _Can_Isr ..  ]
-[; ;interrupt.c: 8: if(RB3 == 0)
-"8
-[e $ ! == -> _RB3 `i -> 0 `i 828  ]
-[; ;interrupt.c: 9: {
-"9
 {
-[; ;interrupt.c: 10: INT3IF = 1;
+[; ;interrupt.c: 8: INT3IF = 0;
+"8
+[e = _INT3IF -> -> 0 `i `b ]
+[; ;interrupt.c: 9: Can_Isr();
+"9
+[e ( _Can_Isr ..  ]
+[; ;interrupt.c: 10: if(RB3 == 0)
 "10
-[e = _INT3IF -> -> 1 `i `b ]
+[e $ ! == -> _RB3 `i -> 0 `i 828  ]
+[; ;interrupt.c: 11: {
 "11
-}
-[e :U 828 ]
+{
+[; ;interrupt.c: 12: INT3IF = 1;
+"12
+[e = _INT3IF -> -> 1 `i `b ]
 "13
 }
-[e :U 827 ]
-[; ;interrupt.c: 11: }
-[; ;interrupt.c: 13: }
-[; ;interrupt.c: 14: if(TMR0IF == 1){
+[e :U 828 ]
 "14
+}
+[e :U 827 ]
+[; ;interrupt.c: 13: }
+[; ;interrupt.c: 14: }
+[; ;interrupt.c: 15: if(TMR0IF == 1){
+"15
 [e $ ! == -> _TMR0IF `i -> 1 `i 829  ]
 {
-[; ;interrupt.c: 16: T0CONbits.TMR0ON = 1;
-"16
+[; ;interrupt.c: 17: T0CONbits.TMR0ON = 1;
+"17
 [e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
-[; ;interrupt.c: 22: TMR0IF = 0;
-"22
-[e = _TMR0IF -> -> 0 `i `b ]
-[; ;interrupt.c: 23: TMR0 = 0xe17b;
+[; ;interrupt.c: 20: onTimeout();
+"20
+[e ( _onTimeout ..  ]
+[; ;interrupt.c: 23: TMR0IF = 0;
 "23
-[e = _TMR0 -> -> 57723 `ui `us ]
-[; ;interrupt.c: 24: T0CONbits.TMR0ON = 1;
+[e = _TMR0IF -> -> 0 `i `b ]
+[; ;interrupt.c: 24: TMR0 = 0xe17b;
 "24
+[e = _TMR0 -> -> 57723 `ui `us ]
+[; ;interrupt.c: 25: T0CONbits.TMR0ON = 1;
+"25
 [e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
-"26
+"27
 }
 [e :U 829 ]
-[; ;interrupt.c: 26: }
 [; ;interrupt.c: 27: }
-"27
+[; ;interrupt.c: 28: }
+"28
 [e :UE 826 ]
 }

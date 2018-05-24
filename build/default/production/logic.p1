@@ -1,62 +1,26 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"20970 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f87k22.h
-[v _TXIF `Vb ~T0 @X0 0 e@31988 ]
-"12839
-[v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
-"19790
-[v _PLLEN `Vb ~T0 @X0 0 e@31966 ]
-"16623
-[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
-"20848
-[v _TRISG0 `Vb ~T0 @X0 0 e@31936 ]
-"19280
-[v _LATG0 `Vb ~T0 @X0 0 e@31864 ]
-"16700
-[v _SPBRGH1 `Vuc ~T0 @X0 0 e@4052 ]
-"12910
-[v _SPBRG1 `Vuc ~T0 @X0 0 e@4015 ]
-"18276
-[v _BRGH1 `Vb ~T0 @X0 0 e@32098 ]
-"18270
-[v _BRG161 `Vb ~T0 @X0 0 e@31531 ]
-"20384
-[v _SYNC1 `Vb ~T0 @X0 0 e@32100 ]
-"20246
-[v _SPEN1 `Vb ~T0 @X0 0 e@32095 ]
-"18782
-[v _CREN1 `Vb ~T0 @X0 0 e@32092 ]
-"20964
-[v _TXEN1 `Vb ~T0 @X0 0 e@32101 ]
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 43: struct __prbuf
-[; ;stdio.h: 44: {
-[; ;stdio.h: 45: char * ptr;
-[; ;stdio.h: 46: void (* func)(char);
-[; ;stdio.h: 47: };
-[; ;errno.h: 29: extern int errno;
-[; ;conio.h: 12: extern void init_uart(void);
-[; ;conio.h: 14: extern char getch(void);
-[; ;conio.h: 15: extern char getche(void);
-[; ;conio.h: 16: extern void putch(char);
-[; ;conio.h: 17: extern void ungetch(char);
-[; ;conio.h: 19: extern __bit kbhit(void);
-[; ;conio.h: 23: extern char * cgets(char *);
-[; ;conio.h: 24: extern void cputs(const char *);
-[; ;stdio.h: 88: extern int cprintf(char *, ...);
-[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 183: extern char * gets(char *);
-[; ;stdio.h: 184: extern int puts(const char *);
-[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 195: extern int printf(const char *, ...);
+"83 can.h
+[s S824 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `uc 1 ]
+[n S824 CANFILTER mask0 mask1 filter0 filter1 filter2 filter3 filter4 filter5 ext ]
+"103
+[s S825 `uc 1 `ul 1 `uc 1 `uc -> 8 `i `uc 1 `uc 1 `uc 1 ]
+[n S825 CANMESSAGE extended_identifier identifier dlc dta rtr filhit txPrio ]
+"96 logic.h
+[v _setLight `(v ~T0 @X0 0 ef2`uc`uc ]
+"48 function.h
+[v _requestPed `(uc ~T0 @X0 0 ef1`uc ]
+"131 logic.h
+[v _getConflict `(uc ~T0 @X0 0 ef2`uc`uc ]
+"102
+[v _setWarningLight `(v ~T0 @X0 0 ef2`uc`uc ]
+"123
+[v _shiftPriority `(v ~T0 @X0 0 ef ]
+"45 function.h
+[v _sendTrafficLight `(v ~T0 @X0 0 ef2`uc`uc ]
+"46
+[v _sendPedestrianLight `(v ~T0 @X0 0 ef2`uc`uc ]
+"47
+[v _sendWarningLight `(v ~T0 @X0 0 ef2`uc`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7186,189 +7150,876 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-"22 ../../Desktop/picebs2.h
-[p x RETEN=OFF ]
-"23
-[p x INTOSCSEL=LOW ]
-"24
-[p x SOSCSEL=LOW ]
-"25
-[p x XINST=OFF ]
-"26
-[p x FOSC=INTIO2 ]
-"27
-[p x PLLCFG=ON ]
-"28
-[p x FCMEN=OFF ]
-"29
-[p x IESO=OFF ]
-"30
-[p x PWRTEN=ON ]
-"31
-[p x BOREN=OFF ]
-"32
-[p x BORV=2 ]
-"33
-[p x BORPWR=LOW ]
-"34
-[p x WDTEN=OFF ]
-"35
-[p x WDTPS=1 ]
-"36
-[p x RTCOSC=SOSCREF ]
-"37
-[p x CCP2MX=PORTBE ]
-"38
-[p x MSSPMSK=MSK7 ]
-"39
-[p x MCLRE=ON ]
-"40
-[p x STVREN=ON ]
-"41
-[p x BBSIZ=BB1K ]
-"42
-[p x DEBUG=ON ]
-"44
-[p x CP0=OFF ]
-"45
-[p x CP1=OFF ]
-"46
-[p x CP2=OFF ]
-"47
-[p x CP3=OFF ]
-"48
-[p x CP4=OFF ]
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 38: typedef signed long int int32_t;
+[; ;stdint.h: 45: typedef unsigned char uint8_t;
+[; ;stdint.h: 51: typedef unsigned int uint16_t;
+[; ;stdint.h: 67: typedef unsigned long int uint32_t;
+[; ;stdint.h: 75: typedef signed char int_least8_t;
+[; ;stdint.h: 82: typedef signed int int_least16_t;
+[; ;stdint.h: 104: typedef signed long int int_least32_t;
+[; ;stdint.h: 111: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 117: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 136: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 145: typedef signed char int_fast8_t;
+[; ;stdint.h: 152: typedef signed int int_fast16_t;
+[; ;stdint.h: 174: typedef signed long int int_fast32_t;
+[; ;stdint.h: 181: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 187: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 206: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 212: typedef int32_t intmax_t;
+[; ;stdint.h: 217: typedef uint32_t uintmax_t;
+[; ;stdint.h: 222: typedef int16_t intptr_t;
+[; ;stdint.h: 227: typedef uint16_t uintptr_t;
+"46 logic.h
+[v _durationLights `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 46: uint8_t durationLights[12];
 "49
-[p x CP5=OFF ]
-"50
-[p x CP6=OFF ]
-"51
-[p x CP7=OFF ]
+[v _colorLights `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 49: uint8_t colorLights[12];
 "52
-[p x CPB=OFF ]
-"53
-[p x CPD=OFF ]
-"54
-[p x WRT0=OFF ]
-"55
-[p x WRT1=OFF ]
-"56
-[p x WRT2=OFF ]
-"57
-[p x WRT3=OFF ]
-"58
-[p x WRT4=OFF ]
-"59
-[p x WRT5=OFF ]
-"60
-[p x WRT6=OFF ]
-"61
-[p x WRT7=OFF ]
-"62
-[p x WRTB=OFF ]
+[v _occupancyPaths `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 52: uint8_t occupancyPaths[12];
 "63
-[p x WRTC=OFF ]
-"64
-[p x WRTD=OFF ]
-"65
-[p x EBRT0=OFF ]
+[v _priorityUser `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 63: uint8_t priorityUser[12];
 "66
-[p x EBRT1=OFF ]
-"67
-[p x EBRT2=OFF ]
-"68
-[p x EBRT3=OFF ]
-"69
-[p x EBRT4=OFF ]
-"70
-[p x EBRT5=OFF ]
-"71
-[p x EBRT6=OFF ]
-"72
-[p x EBRT7=OFF ]
-"73
-[p x EBRTB=OFF ]
-[; ;picebs2.h: 82: void putch(char data);
-[; ;picebs2.h: 88: void enable_high_speed();
-[; ;picebs2.h: 93: void configure_uart(void);
-"16 ../../Desktop/picebs2.c
-[v _putch `(v ~T0 @X0 1 ef1`uc ]
-{
-[; ;picebs2.c: 16: void putch(char data) {
-[e :U _putch ]
-[v _data `uc ~T0 @X0 1 r1 ]
-[f ]
-[; ;picebs2.c: 17: while (!TXIF)
-"17
-[e $U 825  ]
-[e :U 826 ]
-[; ;picebs2.c: 18: continue;
-"18
-[e $U 825  ]
-[e :U 825 ]
-"17
-[e $ ! _TXIF 826  ]
-[e :U 827 ]
-[; ;picebs2.c: 20: TXREG = data;
-"20
-[e = _TXREG _data ]
-[; ;picebs2.c: 21: }
-"21
-[e :UE 824 ]
-}
-"23
-[v _enable_high_speed `(v ~T0 @X0 1 ef ]
-{
-[; ;picebs2.c: 23: void enable_high_speed() {
-[e :U _enable_high_speed ]
-[f ]
-[; ;picebs2.c: 24: PLLEN = 1;
+[v _numberWaitingUsers `uc ~T0 @X0 1 e ]
+[i _numberWaitingUsers
+-> -> 0 `i `uc
+]
+[; ;logic.h: 66: uint8_t numberWaitingUsers = 0;
+[; ;logic.h: 71: void initLogic();
+[; ;logic.h: 77: void firstRound();
+[; ;logic.h: 83: void secondRound();
+[; ;logic.h: 89: void onTimeout();
+[; ;logic.h: 96: void setLight(uint8_t light, uint8_t color);
+[; ;logic.h: 102: void setWarningLight(uint8_t light, uint8_t state);
+[; ;logic.h: 108: void setPriority(uint8_t carPerson);
+[; ;logic.h: 115: void decrPriority(uint8_t user);
+[; ;logic.h: 123: void shiftPriority();
+[; ;logic.h: 131: uint8_t getConflict(uint8_t carPersonConcerned, uint8_t carPersonToLookAt);
+[; ;can.h: 65: struct CANSPEED
+[; ;can.h: 66: {
+[; ;can.h: 67: uint8_t brp;
+[; ;can.h: 68: uint8_t sjw;
+[; ;can.h: 69: uint8_t prseg;
+[; ;can.h: 70: uint8_t phseg1;
+[; ;can.h: 71: uint8_t phseg2;
+[; ;can.h: 72: uint8_t sam;
+[; ;can.h: 73: uint8_t btlmode;
+[; ;can.h: 74: };
+[; ;can.h: 83: struct CANFILTER
+[; ;can.h: 84: {
+[; ;can.h: 85: uint32_t mask0;
+[; ;can.h: 86: uint32_t mask1;
+[; ;can.h: 87: uint32_t filter0;
+[; ;can.h: 88: uint32_t filter1;
+[; ;can.h: 89: uint32_t filter2;
+[; ;can.h: 90: uint32_t filter3;
+[; ;can.h: 91: uint32_t filter4;
+[; ;can.h: 92: uint32_t filter5;
+[; ;can.h: 93: uint8_t ext;
+[; ;can.h: 94: };
+[; ;can.h: 103: struct CANMESSAGE
+[; ;can.h: 104: {
+[; ;can.h: 105: uint8_t extended_identifier;
+[; ;can.h: 106: uint32_t identifier;
+[; ;can.h: 107: uint8_t dlc;
+[; ;can.h: 108: uint8_t dta[(8)];
+[; ;can.h: 109: uint8_t rtr;
+[; ;can.h: 110: uint8_t filhit;
+[; ;can.h: 111: uint8_t txPrio;
+[; ;can.h: 112: };
+[; ;can.h: 129: extern const struct CANSPEED canSpeed10k;
+[; ;can.h: 130: extern const struct CANSPEED canSpeed20k;
+[; ;can.h: 131: extern const struct CANSPEED canSpeed50k;
+[; ;can.h: 132: extern const struct CANSPEED canSpeed100k;
+[; ;can.h: 133: extern const struct CANSPEED canSpeed125k;
+[; ;can.h: 134: extern const struct CANSPEED canSpeed250k;
+[; ;can.h: 135: extern const struct CANSPEED canSpeed500k;
+[; ;can.h: 136: extern const struct CANSPEED canSpeed800k;
+[; ;can.h: 137: extern const struct CANSPEED canSpeed1000k;
+[; ;can.h: 140: void Spi_ReadWrite(uint8_t * rx_tx, uint32_t size);
+[; ;can.h: 141: uint8_t Spi_Read(void);
+[; ;can.h: 142: void Spi_Write(uint8_t * tx, uint32_t size);
+[; ;can.h: 197: void Can_Init(const struct CANSPEED * speedCfg,struct CANFILTER * filterCfg);
+[; ;can.h: 205: void Can_PowerOff(void);
+[; ;can.h: 218: static uint8_t Can_SendMessage(const struct CANMESSAGE* msg);
+[; ;can.h: 241: static uint8_t Can_ReadMessage(struct CANMESSAGE *msg);
+[; ;can.h: 250: static uint8_t Can_GetStatus(void);
+[; ;can.h: 260: uint8_t Can_InBufferStatus(void);
+[; ;can.h: 270: uint8_t Can_OutBufferStatus(void);
+[; ;can.h: 280: uint8_t Can_GetMessage(struct CANMESSAGE * msgPtr);
+[; ;can.h: 301: uint8_t Can_PutMessage(struct CANMESSAGE * msgPtr);
+[; ;can.h: 314: static uint8_t Can_ReadInBuffer(void);
+[; ;can.h: 327: static uint8_t Can_WriteOutBuffer(void);
+[; ;can.h: 353: void Can_Isr(void);
+"21 function.h
+[v _id `uc ~T0 @X0 1 e ]
+[i _id
+-> -> 0 `i `uc
+]
+[; ;function.h: 21: uint8_t id = 0;
 "24
-[e = _PLLEN -> -> 1 `i `b ]
-[; ;picebs2.c: 25: OSCCON = 0b01110000;
+[v _bottomRight `uc ~T0 @X0 1 e ]
+[i _bottomRight
+-> -> 0 `i `uc
+]
+[; ;function.h: 24: uint8_t bottomRight = 0;
 "25
-[e = _OSCCON -> -> 112 `i `uc ]
-[; ;picebs2.c: 28: }
-"28
-[e :UE 828 ]
-}
+[v _topRight `uc ~T0 @X0 1 e ]
+[i _topRight
+-> -> 0 `i `uc
+]
+[; ;function.h: 25: uint8_t topRight = 0;
+"26
+[v _topLeft `uc ~T0 @X0 1 e ]
+[i _topLeft
+-> -> 0 `i `uc
+]
+[; ;function.h: 26: uint8_t topLeft = 0;
+"27
+[v _bottomLeft `uc ~T0 @X0 1 e ]
+[i _bottomLeft
+-> -> 0 `i `uc
+]
+[; ;function.h: 27: uint8_t bottomLeft = 0;
 "30
-[v _configure_uart `(v ~T0 @X0 1 ef ]
-{
-[; ;picebs2.c: 30: void configure_uart(void) {
-[e :U _configure_uart ]
-[f ]
-[; ;picebs2.c: 31: TRISG0 = 0;
+[v _filter `S824 ~T0 @X0 1 e ]
+[i _filter
+:U ..
+:U ..
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> 0 `i `uc
+..
+..
+]
+[; ;function.h: 30: struct CANFILTER filter = { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0};
 "31
-[e = _TRISG0 -> -> 0 `i `b ]
-[; ;picebs2.c: 32: LATG0 = 1;
+[v _message `S825 ~T0 @X0 1 e ]
+[i _message
+:U ..
+:U ..
+-> -> 0 `i `uc
+-> -> -> 0 `i `l `ul
+-> -> 0 `i `uc
+:U ..
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+..
+]
+[; ;function.h: 31: struct CANMESSAGE message = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
 "32
-[e = _LATG0 -> -> 1 `i `b ]
-[; ;picebs2.c: 33: SPBRGH1 = 0x00;
-"33
-[e = _SPBRGH1 -> -> 0 `i `uc ]
-[; ;picebs2.c: 34: SPBRG1 = 16;
-"34
-[e = _SPBRG1 -> -> 16 `i `uc ]
-[; ;picebs2.c: 35: BRGH1 = 1;
-"35
-[e = _BRGH1 -> -> 1 `i `b ]
-[; ;picebs2.c: 36: BRG161 = 1;
-"36
-[e = _BRG161 -> -> 1 `i `b ]
-[; ;picebs2.c: 37: SYNC1 = 0;
-"37
-[e = _SYNC1 -> -> 0 `i `b ]
-[; ;picebs2.c: 38: SPEN1 = 1;
-"38
-[e = _SPEN1 -> -> 1 `i `b ]
-[; ;picebs2.c: 39: CREN1 = 1;
+[v _messageTx `S825 ~T0 @X0 1 e ]
+[i _messageTx
+:U ..
+:U ..
+-> -> 0 `i `uc
+-> -> -> 0 `i `l `ul
+-> -> 0 `i `uc
+:U ..
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+..
+]
+[; ;function.h: 32: struct CANMESSAGE messageTx = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
+[v F8001 `uc ~T0 @X0 -> 12 `i t ]
 "39
-[e = _CREN1 -> -> 1 `i `b ]
-[; ;picebs2.c: 40: TXEN1 = 1;
+[v _conflicts `F8001 ~T0 @X0 -> 12 `i e ]
+[; ;function.h: 39: uint8_t conflicts[12][12];
+[; ;function.h: 41: void init(void);
+[; ;function.h: 42: uint8_t readID(void);
+[; ;function.h: 43: void readConflictInfo(void);
+[; ;function.h: 44: void resetData(void);
+[; ;function.h: 45: void sendTrafficLight(uint8_t , uint8_t );
+[; ;function.h: 46: void sendPedestrianLight(uint8_t , uint8_t);
+[; ;function.h: 47: void sendWarningLight(uint8_t trafficLight , uint8_t state);
+[; ;function.h: 48: uint8_t requestPed(uint8_t ped);
+"5 logic.c
+[v _initLogic `(v ~T0 @X0 1 ef ]
+"6
+{
+[; ;logic.c: 5: void initLogic()
+[; ;logic.c: 6: {
+[e :U _initLogic ]
+[f ]
+[; ;logic.c: 7: for(uint8_t i = 0; i < 12; i++)
+"7
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 12 `i 827  ]
+[e $U 828  ]
+"8
+[e :U 827 ]
+[; ;logic.c: 8: {
+{
+[; ;logic.c: 9: durationLights[i] = 0;
+"9
+[e = *U + &U _durationLights * -> _i `ux -> -> # *U &U _durationLights `ui `ux -> -> 0 `i `uc ]
+[; ;logic.c: 10: colorLights[i] = 0;
+"10
+[e = *U + &U _colorLights * -> _i `ux -> -> # *U &U _colorLights `ui `ux -> -> 0 `i `uc ]
+[; ;logic.c: 11: occupancyPaths[i] = 0;
+"11
+[e = *U + &U _occupancyPaths * -> _i `ux -> -> # *U &U _occupancyPaths `ui `ux -> -> 0 `i `uc ]
+[; ;logic.c: 12: priorityUser[i] = 255;
+"12
+[e = *U + &U _priorityUser * -> _i `ux -> -> # *U &U _priorityUser `ui `ux -> -> 255 `i `uc ]
+"13
+}
+"7
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 12 `i 827  ]
+[e :U 828 ]
+"13
+}
+[; ;logic.c: 13: }
+[; ;logic.c: 14: }
+"14
+[e :UE 826 ]
+}
+"16
+[v _firstRound `(v ~T0 @X0 1 ef ]
+"17
+{
+[; ;logic.c: 16: void firstRound()
+[; ;logic.c: 17: {
+[e :U _firstRound ]
+[f ]
+[; ;logic.c: 18: for(uint8_t i = 0; i < 12; i++)
+"18
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 12 `i 831  ]
+[e $U 832  ]
+"19
+[e :U 831 ]
+[; ;logic.c: 19: {
+{
+"20
+[v _color `uc ~T0 @X0 1 a ]
+[; ;logic.c: 20: uint8_t color = colorLights[i];
+[e = _color *U + &U _colorLights * -> _i `ux -> -> # *U &U _colorLights `ui `ux ]
+"21
+[v _occupancy `uc ~T0 @X0 1 a ]
+[; ;logic.c: 21: uint8_t occupancy = occupancyPaths[i];
+[e = _occupancy *U + &U _occupancyPaths * -> _i `ux -> -> # *U &U _occupancyPaths `ui `ux ]
+"22
+[v _duration `uc ~T0 @X0 1 a ]
+[; ;logic.c: 22: uint8_t duration = durationLights[i];
+[e = _duration *U + &U _durationLights * -> _i `ux -> -> # *U &U _durationLights `ui `ux ]
+[; ;logic.c: 25: switch (color)
+"25
+[e $U 835  ]
+[; ;logic.c: 26: {
+"26
+{
+[; ;logic.c: 27: case 0 :
+"27
+[e :U 836 ]
+[; ;logic.c: 29: break;
+"29
+[e $U 834  ]
+[; ;logic.c: 31: case 1:
+"31
+[e :U 837 ]
+[; ;logic.c: 32: if(i<8)
+"32
+[e $ ! < -> _i `i -> 8 `i 838  ]
+[; ;logic.c: 33: {
+"33
+{
+[; ;logic.c: 34: if(duration == 5)
+"34
+[e $ ! == -> _duration `i -> 5 `i 839  ]
+[; ;logic.c: 35: {
+"35
+{
+[; ;logic.c: 37: setLight(i,0);
+"37
+[e ( _setLight (2 , _i -> -> 0 `i `uc ]
+"38
+}
+[e :U 839 ]
+"39
+}
+[; ;logic.c: 38: }
+[; ;logic.c: 39: }
+[e $U 840  ]
 "40
-[e = _TXEN1 -> -> 1 `i `b ]
-[; ;picebs2.c: 41: }
+[e :U 838 ]
+[; ;logic.c: 40: else
+[; ;logic.c: 41: {
 "41
-[e :UE 829 ]
+{
+[; ;logic.c: 42: if(duration == 8)
+"42
+[e $ ! == -> _duration `i -> 8 `i 841  ]
+[; ;logic.c: 43: {
+"43
+{
+[; ;logic.c: 45: setLight(i,0);
+"45
+[e ( _setLight (2 , _i -> -> 0 `i `uc ]
+"46
+}
+[e :U 841 ]
+"47
+}
+[e :U 840 ]
+[; ;logic.c: 46: }
+[; ;logic.c: 47: }
+[; ;logic.c: 48: break;
+"48
+[e $U 834  ]
+[; ;logic.c: 50: case 2:
+"50
+[e :U 842 ]
+[; ;logic.c: 52: if(i > 7 && duration == 4)
+"52
+[e $ ! && > -> _i `i -> 7 `i == -> _duration `i -> 4 `i 843  ]
+[; ;logic.c: 53: {
+"53
+{
+[; ;logic.c: 55: occupancyPaths[i] = requestPed(i);
+"55
+[e = *U + &U _occupancyPaths * -> _i `ux -> -> # *U &U _occupancyPaths `ui `ux ( _requestPed (1 _i ]
+[; ;logic.c: 56: occupancy = occupancyPaths[i];
+"56
+[e = _occupancy *U + &U _occupancyPaths * -> _i `ux -> -> # *U &U _occupancyPaths `ui `ux ]
+"57
+}
+[e :U 843 ]
+[; ;logic.c: 57: }
+[; ;logic.c: 58: if(duration == 4 && occupancy == 0)
+"58
+[e $ ! && == -> _duration `i -> 4 `i == -> _occupancy `i -> 0 `i 844  ]
+[; ;logic.c: 59: {
+"59
+{
+[; ;logic.c: 61: setLight(i,1);
+"61
+[e ( _setLight (2 , _i -> -> 1 `i `uc ]
+"63
+}
+[e :U 844 ]
+[; ;logic.c: 63: }
+[; ;logic.c: 64: break;
+"64
+[e $U 834  ]
+[; ;logic.c: 66: case 3:
+"66
+[e :U 845 ]
+[; ;logic.c: 67: if(duration == 2)
+"67
+[e $ ! == -> _duration `i -> 2 `i 846  ]
+[; ;logic.c: 68: {
+"68
+{
+[; ;logic.c: 70: setLight(i,2);
+"70
+[e ( _setLight (2 , _i -> -> 2 `i `uc ]
+"71
+}
+[e :U 846 ]
+[; ;logic.c: 71: }
+[; ;logic.c: 72: break;
+"72
+[e $U 834  ]
+[; ;logic.c: 74: default:
+"74
+[e :U 847 ]
+[; ;logic.c: 75: break;
+"75
+[e $U 834  ]
+"77
+}
+[; ;logic.c: 77: }
+[e $U 834  ]
+"25
+[e :U 835 ]
+[e [\ _color , $ -> -> 0 `i `uc 836
+ , $ -> -> 1 `i `uc 837
+ , $ -> -> 2 `i `uc 842
+ , $ -> -> 3 `i `uc 845
+ 847 ]
+"77
+[e :U 834 ]
+"78
+}
+"18
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 12 `i 831  ]
+[e :U 832 ]
+"78
+}
+[; ;logic.c: 78: }
+[; ;logic.c: 79: }
+"79
+[e :UE 830 ]
+}
+"81
+[v _secondRound `(v ~T0 @X0 1 ef ]
+"82
+{
+[; ;logic.c: 81: void secondRound()
+[; ;logic.c: 82: {
+[e :U _secondRound ]
+[f ]
+[; ;logic.c: 84: for(uint8_t i = 0; i < numberWaitingUsers; i++)
+"84
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 852  ]
+"85
+[e :U 849 ]
+[; ;logic.c: 85: {
+{
+"87
+[v _waitingUser `uc ~T0 @X0 1 a ]
+[; ;logic.c: 87: uint8_t waitingUser = priorityUser[i];
+[e = _waitingUser *U + &U _priorityUser * -> _i `ux -> -> # *U &U _priorityUser `ui `ux ]
+[; ;logic.c: 90: for(uint8_t j = 0; j < 12; j++)
+"90
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 12 `i 853  ]
+[e $U 854  ]
+"91
+[e :U 853 ]
+[; ;logic.c: 91: {
+{
+"93
+[v _conflict `uc ~T0 @X0 1 a ]
+[; ;logic.c: 93: uint8_t conflict = getConflict(waitingUser, j);
+[e = _conflict ( _getConflict (2 , _waitingUser _j ]
+[; ;logic.c: 96: if(conflict == 0)
+"96
+[e $ ! == -> _conflict `i -> 0 `i 856  ]
+[; ;logic.c: 97: {
+"97
+{
+[; ;logic.c: 98: if( colorLights[waitingUser] == 0 && durationLights[waitingUser] == 2)
+"98
+[e $ ! && == -> *U + &U _colorLights * -> _waitingUser `ux -> -> # *U &U _colorLights `ui `ux `i -> 0 `i == -> *U + &U _durationLights * -> _waitingUser `ux -> -> # *U &U _durationLights `ui `ux `i -> 2 `i 857  ]
+[; ;logic.c: 99: {
+"99
+{
+[; ;logic.c: 101: setLight(waitingUser, 3);
+"101
+[e ( _setLight (2 , _waitingUser -> -> 3 `i `uc ]
+"102
+}
+[e :U 857 ]
+"103
+}
+[; ;logic.c: 102: }
+[; ;logic.c: 103: }
+[e $U 858  ]
+"106
+[e :U 856 ]
+[; ;logic.c: 106: else if(conflict == 2)
+[e $ ! == -> _conflict `i -> 2 `i 859  ]
+[; ;logic.c: 107: {
+"107
+{
+[; ;logic.c: 108: if(colorLights[waitingUser] == 0 && durationLights[waitingUser] == 2)
+"108
+[e $ ! && == -> *U + &U _colorLights * -> _waitingUser `ux -> -> # *U &U _colorLights `ui `ux `i -> 0 `i == -> *U + &U _durationLights * -> _waitingUser `ux -> -> # *U &U _durationLights `ui `ux `i -> 2 `i 860  ]
+[; ;logic.c: 109: {
+"109
+{
+[; ;logic.c: 111: setWarningLight(j-8, 1);
+"111
+[e ( _setWarningLight (2 , -> - -> _j `i -> 8 `i `uc -> -> 1 `i `uc ]
+[; ;logic.c: 114: setLight(waitingUser, 3);
+"114
+[e ( _setLight (2 , _waitingUser -> -> 3 `i `uc ]
+"116
+}
+[e :U 860 ]
+"117
+}
+[; ;logic.c: 116: }
+[; ;logic.c: 117: }
+[e $U 861  ]
+"120
+[e :U 859 ]
+[; ;logic.c: 120: else if(conflict == 1)
+[e $ ! == -> _conflict `i -> 1 `i 862  ]
+[; ;logic.c: 121: {
+"121
+{
+[; ;logic.c: 123: if(colorLights[j] == 2 && durationLights[j] == 4)
+"123
+[e $ ! && == -> *U + &U _colorLights * -> _j `ux -> -> # *U &U _colorLights `ui `ux `i -> 2 `i == -> *U + &U _durationLights * -> _j `ux -> -> # *U &U _durationLights `ui `ux `i -> 4 `i 863  ]
+[; ;logic.c: 124: {
+"124
+{
+[; ;logic.c: 126: setLight(j, 1);
+"126
+[e ( _setLight (2 , _j -> -> 1 `i `uc ]
+[; ;logic.c: 127: shiftPriority();
+"127
+[e ( _shiftPriority ..  ]
+"128
+}
+[; ;logic.c: 128: }
+[e $U 864  ]
+"130
+[e :U 863 ]
+[; ;logic.c: 130: else if(colorLights[j] == 0 && durationLights[j] == 2 && colorLights[waitingUser] == 0 && durationLights[waitingUser] == 2)
+[e $ ! && && && == -> *U + &U _colorLights * -> _j `ux -> -> # *U &U _colorLights `ui `ux `i -> 0 `i == -> *U + &U _durationLights * -> _j `ux -> -> # *U &U _durationLights `ui `ux `i -> 2 `i == -> *U + &U _colorLights * -> _waitingUser `ux -> -> # *U &U _colorLights `ui `ux `i -> 0 `i == -> *U + &U _durationLights * -> _waitingUser `ux -> -> # *U &U _durationLights `ui `ux `i -> 2 `i 865  ]
+[; ;logic.c: 131: {
+"131
+{
+[; ;logic.c: 133: setLight(waitingUser, 3);
+"133
+[e ( _setLight (2 , _waitingUser -> -> 3 `i `uc ]
+"134
+}
+[e :U 865 ]
+"135
+[e :U 864 ]
+}
+[e :U 862 ]
+"136
+[e :U 861 ]
+[e :U 858 ]
+}
+"90
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 12 `i 853  ]
+[e :U 854 ]
+"136
+}
+"137
+}
+"84
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 852 ]
+[e $ < -> _i `i -> _numberWaitingUsers `i 849  ]
+[e :U 850 ]
+"137
+}
+[; ;logic.c: 134: }
+[; ;logic.c: 135: }
+[; ;logic.c: 136: }
+[; ;logic.c: 137: }
+[; ;logic.c: 138: }
+"138
+[e :UE 848 ]
+}
+"140
+[v _onTimeout `(v ~T0 @X0 1 ef ]
+"141
+{
+[; ;logic.c: 140: void onTimeout()
+[; ;logic.c: 141: {
+[e :U _onTimeout ]
+[f ]
+[; ;logic.c: 142: for(uint8_t i = 0; i < 12; i++)
+"142
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 12 `i 867  ]
+[e $U 868  ]
+"143
+[e :U 867 ]
+[; ;logic.c: 143: {
+{
+[; ;logic.c: 144: durationLights[i] += 1;
+"144
+[e =+ *U + &U _durationLights * -> _i `ux -> -> # *U &U _durationLights `ui `ux -> -> 1 `i `uc ]
+"145
+}
+"142
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 12 `i 867  ]
+[e :U 868 ]
+"145
+}
+[; ;logic.c: 145: }
+[; ;logic.c: 146: firstRound();
+"146
+[e ( _firstRound ..  ]
+[; ;logic.c: 147: secondRound();
+"147
+[e ( _secondRound ..  ]
+[; ;logic.c: 148: }
+"148
+[e :UE 866 ]
+}
+"150
+[v _setLight `(v ~T0 @X0 1 ef2`uc`uc ]
+"151
+{
+[; ;logic.c: 150: void setLight(uint8_t light, uint8_t color)
+[; ;logic.c: 151: {
+[e :U _setLight ]
+"150
+[v _light `uc ~T0 @X0 1 r1 ]
+[v _color `uc ~T0 @X0 1 r2 ]
+"151
+[f ]
+[; ;logic.c: 152: durationLights[light] = 0;
+"152
+[e = *U + &U _durationLights * -> _light `ux -> -> # *U &U _durationLights `ui `ux -> -> 0 `i `uc ]
+[; ;logic.c: 153: colorLights[light] = color;
+"153
+[e = *U + &U _colorLights * -> _light `ux -> -> # *U &U _colorLights `ui `ux _color ]
+[; ;logic.c: 156: if(light < 8){
+"156
+[e $ ! < -> _light `i -> 8 `i 871  ]
+{
+[; ;logic.c: 157: sendTrafficLight(light,color);
+"157
+[e ( _sendTrafficLight (2 , _light _color ]
+"158
+}
+[; ;logic.c: 158: }
+[e $U 872  ]
+"159
+[e :U 871 ]
+[; ;logic.c: 159: else if(light > 7 && light < 12){
+[e $ ! && > -> _light `i -> 7 `i < -> _light `i -> 12 `i 873  ]
+{
+[; ;logic.c: 160: sendPedestrianLight((light-8),color);
+"160
+[e ( _sendPedestrianLight (2 , -> - -> _light `i -> 8 `i `uc _color ]
+"161
+}
+[e :U 873 ]
+"164
+[e :U 872 ]
+[; ;logic.c: 161: }
+[; ;logic.c: 164: }
+[e :UE 870 ]
+}
+"166
+[v _setWarningLight `(v ~T0 @X0 1 ef2`uc`uc ]
+"167
+{
+[; ;logic.c: 166: void setWarningLight(uint8_t light, uint8_t state)
+[; ;logic.c: 167: {
+[e :U _setWarningLight ]
+"166
+[v _light `uc ~T0 @X0 1 r1 ]
+[v _state `uc ~T0 @X0 1 r2 ]
+"167
+[f ]
+[; ;logic.c: 169: sendWarningLight(light,state);
+"169
+[e ( _sendWarningLight (2 , _light _state ]
+[; ;logic.c: 170: }
+"170
+[e :UE 874 ]
+}
+"172
+[v _setPriority `(v ~T0 @X0 1 ef1`uc ]
+"173
+{
+[; ;logic.c: 172: void setPriority(uint8_t carPerson)
+[; ;logic.c: 173: {
+[e :U _setPriority ]
+"172
+[v _carPerson `uc ~T0 @X0 1 r1 ]
+"173
+[f ]
+[; ;logic.c: 174: if(numberWaitingUsers < 12)
+"174
+[e $ ! < -> _numberWaitingUsers `i -> 12 `i 876  ]
+[; ;logic.c: 175: {
+"175
+{
+[; ;logic.c: 176: priorityUser[numberWaitingUsers] = carPerson;
+"176
+[e = *U + &U _priorityUser * -> _numberWaitingUsers `ux -> -> # *U &U _priorityUser `ui `ux _carPerson ]
+[; ;logic.c: 177: numberWaitingUsers++;
+"177
+[e ++ _numberWaitingUsers -> -> 1 `i `uc ]
+"178
+}
+[e :U 876 ]
+[; ;logic.c: 178: }
+[; ;logic.c: 179: }
+"179
+[e :UE 875 ]
+}
+"181
+[v _decrPriority `(v ~T0 @X0 1 ef1`uc ]
+"182
+{
+[; ;logic.c: 181: void decrPriority(uint8_t user)
+[; ;logic.c: 182: {
+[e :U _decrPriority ]
+"181
+[v _user `uc ~T0 @X0 1 r1 ]
+"182
+[f ]
+"183
+[v _modified `uc ~T0 @X0 1 a ]
+[; ;logic.c: 183: uint8_t modified = 0;
+[e = _modified -> -> 0 `i `uc ]
+[; ;logic.c: 186: for(uint8_t i = 0; i < 12; i++)
+"186
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 12 `i 878  ]
+[e $U 879  ]
+"187
+[e :U 878 ]
+[; ;logic.c: 187: {
+{
+[; ;logic.c: 188: if(priorityUser[i] == user)
+"188
+[e $ ! == -> *U + &U _priorityUser * -> _i `ux -> -> # *U &U _priorityUser `ui `ux `i -> _user `i 881  ]
+[; ;logic.c: 189: {
+"189
+{
+[; ;logic.c: 190: modified = 1;
+"190
+[e = _modified -> -> 1 `i `uc ]
+"191
+}
+[e :U 881 ]
+[; ;logic.c: 191: }
+[; ;logic.c: 192: if(modified == 1 && i < 12-1)
+"192
+[e $ ! && == -> _modified `i -> 1 `i < -> _i `i - -> 12 `i -> 1 `i 882  ]
+[; ;logic.c: 193: {
+"193
+{
+[; ;logic.c: 194: priorityUser[i] = priorityUser[i+1];
+"194
+[e = *U + &U _priorityUser * -> _i `ux -> -> # *U &U _priorityUser `ui `ux *U + &U _priorityUser * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _priorityUser `ui `ux ]
+"195
+}
+[; ;logic.c: 195: }
+[e $U 883  ]
+"196
+[e :U 882 ]
+[; ;logic.c: 196: else if(modified == 1 && i == 11)
+[e $ ! && == -> _modified `i -> 1 `i == -> _i `i -> 11 `i 884  ]
+[; ;logic.c: 197: {
+"197
+{
+[; ;logic.c: 198: priorityUser[i] = 255;
+"198
+[e = *U + &U _priorityUser * -> _i `ux -> -> # *U &U _priorityUser `ui `ux -> -> 255 `i `uc ]
+"199
+}
+[e :U 884 ]
+"200
+[e :U 883 ]
+}
+"186
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 12 `i 878  ]
+[e :U 879 ]
+"200
+}
+[; ;logic.c: 199: }
+[; ;logic.c: 200: }
+[; ;logic.c: 202: if(modified==1)
+"202
+[e $ ! == -> _modified `i -> 1 `i 885  ]
+[; ;logic.c: 203: {
+"203
+{
+[; ;logic.c: 204: numberWaitingUsers--;
+"204
+[e -- _numberWaitingUsers -> -> 1 `i `uc ]
+"205
+}
+[e :U 885 ]
+[; ;logic.c: 205: }
+[; ;logic.c: 206: }
+"206
+[e :UE 877 ]
+}
+"208
+[v _shiftPriority `(v ~T0 @X0 1 ef ]
+"209
+{
+[; ;logic.c: 208: void shiftPriority()
+[; ;logic.c: 209: {
+[e :U _shiftPriority ]
+[f ]
+"210
+[v _temp `uc ~T0 @X0 1 a ]
+[; ;logic.c: 210: uint8_t temp = priorityUser[0];
+[e = _temp *U + &U _priorityUser * -> -> -> 0 `i `ui `ux -> -> # *U &U _priorityUser `ui `ux ]
+[; ;logic.c: 211: for(uint8_t i = 0; i < numberWaitingUsers-1; i++)
+"211
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 890  ]
+"212
+[e :U 887 ]
+[; ;logic.c: 212: {
+{
+[; ;logic.c: 213: priorityUser[i] = priorityUser[i+1];
+"213
+[e = *U + &U _priorityUser * -> _i `ux -> -> # *U &U _priorityUser `ui `ux *U + &U _priorityUser * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _priorityUser `ui `ux ]
+"214
+}
+"211
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 890 ]
+[e $ < -> _i `i - -> _numberWaitingUsers `i -> 1 `i 887  ]
+[e :U 888 ]
+"214
+}
+[; ;logic.c: 214: }
+[; ;logic.c: 215: priorityUser[numberWaitingUsers-1] = temp;
+"215
+[e = *U + &U _priorityUser * -> -> - -> _numberWaitingUsers `i -> 1 `i `ui `ux -> -> # *U &U _priorityUser `ui `ux _temp ]
+[; ;logic.c: 216: }
+"216
+[e :UE 886 ]
+}
+"218
+[v _getConflict `(uc ~T0 @X0 1 ef2`uc`uc ]
+"219
+{
+[; ;logic.c: 218: uint8_t getConflict(uint8_t carPersonConcerned, uint8_t carPersonToLookAt)
+[; ;logic.c: 219: {
+[e :U _getConflict ]
+"218
+[v _carPersonConcerned `uc ~T0 @X0 1 r1 ]
+[v _carPersonToLookAt `uc ~T0 @X0 1 r2 ]
+"219
+[f ]
+[; ;logic.c: 220: return conflicts[carPersonConcerned][carPersonToLookAt];
+"220
+[e ) *U + &U *U + &U _conflicts * -> _carPersonConcerned `ux -> * -> # *U &U *U &U _conflicts `ui -> -> 12 `i `ui `ux * -> _carPersonToLookAt `ux -> -> # *U &U *U + &U _conflicts * -> _carPersonConcerned `ux -> * -> # *U &U *U &U _conflicts `ui -> -> 12 `i `ui `ux `ui `ux ]
+[e $UE 891  ]
+[; ;logic.c: 221: }
+"221
+[e :UE 891 ]
 }

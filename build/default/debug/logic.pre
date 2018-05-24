@@ -1,68 +1,5 @@
 
-# 1 "../../Desktop/picebs2.c"
-
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\__size_t.h"
-typedef unsigned size_t;
-
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdarg.h"
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-
-# 43 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdio.h"
-struct __prbuf
-{
-char * ptr;
-void (* func)(char);
-};
-
-# 29 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\errno.h"
-extern int errno;
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\conio.h"
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-# 23
-extern char * cgets(char *);
-extern void cputs(const char *);
-
-# 88 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdio.h"
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-
-
-# 180
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
+# 1 "logic.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -9636,94 +9573,454 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdint.h"
+typedef signed char int8_t;
 
-# 22 "../../Desktop/picebs2.h"
-#pragma config RETEN = OFF
-#pragma config INTOSCSEL = LOW
-#pragma config SOSCSEL = LOW
-#pragma config XINST = OFF
-#pragma config FOSC = INTIO2
-#pragma config PLLCFG = ON
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-#pragma config PWRTEN = ON
-#pragma config BOREN = OFF
-#pragma config BORV = 2
-#pragma config BORPWR = LOW
-#pragma config WDTEN = OFF
-#pragma config WDTPS = 1
-#pragma config RTCOSC = SOSCREF
-#pragma config CCP2MX = PORTBE
-#pragma config MSSPMSK = MSK7
-#pragma config MCLRE = ON
-#pragma config STVREN = ON
-#pragma config BBSIZ = BB1K
-#pragma config DEBUG = ON
+# 20
+typedef signed int int16_t;
 
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
-#pragma config CP4 = OFF
-#pragma config CP5 = OFF
-#pragma config CP6 = OFF
-#pragma config CP7 = OFF
-#pragma config CPB = OFF
-#pragma config CPD = OFF
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-#pragma config WRT2 = OFF
-#pragma config WRT3 = OFF
-#pragma config WRT4 = OFF
-#pragma config WRT5 = OFF
-#pragma config WRT6 = OFF
-#pragma config WRT7 = OFF
-#pragma config WRTB = OFF
-#pragma config WRTC = OFF
-#pragma config WRTD = OFF
-#pragma config EBRT0 = OFF
-#pragma config EBRT1 = OFF
-#pragma config EBRT2 = OFF
-#pragma config EBRT3 = OFF
-#pragma config EBRT4 = OFF
-#pragma config EBRT5 = OFF
-#pragma config EBRT6 = OFF
-#pragma config EBRT7 = OFF
-#pragma config EBRTB = OFF
+# 38
+typedef signed long int int32_t;
+
+# 45
+typedef unsigned char uint8_t;
+
+# 51
+typedef unsigned int uint16_t;
+
+# 67
+typedef unsigned long int uint32_t;
+
+# 75
+typedef signed char int_least8_t;
 
 # 82
-void putch(char data);
+typedef signed int int_least16_t;
 
-# 88
-void enable_high_speed();
+# 104
+typedef signed long int int_least32_t;
 
-# 93
-void configure_uart(void);
+# 111
+typedef unsigned char uint_least8_t;
 
-# 16 "../../Desktop/picebs2.c"
-void putch(char data) {
-while (!TXIF)
-continue;
+# 117
+typedef unsigned int uint_least16_t;
 
-TXREG = data;
+# 136
+typedef unsigned long int uint_least32_t;
+
+# 145
+typedef signed char int_fast8_t;
+
+# 152
+typedef signed int int_fast16_t;
+
+# 174
+typedef signed long int int_fast32_t;
+
+# 181
+typedef unsigned char uint_fast8_t;
+
+# 187
+typedef unsigned int uint_fast16_t;
+
+# 206
+typedef unsigned long int uint_fast32_t;
+
+# 212
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 46 "logic.h"
+uint8_t durationLights[12];
+
+
+uint8_t colorLights[12];
+
+
+uint8_t occupancyPaths[12];
+
+# 63
+uint8_t priorityUser[12];
+
+
+uint8_t numberWaitingUsers = 0;
+
+# 71
+void initLogic();
+
+# 77
+void firstRound();
+
+# 83
+void secondRound();
+
+# 89
+void onTimeout();
+
+# 96
+void setLight(uint8_t light, uint8_t color);
+
+# 102
+void setWarningLight(uint8_t light, uint8_t state);
+
+# 108
+void setPriority(uint8_t carPerson);
+
+# 115
+void decrPriority(uint8_t user);
+
+# 123
+void shiftPriority();
+
+# 131
+uint8_t getConflict(uint8_t carPersonConcerned, uint8_t carPersonToLookAt);
+
+# 65 "can.h"
+struct CANSPEED
+{
+uint8_t brp;
+uint8_t sjw;
+uint8_t prseg;
+uint8_t phseg1;
+uint8_t phseg2;
+uint8_t sam;
+uint8_t btlmode;
+};
+
+# 83
+struct CANFILTER
+{
+uint32_t mask0;
+uint32_t mask1;
+uint32_t filter0;
+uint32_t filter1;
+uint32_t filter2;
+uint32_t filter3;
+uint32_t filter4;
+uint32_t filter5;
+uint8_t ext;
+};
+
+# 103
+struct CANMESSAGE
+{
+uint8_t extended_identifier;
+uint32_t identifier;
+uint8_t dlc;
+uint8_t dta[(8)];
+uint8_t rtr;
+uint8_t filhit;
+uint8_t txPrio;
+};
+
+# 129
+extern const struct CANSPEED canSpeed10k;
+extern const struct CANSPEED canSpeed20k;
+extern const struct CANSPEED canSpeed50k;
+extern const struct CANSPEED canSpeed100k;
+extern const struct CANSPEED canSpeed125k;
+extern const struct CANSPEED canSpeed250k;
+extern const struct CANSPEED canSpeed500k;
+extern const struct CANSPEED canSpeed800k;
+extern const struct CANSPEED canSpeed1000k;
+
+
+void Spi_ReadWrite(uint8_t * rx_tx, uint32_t size);
+uint8_t Spi_Read(void);
+void Spi_Write(uint8_t * tx, uint32_t size);
+
+# 197
+void Can_Init(const struct CANSPEED * speedCfg,struct CANFILTER * filterCfg);
+
+# 205
+void Can_PowerOff(void);
+
+# 218
+static uint8_t Can_SendMessage(const struct CANMESSAGE* msg);
+
+# 241
+static uint8_t Can_ReadMessage(struct CANMESSAGE *msg);
+
+# 250
+static uint8_t Can_GetStatus(void);
+
+# 260
+uint8_t Can_InBufferStatus(void);
+
+# 270
+uint8_t Can_OutBufferStatus(void);
+
+# 280
+uint8_t Can_GetMessage(struct CANMESSAGE * msgPtr);
+
+# 301
+uint8_t Can_PutMessage(struct CANMESSAGE * msgPtr);
+
+# 314
+static uint8_t Can_ReadInBuffer(void);
+
+# 327
+static uint8_t Can_WriteOutBuffer(void);
+
+# 353
+void Can_Isr(void);
+
+# 21 "function.h"
+uint8_t id = 0;
+
+
+uint8_t bottomRight = 0;
+uint8_t topRight = 0;
+uint8_t topLeft = 0;
+uint8_t bottomLeft = 0;
+
+
+struct CANFILTER filter = { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0};
+struct CANMESSAGE message = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
+struct CANMESSAGE messageTx = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
+
+# 39
+uint8_t conflicts[12][12];
+
+void init(void);
+uint8_t readID(void);
+void readConflictInfo(void);
+void resetData(void);
+void sendTrafficLight(uint8_t , uint8_t );
+void sendPedestrianLight(uint8_t , uint8_t);
+void sendWarningLight(uint8_t trafficLight , uint8_t state);
+uint8_t requestPed(uint8_t ped);
+
+# 5 "logic.c"
+void initLogic()
+{
+for(uint8_t i = 0; i < 12; i++)
+{
+durationLights[i] = 0;
+colorLights[i] = 0;
+occupancyPaths[i] = 0;
+priorityUser[i] = 255;
+}
 }
 
-void enable_high_speed() {
-PLLEN = 1;
-OSCCON = 0b01110000;
+void firstRound()
+{
+for(uint8_t i = 0; i < 12; i++)
+{
+uint8_t color = colorLights[i];
+uint8_t occupancy = occupancyPaths[i];
+uint8_t duration = durationLights[i];
+
+
+switch (color)
+{
+case 0 :
+
+break;
+
+case 1:
+if(i<8)
+{
+if(duration == 5)
+{
+
+setLight(i,0);
+}
+}
+else
+{
+if(duration == 8)
+{
+
+setLight(i,0);
+}
+}
+break;
+
+case 2:
+
+if(i > 7 && duration == 4)
+{
+
+occupancyPaths[i] = requestPed(i);
+occupancy = occupancyPaths[i];
+}
+if(duration == 4 && occupancy == 0)
+{
+
+setLight(i,1);
+
+}
+break;
+
+case 3:
+if(duration == 2)
+{
+
+setLight(i,2);
+}
+break;
+
+default:
+break;
+
+}
+}
+}
+
+void secondRound()
+{
+
+for(uint8_t i = 0; i < numberWaitingUsers; i++)
+{
+
+uint8_t waitingUser = priorityUser[i];
+
+
+for(uint8_t j = 0; j < 12; j++)
+{
+
+uint8_t conflict = getConflict(waitingUser, j);
+
+
+if(conflict == 0)
+{
+if( colorLights[waitingUser] == 0 && durationLights[waitingUser] == 2)
+{
+
+setLight(waitingUser, 3);
+}
+}
+
+
+else if(conflict == 2)
+{
+if(colorLights[waitingUser] == 0 && durationLights[waitingUser] == 2)
+{
+
+setWarningLight(j-8, 1);
+
+
+setLight(waitingUser, 3);
+
+}
+}
+
+
+else if(conflict == 1)
+{
+
+if(colorLights[j] == 2 && durationLights[j] == 4)
+{
+
+setLight(j, 1);
+shiftPriority();
+}
+
+else if(colorLights[j] == 0 && durationLights[j] == 2 && colorLights[waitingUser] == 0 && durationLights[waitingUser] == 2)
+{
+
+setLight(waitingUser, 3);
+}
+}
+}
+}
+}
+
+void onTimeout()
+{
+for(uint8_t i = 0; i < 12; i++)
+{
+durationLights[i] += 1;
+}
+firstRound();
+secondRound();
+}
+
+void setLight(uint8_t light, uint8_t color)
+{
+durationLights[light] = 0;
+colorLights[light] = color;
+
+
+if(light < 8){
+sendTrafficLight(light,color);
+}
+else if(light > 7 && light < 12){
+sendPedestrianLight((light-8),color);
+}
 
 
 }
 
-void configure_uart(void) {
-TRISG0 = 0;
-LATG0 = 1;
-SPBRGH1 = 0x00;
-SPBRG1 = 16;
-BRGH1 = 1;
-BRG161 = 1;
-SYNC1 = 0;
-SPEN1 = 1;
-CREN1 = 1;
-TXEN1 = 1;
+void setWarningLight(uint8_t light, uint8_t state)
+{
+
+sendWarningLight(light,state);
+}
+
+void setPriority(uint8_t carPerson)
+{
+if(numberWaitingUsers < 12)
+{
+priorityUser[numberWaitingUsers] = carPerson;
+numberWaitingUsers++;
+}
+}
+
+void decrPriority(uint8_t user)
+{
+uint8_t modified = 0;
+
+
+for(uint8_t i = 0; i < 12; i++)
+{
+if(priorityUser[i] == user)
+{
+modified = 1;
+}
+if(modified == 1 && i < 12-1)
+{
+priorityUser[i] = priorityUser[i+1];
+}
+else if(modified == 1 && i == 11)
+{
+priorityUser[i] = 255;
+}
+}
+
+if(modified==1)
+{
+numberWaitingUsers--;
+}
+}
+
+void shiftPriority()
+{
+uint8_t temp = priorityUser[0];
+for(uint8_t i = 0; i < numberWaitingUsers-1; i++)
+{
+priorityUser[i] = priorityUser[i+1];
+}
+priorityUser[numberWaitingUsers-1] = temp;
+}
+
+uint8_t getConflict(uint8_t carPersonConcerned, uint8_t carPersonToLookAt)
+{
+return conflicts[carPersonConcerned][carPersonToLookAt];
 }

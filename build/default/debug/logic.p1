@@ -1,73 +1,26 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"65 ../../Desktop/can.h
-[s S827 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S827 CANSPEED brp sjw prseg phseg1 phseg2 sam btlmode ]
+"83 can.h
+[s S824 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `uc 1 ]
+[n S824 CANFILTER mask0 mask1 filter0 filter1 filter2 filter3 filter4 filter5 ext ]
 "103
-[s S829 `uc 1 `ul 1 `uc 1 `uc -> 8 `i `uc 1 `uc 1 `uc 1 ]
-[n S829 CANMESSAGE extended_identifier identifier dlc dta rtr filhit txPrio ]
-"250
-[v _Can_GetStatus `(uc ~T0 @X0 0 sf ]
-"314
-[v _Can_ReadInBuffer `(uc ~T0 @X0 0 sf ]
-"327
-[v _Can_WriteOutBuffer `(uc ~T0 @X0 0 sf ]
-"270
-[v _Can_OutBufferStatus `(uc ~T0 @X0 0 ef ]
-"241
-[v _Can_ReadMessage `(uc ~T0 @X0 0 sf1`*S829 ]
-"218
-[v _Can_SendMessage `(uc ~T0 @X0 0 sf1`*CS829 ]
-"19118 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f87k22.h
-[v _INT3IE `Vb ~T0 @X0 0 e@32645 ]
-"19120
-[v _INT3IF `Vb ~T0 @X0 0 e@32642 ]
-"83 ../../Desktop/can.h
-[s S828 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `uc 1 ]
-[n S828 CANFILTER mask0 mask1 filter0 filter1 filter2 filter3 filter4 filter5 ext ]
-"20844 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f87k22.h
-[v _TRISF6 `Vb ~T0 @X0 0 e@31934 ]
-"20846
-[v _TRISF7 `Vb ~T0 @X0 0 e@31935 ]
-"19276
-[v _LATF6 `Vb ~T0 @X0 0 e@31862 ]
-"19278
-[v _LATF7 `Vb ~T0 @X0 0 e@31863 ]
-"20794
-[v _TRISC4 `Vb ~T0 @X0 0 e@31908 ]
-"20796
-[v _TRISC5 `Vb ~T0 @X0 0 e@31909 ]
-"20792
-[v _TRISC3 `Vb ~T0 @X0 0 e@31907 ]
-"20804
-[v _TRISD1 `Vb ~T0 @X0 0 e@31913 ]
-"18688
-[v _CKE1 `Vb ~T0 @X0 0 e@32318 ]
-"18694
-[v _CKP1 `Vb ~T0 @X0 0 e@32308 ]
-"14884
-[v _SSPCON1 `Vuc ~T0 @X0 0 e@4038 ]
-"20290
-[v _SSPEN1 `Vb ~T0 @X0 0 e@32309 ]
-"54 ../../Desktop/mcp2515.h
-[v _Mcp2515_Init `(v ~T0 @X0 0 ef2`*CS827`*S828 ]
-"19132 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f87k22.h
-[v _INTEDG3 `Vb ~T0 @X0 0 e@32651 ]
-"77 ../../Desktop/mcp2515.h
-[v _Mcp2515Sleep `(v ~T0 @X0 0 ef ]
-"19236 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f87k22.h
-[v _LATD1 `Vb ~T0 @X0 0 e@31841 ]
-"16028
-[v _SSPBUF `Vuc ~T0 @X0 0 e@4041 ]
-"20296
-[v _SSPIF `Vb ~T0 @X0 0 e@31987 ]
-"20274
-[v _SSP1IF `Vb ~T0 @X0 0 e@31987 ]
-"64 ../../Desktop/mcp2515.h
-[v _Mcp2515ReadCanMsg `(v ~T0 @X0 0 ef2`Cuc`*S829 ]
-"75
-[v _Mcp2515GetNextFreeTXBuf `(uc ~T0 @X0 0 ef1`*uc ]
-"70
-[v _Mcp2515WriteCanMsg `(v ~T0 @X0 0 ef2`Cuc`*CS829 ]
+[s S825 `uc 1 `ul 1 `uc 1 `uc -> 8 `i `uc 1 `uc 1 `uc 1 ]
+[n S825 CANMESSAGE extended_identifier identifier dlc dta rtr filhit txPrio ]
+"96 logic.h
+[v _setLight `(v ~T0 @X0 0 ef2`uc`uc ]
+"48 function.h
+[v _requestPed `(uc ~T0 @X0 0 ef1`uc ]
+"131 logic.h
+[v _getConflict `(uc ~T0 @X0 0 ef2`uc`uc ]
+"102
+[v _setWarningLight `(v ~T0 @X0 0 ef2`uc`uc ]
+"123
+[v _shiftPriority `(v ~T0 @X0 0 ef ]
+"45 function.h
+[v _sendTrafficLight `(v ~T0 @X0 0 ef2`uc`uc ]
+"46
+[v _sendPedestrianLight `(v ~T0 @X0 0 ef2`uc`uc ]
+"47
+[v _sendWarningLight `(v ~T0 @X0 0 ef2`uc`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7197,83 +7150,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
-[; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
-[; ;string.h: 16: extern void * memset(void *, int, size_t);
-[; ;string.h: 36: extern char * strcat(char *, const char *);
-[; ;string.h: 37: extern char * strcpy(char *, const char *);
-[; ;string.h: 38: extern char * strncat(char *, const char *, size_t);
-[; ;string.h: 39: extern char * strncpy(char *, const char *, size_t);
-[; ;string.h: 40: extern char * strdup(const char *);
-[; ;string.h: 41: extern char * strtok(char *, const char *);
-[; ;string.h: 44: extern int memcmp(const void *, const void *, size_t);
-[; ;string.h: 45: extern int strcmp(const char *, const char *);
-[; ;string.h: 46: extern int stricmp(const char *, const char *);
-[; ;string.h: 47: extern int strncmp(const char *, const char *, size_t);
-[; ;string.h: 48: extern int strnicmp(const char *, const char *, size_t);
-[; ;string.h: 49: extern void * memchr(const void *, int, size_t);
-[; ;string.h: 50: extern size_t strcspn(const char *, const char *);
-[; ;string.h: 51: extern char * strpbrk(const char *, const char *);
-[; ;string.h: 52: extern size_t strspn(const char *, const char *);
-[; ;string.h: 53: extern char * strstr(const char *, const char *);
-[; ;string.h: 54: extern char * stristr(const char *, const char *);
-[; ;string.h: 55: extern char * strerror(int);
-[; ;string.h: 56: extern size_t strlen(const char *);
-[; ;string.h: 57: extern char * strchr(const char *, int);
-[; ;string.h: 58: extern char * strichr(const char *, int);
-[; ;string.h: 59: extern char * strrchr(const char *, int);
-[; ;string.h: 60: extern char * strrichr(const char *, int);
-[; ;stdlib.h: 7: typedef unsigned short wchar_t;
-[; ;stdlib.h: 15: typedef struct {
-[; ;stdlib.h: 16: int rem;
-[; ;stdlib.h: 17: int quot;
-[; ;stdlib.h: 18: } div_t;
-[; ;stdlib.h: 19: typedef struct {
-[; ;stdlib.h: 20: unsigned rem;
-[; ;stdlib.h: 21: unsigned quot;
-[; ;stdlib.h: 22: } udiv_t;
-[; ;stdlib.h: 23: typedef struct {
-[; ;stdlib.h: 24: long quot;
-[; ;stdlib.h: 25: long rem;
-[; ;stdlib.h: 26: } ldiv_t;
-[; ;stdlib.h: 27: typedef struct {
-[; ;stdlib.h: 28: unsigned long quot;
-[; ;stdlib.h: 29: unsigned long rem;
-[; ;stdlib.h: 30: } uldiv_t;
-[; ;stdlib.h: 53: extern double atof(const char *);
-[; ;stdlib.h: 54: extern double strtod(const char *, const char **);
-[; ;stdlib.h: 55: extern int atoi(const char *);
-[; ;stdlib.h: 56: extern unsigned xtoi(const char *);
-[; ;stdlib.h: 57: extern long atol(const char *);
-[; ;stdlib.h: 58: extern long strtol(const char *, char **, int);
-[; ;stdlib.h: 60: extern int rand(void);
-[; ;stdlib.h: 61: extern void srand(unsigned int);
-[; ;stdlib.h: 62: extern void * calloc(size_t, size_t);
-[; ;stdlib.h: 63: extern div_t div(int numer, int denom);
-[; ;stdlib.h: 64: extern udiv_t udiv(unsigned numer, unsigned denom);
-[; ;stdlib.h: 65: extern ldiv_t ldiv(long numer, long denom);
-[; ;stdlib.h: 66: extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
-[; ;stdlib.h: 67: extern unsigned long _lrotl(unsigned long value, unsigned int shift);
-[; ;stdlib.h: 68: extern unsigned long _lrotr(unsigned long value, unsigned int shift);
-[; ;stdlib.h: 69: extern unsigned int _rotl(unsigned int value, unsigned int shift);
-[; ;stdlib.h: 70: extern unsigned int _rotr(unsigned int value, unsigned int shift);
-[; ;stdlib.h: 75: extern void * malloc(size_t);
-[; ;stdlib.h: 76: extern void free(void *);
-[; ;stdlib.h: 77: extern void * realloc(void *, size_t);
-[; ;stdlib.h: 86: extern int atexit(void (*)(void));
-[; ;stdlib.h: 87: extern char * getenv(const char *);
-[; ;stdlib.h: 88: extern char ** environ;
-[; ;stdlib.h: 89: extern int system(char *);
-[; ;stdlib.h: 90: extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
-[; ;stdlib.h: 91: extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
-[; ;stdlib.h: 92: extern int abs(int);
-[; ;stdlib.h: 93: extern long labs(long);
-[; ;stdlib.h: 95: extern char * itoa(char * buf, int val, int base);
-[; ;stdlib.h: 96: extern char * utoa(char * buf, unsigned val, int base);
-[; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
-[; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
-[; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 38: typedef signed long int int32_t;
@@ -7296,6 +7172,34 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 217: typedef uint32_t uintmax_t;
 [; ;stdint.h: 222: typedef int16_t intptr_t;
 [; ;stdint.h: 227: typedef uint16_t uintptr_t;
+"46 logic.h
+[v _durationLights `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 46: uint8_t durationLights[12];
+"49
+[v _colorLights `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 49: uint8_t colorLights[12];
+"52
+[v _occupancyPaths `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 52: uint8_t occupancyPaths[12];
+"63
+[v _priorityUser `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 63: uint8_t priorityUser[12];
+"66
+[v _numberWaitingUsers `uc ~T0 @X0 1 e ]
+[i _numberWaitingUsers
+-> -> 0 `i `uc
+]
+[; ;logic.h: 66: uint8_t numberWaitingUsers = 0;
+[; ;logic.h: 71: void initLogic();
+[; ;logic.h: 77: void firstRound();
+[; ;logic.h: 83: void secondRound();
+[; ;logic.h: 89: void onTimeout();
+[; ;logic.h: 96: void setLight(uint8_t light, uint8_t color);
+[; ;logic.h: 102: void setWarningLight(uint8_t light, uint8_t state);
+[; ;logic.h: 108: void setPriority(uint8_t carPerson);
+[; ;logic.h: 115: void decrPriority(uint8_t user);
+[; ;logic.h: 123: void shiftPriority();
+[; ;logic.h: 131: uint8_t getConflict(uint8_t carPersonConcerned, uint8_t carPersonToLookAt);
 [; ;can.h: 65: struct CANSPEED
 [; ;can.h: 66: {
 [; ;can.h: 67: uint8_t brp;
@@ -7352,1100 +7256,770 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;can.h: 314: static uint8_t Can_ReadInBuffer(void);
 [; ;can.h: 327: static uint8_t Can_WriteOutBuffer(void);
 [; ;can.h: 353: void Can_Isr(void);
-[; ;mcp2515.h: 34: void mcp2515_reset(void);
-[; ;mcp2515.h: 36: uint8_t mcp2515_readRegister(const uint8_t address);
-[; ;mcp2515.h: 37: void mcp2515_setRegisterS(const uint8_t address,
-[; ;mcp2515.h: 38: const uint8_t values[],
-[; ;mcp2515.h: 39: const uint8_t n);
-[; ;mcp2515.h: 41: void mcp2515_setRegister(const uint8_t address,
-[; ;mcp2515.h: 42: const uint8_t value);
-[; ;mcp2515.h: 43: void mcp2515_setRegisterS(const uint8_t address,
-[; ;mcp2515.h: 44: const uint8_t values[],
-[; ;mcp2515.h: 45: const uint8_t n);
-[; ;mcp2515.h: 46: void mcp2515_modifyRegister(const uint8_t address, const uint8_t mask,
-[; ;mcp2515.h: 47: const uint8_t data);
-[; ;mcp2515.h: 49: uint8_t mcp2515_readStatus(void);
-[; ;mcp2515.h: 50: uint8_t mcp2515_RXStatus(void);
-[; ;mcp2515.h: 52: uint8_t mcp2515_setCANCTRL_Mode(const uint8_t newmode);
-[; ;mcp2515.h: 54: void Mcp2515_Init(const struct CANSPEED * speedCfg,struct CANFILTER * filterCfg);
-[; ;mcp2515.h: 55: void Mcp2515WriteCanId(uint8_t mcp_addr, uint8_t ext,uint32_t can_id );
-[; ;mcp2515.h: 61: void mcp2515_read_can_id( const uint8_t mcp_addr,
-[; ;mcp2515.h: 62: uint8_t* ext, uint32_t* can_id );
-[; ;mcp2515.h: 64: void Mcp2515ReadCanMsg( const uint8_t buffer_sidh_addr,
-[; ;mcp2515.h: 65: struct CANMESSAGE* msg);
-[; ;mcp2515.h: 70: void Mcp2515WriteCanMsg( const uint8_t buffer_sidh_addr,
-[; ;mcp2515.h: 71: const struct CANMESSAGE* msg);
-[; ;mcp2515.h: 73: void mcp2515_start_transmit(const uint8_t mcp_addr);
-[; ;mcp2515.h: 75: uint8_t Mcp2515GetNextFreeTXBuf(uint8_t *txbuf_n);
-[; ;mcp2515.h: 77: void Mcp2515Sleep(void);
-[; ;mcp2515.h: 80: void mcp2515_dumpExtendedStatus(void);
-"17 ../../Desktop/can.c
-[v _canSpeed10k `CS827 ~T0 @X0 1 e ]
-[i _canSpeed10k
-:U ..
-:U ..
--> -> 31 `i `uc
--> -> 1 `i `uc
--> -> 7 `i `uc
--> -> 7 `i `uc
--> -> 7 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
-..
-..
-]
-[; ;can.c: 17: const struct CANSPEED canSpeed10k = {31 ,1, 7,7,7, 1,1};
-"18
-[v _canSpeed20k `CS827 ~T0 @X0 1 e ]
-[i _canSpeed20k
-:U ..
-:U ..
--> -> 19 `i `uc
--> -> 1 `i `uc
--> -> 6 `i `uc
--> -> 6 `i `uc
--> -> 4 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
-..
-..
-]
-[; ;can.c: 18: const struct CANSPEED canSpeed20k = {19 ,1, 6,6,4, 1,1};
-"19
-[v _canSpeed50k `CS827 ~T0 @X0 1 e ]
-[i _canSpeed50k
-:U ..
-:U ..
--> -> 15 `i `uc
--> -> 1 `i `uc
--> -> 2 `i `uc
--> -> 3 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
-..
-..
-]
-[; ;can.c: 19: const struct CANSPEED canSpeed50k = {15 ,1, 2,3,1, 1,1};
-"20
-[v _canSpeed100k `CS827 ~T0 @X0 1 e ]
-[i _canSpeed100k
-:U ..
-:U ..
--> -> 7 `i `uc
--> -> 1 `i `uc
--> -> 2 `i `uc
--> -> 3 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
-..
-..
-]
-[; ;can.c: 20: const struct CANSPEED canSpeed100k = {7 ,1, 2,3,1, 1,1};
-"21
-[v _canSpeed125k `CS827 ~T0 @X0 1 e ]
-[i _canSpeed125k
-:U ..
-:U ..
--> -> 7 `i `uc
--> -> 1 `i `uc
+"21 function.h
+[v _id `uc ~T0 @X0 1 e ]
+[i _id
 -> -> 0 `i `uc
--> -> 3 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
-..
-..
 ]
-[; ;can.c: 21: const struct CANSPEED canSpeed125k = {7 ,1, 0,3,1, 1,1};
-"22
-[v _canSpeed250k `CS827 ~T0 @X0 1 e ]
-[i _canSpeed250k
-:U ..
-:U ..
--> -> 3 `i `uc
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 3 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
-..
-..
-]
-[; ;can.c: 22: const struct CANSPEED canSpeed250k = {3 ,1, 0,3,1, 1,1};
-"23
-[v _canSpeed500k `CS827 ~T0 @X0 1 e ]
-[i _canSpeed500k
-:U ..
-:U ..
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 3 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
-..
-..
-]
-[; ;can.c: 23: const struct CANSPEED canSpeed500k = {1 ,1, 0,3,1, 1,1};
+[; ;function.h: 21: uint8_t id = 0;
 "24
-[v _canSpeed800k `CS827 ~T0 @X0 1 e ]
-[i _canSpeed800k
-:U ..
-:U ..
+[v _bottomRight `uc ~T0 @X0 1 e ]
+[i _bottomRight
 -> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 2 `i `uc
--> -> 3 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
-..
-..
 ]
-[; ;can.c: 24: const struct CANSPEED canSpeed800k = {0 ,1, 2,3,1, 1,1};
+[; ;function.h: 24: uint8_t bottomRight = 0;
 "25
-[v _canSpeed1000k `CS827 ~T0 @X0 1 e ]
-[i _canSpeed1000k
-:U ..
-:U ..
+[v _topRight `uc ~T0 @X0 1 e ]
+[i _topRight
 -> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 3 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
-..
-..
 ]
-[; ;can.c: 25: const struct CANSPEED canSpeed1000k = {0 ,1, 0,3,1, 1,1};
+[; ;function.h: 25: uint8_t topRight = 0;
+"26
+[v _topLeft `uc ~T0 @X0 1 e ]
+[i _topLeft
+-> -> 0 `i `uc
+]
+[; ;function.h: 26: uint8_t topLeft = 0;
+"27
+[v _bottomLeft `uc ~T0 @X0 1 e ]
+[i _bottomLeft
+-> -> 0 `i `uc
+]
+[; ;function.h: 27: uint8_t bottomLeft = 0;
 "30
-[v _rxBuffer `S829 ~T0 @X0 -> 4 `i e ]
-[; ;can.c: 30: struct CANMESSAGE rxBuffer[4];
+[v _filter `S824 ~T0 @X0 1 e ]
+[i _filter
+:U ..
+:U ..
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> -> 0 `i `l `ul
+-> -> 0 `i `uc
+..
+..
+]
+[; ;function.h: 30: struct CANFILTER filter = { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0};
 "31
-[v _rxBufferPtrIn `uc ~T0 @X0 1 e ]
-[; ;can.c: 31: uint8_t rxBufferPtrIn;
+[v _message `S825 ~T0 @X0 1 e ]
+[i _message
+:U ..
+:U ..
+-> -> 0 `i `uc
+-> -> -> 0 `i `l `ul
+-> -> 0 `i `uc
+:U ..
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+..
+]
+[; ;function.h: 31: struct CANMESSAGE message = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
 "32
-[v _rxBufferPtrOut `uc ~T0 @X0 1 e ]
-[; ;can.c: 32: uint8_t rxBufferPtrOut;
-"33
-[v _rxBufferCount `uc ~T0 @X0 1 e ]
-[; ;can.c: 33: uint8_t rxBufferCount;
-"35
-[v _txBuffer `S829 ~T0 @X0 -> 4 `i e ]
-[; ;can.c: 35: struct CANMESSAGE txBuffer[4];
-"36
-[v _txBufferPtrIn `uc ~T0 @X0 1 e ]
-[; ;can.c: 36: uint8_t txBufferPtrIn;
-"37
-[v _txBufferPtrOut `uc ~T0 @X0 1 e ]
-[; ;can.c: 37: uint8_t txBufferPtrOut;
-"38
-[v _txBufferCount `uc ~T0 @X0 1 e ]
-[; ;can.c: 38: uint8_t txBufferCount;
-"40
-[v _nbTx0 `Vuc ~T0 @X0 1 e ]
-[i _nbTx0
+[v _messageTx `S825 ~T0 @X0 1 e ]
+[i _messageTx
+:U ..
+:U ..
 -> -> 0 `i `uc
-]
-[; ;can.c: 40: volatile uint8_t nbTx0 = 0;
-"41
-[v _nbTx1 `Vuc ~T0 @X0 1 e ]
-[i _nbTx1
+-> -> -> 0 `i `l `ul
 -> -> 0 `i `uc
-]
-[; ;can.c: 41: volatile uint8_t nbTx1 = 0;
-"42
-[v _nbTx2 `Vuc ~T0 @X0 1 e ]
-[i _nbTx2
+:U ..
 -> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+..
 ]
-[; ;can.c: 42: volatile uint8_t nbTx2 = 0;
-"50
-[v _Can_Isr `(v ~T0 @X0 1 ef ]
-"51
+[; ;function.h: 32: struct CANMESSAGE messageTx = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
+[v F8001 `uc ~T0 @X0 -> 12 `i t ]
+"39
+[v _conflicts `F8001 ~T0 @X0 -> 12 `i e ]
+[; ;function.h: 39: uint8_t conflicts[12][12];
+[; ;function.h: 41: void init(void);
+[; ;function.h: 42: uint8_t readID(void);
+[; ;function.h: 43: void readConflictInfo(void);
+[; ;function.h: 44: void resetData(void);
+[; ;function.h: 45: void sendTrafficLight(uint8_t , uint8_t );
+[; ;function.h: 46: void sendPedestrianLight(uint8_t , uint8_t);
+[; ;function.h: 47: void sendWarningLight(uint8_t trafficLight , uint8_t state);
+[; ;function.h: 48: uint8_t requestPed(uint8_t ped);
+"5 logic.c
+[v _initLogic `(v ~T0 @X0 1 ef ]
+"6
 {
-[; ;can.c: 50: void Can_Isr(void)
-[; ;can.c: 51: {
-[e :U _Can_Isr ]
+[; ;logic.c: 5: void initLogic()
+[; ;logic.c: 6: {
+[e :U _initLogic ]
 [f ]
-"52
-[v F8234 `uc ~T0 @X0 1 s nbTxBuf ]
-[i F8234
--> -> 3 `i `uc
-]
-"53
-[v _retCode `uc ~T0 @X0 1 a ]
-[; ;can.c: 52: static uint8_t nbTxBuf=3;
-[; ;can.c: 53: uint8_t retCode;
-[; ;can.c: 55: retCode = Can_GetStatus();
-"55
-[e = _retCode ( _Can_GetStatus ..  ]
-[; ;can.c: 57: if((retCode & 0x03) != 0)
-"57
-[e $ ! != & -> _retCode `i -> 3 `i -> 0 `i 831  ]
-[; ;can.c: 58: {
-"58
+[; ;logic.c: 7: for(uint8_t i = 0; i < 12; i++)
+"7
 {
-[; ;can.c: 59: Can_ReadInBuffer();
-"59
-[e ( _Can_ReadInBuffer ..  ]
-"60
-}
-[e :U 831 ]
-[; ;can.c: 60: }
-[; ;can.c: 62: if((retCode & 0x1C) != 0)
-"62
-[e $ ! != & -> _retCode `i -> 28 `i -> 0 `i 832  ]
-[; ;can.c: 63: {
-"63
-{
-[; ;can.c: 64: if((retCode & 0x10) != 0)
-"64
-[e $ ! != & -> _retCode `i -> 16 `i -> 0 `i 833  ]
-[; ;can.c: 65: {
-"65
-{
-[; ;can.c: 66: nbTxBuf++;
-"66
-[e ++ F8234 -> -> 1 `i `uc ]
-"67
-}
-[e :U 833 ]
-[; ;can.c: 67: }
-[; ;can.c: 68: if((retCode & 0x08) != 0)
-"68
-[e $ ! != & -> _retCode `i -> 8 `i -> 0 `i 834  ]
-[; ;can.c: 69: {
-"69
-{
-[; ;can.c: 70: nbTxBuf++;
-"70
-[e ++ F8234 -> -> 1 `i `uc ]
-"71
-}
-[e :U 834 ]
-[; ;can.c: 71: }
-[; ;can.c: 72: if((retCode & 0x04) != 0)
-"72
-[e $ ! != & -> _retCode `i -> 4 `i -> 0 `i 835  ]
-[; ;can.c: 73: {
-"73
-{
-[; ;can.c: 74: nbTxBuf++;
-"74
-[e ++ F8234 -> -> 1 `i `uc ]
-"75
-}
-[e :U 835 ]
-"76
-}
-[e :U 832 ]
-[; ;can.c: 75: }
-[; ;can.c: 76: }
-[; ;can.c: 78: while((Can_OutBufferStatus() != 0) && (nbTxBuf != 0))
-"78
-[e $U 836  ]
-[e :U 837 ]
-[; ;can.c: 79: {
-"79
-{
-[; ;can.c: 80: Can_WriteOutBuffer();
-"80
-[e ( _Can_WriteOutBuffer ..  ]
-[; ;can.c: 81: nbTxBuf--;
-"81
-[e -- F8234 -> -> 1 `i `uc ]
-"82
-}
-[e :U 836 ]
-"78
-[e $ && != -> ( _Can_OutBufferStatus ..  `i -> 0 `i != -> F8234 `i -> 0 `i 837  ]
-[e :U 838 ]
-[; ;can.c: 82: }
-[; ;can.c: 84: }
-"84
-[e :UE 830 ]
-}
-"94
-[v _Can_ReadInBuffer `(uc ~T0 @X0 1 sf ]
-"95
-{
-[; ;can.c: 94: static uint8_t Can_ReadInBuffer(void)
-[; ;can.c: 95: {
-[e :U _Can_ReadInBuffer ]
-[f ]
-"96
 [v _i `uc ~T0 @X0 1 a ]
-"97
-[v _error `uc ~T0 @X0 1 a ]
-[; ;can.c: 96: uint8_t i;
-[; ;can.c: 97: uint8_t error=0;
-[e = _error -> -> 0 `i `uc ]
-"98
-[v _rdStatus `uc ~T0 @X0 1 a ]
-[; ;can.c: 98: uint8_t rdStatus;
-[; ;can.c: 100: for(i=0;i<2;i++)
-"100
-{
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 2 `i 840  ]
-[e $U 841  ]
-"101
+[e $ < -> _i `i -> 12 `i 827  ]
+[e $U 828  ]
+"8
+[e :U 827 ]
+[; ;logic.c: 8: {
+{
+[; ;logic.c: 9: durationLights[i] = 0;
+"9
+[e = *U + &U _durationLights * -> _i `ux -> -> # *U &U _durationLights `ui `ux -> -> 0 `i `uc ]
+[; ;logic.c: 10: colorLights[i] = 0;
+"10
+[e = *U + &U _colorLights * -> _i `ux -> -> # *U &U _colorLights `ui `ux -> -> 0 `i `uc ]
+[; ;logic.c: 11: occupancyPaths[i] = 0;
+"11
+[e = *U + &U _occupancyPaths * -> _i `ux -> -> # *U &U _occupancyPaths `ui `ux -> -> 0 `i `uc ]
+[; ;logic.c: 12: priorityUser[i] = 255;
+"12
+[e = *U + &U _priorityUser * -> _i `ux -> -> # *U &U _priorityUser `ui `ux -> -> 255 `i `uc ]
+"13
+}
+"7
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 12 `i 827  ]
+[e :U 828 ]
+"13
+}
+[; ;logic.c: 13: }
+[; ;logic.c: 14: }
+"14
+[e :UE 826 ]
+}
+"16
+[v _firstRound `(v ~T0 @X0 1 ef ]
+"17
+{
+[; ;logic.c: 16: void firstRound()
+[; ;logic.c: 17: {
+[e :U _firstRound ]
+[f ]
+[; ;logic.c: 18: for(uint8_t i = 0; i < 12; i++)
+"18
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 12 `i 831  ]
+[e $U 832  ]
+"19
+[e :U 831 ]
+[; ;logic.c: 19: {
+{
+"20
+[v _color `uc ~T0 @X0 1 a ]
+[; ;logic.c: 20: uint8_t color = colorLights[i];
+[e = _color *U + &U _colorLights * -> _i `ux -> -> # *U &U _colorLights `ui `ux ]
+"21
+[v _occupancy `uc ~T0 @X0 1 a ]
+[; ;logic.c: 21: uint8_t occupancy = occupancyPaths[i];
+[e = _occupancy *U + &U _occupancyPaths * -> _i `ux -> -> # *U &U _occupancyPaths `ui `ux ]
+"22
+[v _duration `uc ~T0 @X0 1 a ]
+[; ;logic.c: 22: uint8_t duration = durationLights[i];
+[e = _duration *U + &U _durationLights * -> _i `ux -> -> # *U &U _durationLights `ui `ux ]
+[; ;logic.c: 25: switch (color)
+"25
+[e $U 835  ]
+[; ;logic.c: 26: {
+"26
+{
+[; ;logic.c: 27: case 0 :
+"27
+[e :U 836 ]
+[; ;logic.c: 29: break;
+"29
+[e $U 834  ]
+[; ;logic.c: 31: case 1:
+"31
+[e :U 837 ]
+[; ;logic.c: 32: if(i<8)
+"32
+[e $ ! < -> _i `i -> 8 `i 838  ]
+[; ;logic.c: 33: {
+"33
+{
+[; ;logic.c: 34: if(duration == 5)
+"34
+[e $ ! == -> _duration `i -> 5 `i 839  ]
+[; ;logic.c: 35: {
+"35
+{
+[; ;logic.c: 37: setLight(i,0);
+"37
+[e ( _setLight (2 , _i -> -> 0 `i `uc ]
+"38
+}
+[e :U 839 ]
+"39
+}
+[; ;logic.c: 38: }
+[; ;logic.c: 39: }
+[e $U 840  ]
+"40
+[e :U 838 ]
+[; ;logic.c: 40: else
+[; ;logic.c: 41: {
+"41
+{
+[; ;logic.c: 42: if(duration == 8)
+"42
+[e $ ! == -> _duration `i -> 8 `i 841  ]
+[; ;logic.c: 43: {
+"43
+{
+[; ;logic.c: 45: setLight(i,0);
+"45
+[e ( _setLight (2 , _i -> -> 0 `i `uc ]
+"46
+}
+[e :U 841 ]
+"47
+}
 [e :U 840 ]
-[; ;can.c: 101: {
+[; ;logic.c: 46: }
+[; ;logic.c: 47: }
+[; ;logic.c: 48: break;
+"48
+[e $U 834  ]
+[; ;logic.c: 50: case 2:
+"50
+[e :U 842 ]
+[; ;logic.c: 52: if(i > 7 && duration == 4)
+"52
+[e $ ! && > -> _i `i -> 7 `i == -> _duration `i -> 4 `i 843  ]
+[; ;logic.c: 53: {
+"53
 {
-[; ;can.c: 102: rdStatus = Can_ReadMessage(&rxBuffer[rxBufferPtrIn]);
-"102
-[e = _rdStatus ( _Can_ReadMessage (1 &U *U + &U _rxBuffer * -> _rxBufferPtrIn `ux -> -> # *U &U _rxBuffer `ui `ux ]
-[; ;can.c: 103: if((rxBufferCount) < 4)
-"103
-[e $ ! < -> _rxBufferCount `i -> 4 `i 843  ]
-[; ;can.c: 104: {
-"104
+[; ;logic.c: 55: occupancyPaths[i] = requestPed(i);
+"55
+[e = *U + &U _occupancyPaths * -> _i `ux -> -> # *U &U _occupancyPaths `ui `ux ( _requestPed (1 _i ]
+[; ;logic.c: 56: occupancy = occupancyPaths[i];
+"56
+[e = _occupancy *U + &U _occupancyPaths * -> _i `ux -> -> # *U &U _occupancyPaths `ui `ux ]
+"57
+}
+[e :U 843 ]
+[; ;logic.c: 57: }
+[; ;logic.c: 58: if(duration == 4 && occupancy == 0)
+"58
+[e $ ! && == -> _duration `i -> 4 `i == -> _occupancy `i -> 0 `i 844  ]
+[; ;logic.c: 59: {
+"59
 {
-[; ;can.c: 105: if(rdStatus == (0))
-"105
-[e $ ! == -> _rdStatus `i -> 0 `i 844  ]
-[; ;can.c: 106: {
-"106
-{
-[; ;can.c: 107: rxBufferCount++;
-"107
-[e ++ _rxBufferCount -> -> 1 `i `uc ]
-[; ;can.c: 108: rxBufferPtrIn = (rxBufferPtrIn + 1) % 4;
-"108
-[e = _rxBufferPtrIn -> % + -> _rxBufferPtrIn `i -> 1 `i -> 4 `i `uc ]
-"109
+[; ;logic.c: 61: setLight(i,1);
+"61
+[e ( _setLight (2 , _i -> -> 1 `i `uc ]
+"63
 }
 [e :U 844 ]
-"110
-}
-[; ;can.c: 109: }
-[; ;can.c: 110: }
-[e $U 845  ]
-"111
-[e :U 843 ]
-[; ;can.c: 111: else
-[; ;can.c: 112: {
-"112
-{
-[; ;can.c: 113: error = 1;
-"113
-[e = _error -> -> 1 `i `uc ]
-"114
-}
+[; ;logic.c: 63: }
+[; ;logic.c: 64: break;
+"64
+[e $U 834  ]
+[; ;logic.c: 66: case 3:
+"66
 [e :U 845 ]
-"115
+[; ;logic.c: 67: if(duration == 2)
+"67
+[e $ ! == -> _duration `i -> 2 `i 846  ]
+[; ;logic.c: 68: {
+"68
+{
+[; ;logic.c: 70: setLight(i,2);
+"70
+[e ( _setLight (2 , _i -> -> 2 `i `uc ]
+"71
 }
-"100
+[e :U 846 ]
+[; ;logic.c: 71: }
+[; ;logic.c: 72: break;
+"72
+[e $U 834  ]
+[; ;logic.c: 74: default:
+"74
+[e :U 847 ]
+[; ;logic.c: 75: break;
+"75
+[e $U 834  ]
+"77
+}
+[; ;logic.c: 77: }
+[e $U 834  ]
+"25
+[e :U 835 ]
+[e [\ _color , $ -> -> 0 `i `uc 836
+ , $ -> -> 1 `i `uc 837
+ , $ -> -> 2 `i `uc 842
+ , $ -> -> 3 `i `uc 845
+ 847 ]
+"77
+[e :U 834 ]
+"78
+}
+"18
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 2 `i 840  ]
-[e :U 841 ]
-"115
+[e $ < -> _i `i -> 12 `i 831  ]
+[e :U 832 ]
+"78
 }
-[; ;can.c: 114: }
-[; ;can.c: 115: }
-[; ;can.c: 116: return error;
+[; ;logic.c: 78: }
+[; ;logic.c: 79: }
+"79
+[e :UE 830 ]
+}
+"81
+[v _secondRound `(v ~T0 @X0 1 ef ]
+"82
+{
+[; ;logic.c: 81: void secondRound()
+[; ;logic.c: 82: {
+[e :U _secondRound ]
+[f ]
+[; ;logic.c: 84: for(uint8_t i = 0; i < numberWaitingUsers; i++)
+"84
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 852  ]
+"85
+[e :U 849 ]
+[; ;logic.c: 85: {
+{
+"87
+[v _waitingUser `uc ~T0 @X0 1 a ]
+[; ;logic.c: 87: uint8_t waitingUser = priorityUser[i];
+[e = _waitingUser *U + &U _priorityUser * -> _i `ux -> -> # *U &U _priorityUser `ui `ux ]
+[; ;logic.c: 90: for(uint8_t j = 0; j < 12; j++)
+"90
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 12 `i 853  ]
+[e $U 854  ]
+"91
+[e :U 853 ]
+[; ;logic.c: 91: {
+{
+"93
+[v _conflict `uc ~T0 @X0 1 a ]
+[; ;logic.c: 93: uint8_t conflict = getConflict(waitingUser, j);
+[e = _conflict ( _getConflict (2 , _waitingUser _j ]
+[; ;logic.c: 96: if(conflict == 0)
+"96
+[e $ ! == -> _conflict `i -> 0 `i 856  ]
+[; ;logic.c: 97: {
+"97
+{
+[; ;logic.c: 98: if( colorLights[waitingUser] == 0 && durationLights[waitingUser] == 2)
+"98
+[e $ ! && == -> *U + &U _colorLights * -> _waitingUser `ux -> -> # *U &U _colorLights `ui `ux `i -> 0 `i == -> *U + &U _durationLights * -> _waitingUser `ux -> -> # *U &U _durationLights `ui `ux `i -> 2 `i 857  ]
+[; ;logic.c: 99: {
+"99
+{
+[; ;logic.c: 101: setLight(waitingUser, 3);
+"101
+[e ( _setLight (2 , _waitingUser -> -> 3 `i `uc ]
+"102
+}
+[e :U 857 ]
+"103
+}
+[; ;logic.c: 102: }
+[; ;logic.c: 103: }
+[e $U 858  ]
+"106
+[e :U 856 ]
+[; ;logic.c: 106: else if(conflict == 2)
+[e $ ! == -> _conflict `i -> 2 `i 859  ]
+[; ;logic.c: 107: {
+"107
+{
+[; ;logic.c: 108: if(colorLights[waitingUser] == 0 && durationLights[waitingUser] == 2)
+"108
+[e $ ! && == -> *U + &U _colorLights * -> _waitingUser `ux -> -> # *U &U _colorLights `ui `ux `i -> 0 `i == -> *U + &U _durationLights * -> _waitingUser `ux -> -> # *U &U _durationLights `ui `ux `i -> 2 `i 860  ]
+[; ;logic.c: 109: {
+"109
+{
+[; ;logic.c: 111: setWarningLight(j-8, 1);
+"111
+[e ( _setWarningLight (2 , -> - -> _j `i -> 8 `i `uc -> -> 1 `i `uc ]
+[; ;logic.c: 114: setLight(waitingUser, 3);
+"114
+[e ( _setLight (2 , _waitingUser -> -> 3 `i `uc ]
 "116
-[e ) _error ]
-[e $UE 839  ]
-[; ;can.c: 117: }
+}
+[e :U 860 ]
 "117
-[e :UE 839 ]
 }
+[; ;logic.c: 116: }
+[; ;logic.c: 117: }
+[e $U 861  ]
+"120
+[e :U 859 ]
+[; ;logic.c: 120: else if(conflict == 1)
+[e $ ! == -> _conflict `i -> 1 `i 862  ]
+[; ;logic.c: 121: {
+"121
+{
+[; ;logic.c: 123: if(colorLights[j] == 2 && durationLights[j] == 4)
+"123
+[e $ ! && == -> *U + &U _colorLights * -> _j `ux -> -> # *U &U _colorLights `ui `ux `i -> 2 `i == -> *U + &U _durationLights * -> _j `ux -> -> # *U &U _durationLights `ui `ux `i -> 4 `i 863  ]
+[; ;logic.c: 124: {
+"124
+{
+[; ;logic.c: 126: setLight(j, 1);
+"126
+[e ( _setLight (2 , _j -> -> 1 `i `uc ]
+[; ;logic.c: 127: shiftPriority();
 "127
-[v _Can_WriteOutBuffer `(uc ~T0 @X0 1 sf ]
+[e ( _shiftPriority ..  ]
 "128
-{
-[; ;can.c: 127: static uint8_t Can_WriteOutBuffer(void)
-[; ;can.c: 128: {
-[e :U _Can_WriteOutBuffer ]
-[f ]
-[; ;can.c: 129: Can_SendMessage(&txBuffer[txBufferPtrOut]);
-"129
-[e ( _Can_SendMessage (1 -> &U *U + &U _txBuffer * -> _txBufferPtrOut `ux -> -> # *U &U _txBuffer `ui `ux `*CS829 ]
-[; ;can.c: 130: txBufferPtrOut = (txBufferPtrOut + 1) % 4;
+}
+[; ;logic.c: 128: }
+[e $U 864  ]
 "130
-[e = _txBufferPtrOut -> % + -> _txBufferPtrOut `i -> 1 `i -> 4 `i `uc ]
-[; ;can.c: 131: txBufferCount--;
+[e :U 863 ]
+[; ;logic.c: 130: else if(colorLights[j] == 0 && durationLights[j] == 2 && colorLights[waitingUser] == 0 && durationLights[waitingUser] == 2)
+[e $ ! && && && == -> *U + &U _colorLights * -> _j `ux -> -> # *U &U _colorLights `ui `ux `i -> 0 `i == -> *U + &U _durationLights * -> _j `ux -> -> # *U &U _durationLights `ui `ux `i -> 2 `i == -> *U + &U _colorLights * -> _waitingUser `ux -> -> # *U &U _colorLights `ui `ux `i -> 0 `i == -> *U + &U _durationLights * -> _waitingUser `ux -> -> # *U &U _durationLights `ui `ux `i -> 2 `i 865  ]
+[; ;logic.c: 131: {
 "131
-[e -- _txBufferCount -> -> 1 `i `uc ]
-[; ;can.c: 132: return 0;
-"132
-[e ) -> -> 0 `i `uc ]
-[e $UE 846  ]
-[; ;can.c: 133: }
+{
+[; ;logic.c: 133: setLight(waitingUser, 3);
 "133
-[e :UE 846 ]
+[e ( _setLight (2 , _waitingUser -> -> 3 `i `uc ]
+"134
 }
-"143
-[v _Can_InBufferStatus `(uc ~T0 @X0 1 ef ]
-"144
-{
-[; ;can.c: 143: uint8_t Can_InBufferStatus(void)
-[; ;can.c: 144: {
-[e :U _Can_InBufferStatus ]
-[f ]
-[; ;can.c: 145: return rxBufferCount;
-"145
-[e ) _rxBufferCount ]
-[e $UE 847  ]
-[; ;can.c: 146: }
-"146
-[e :UE 847 ]
+[e :U 865 ]
+"135
+[e :U 864 ]
 }
-"156
-[v _Can_OutBufferStatus `(uc ~T0 @X0 1 ef ]
-"157
-{
-[; ;can.c: 156: uint8_t Can_OutBufferStatus(void)
-[; ;can.c: 157: {
-[e :U _Can_OutBufferStatus ]
-[f ]
-[; ;can.c: 158: return txBufferCount;
-"158
-[e ) _txBufferCount ]
-[e $UE 848  ]
-[; ;can.c: 159: }
-"159
+[e :U 862 ]
+"136
+[e :U 861 ]
+[e :U 858 ]
+}
+"90
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 12 `i 853  ]
+[e :U 854 ]
+"136
+}
+"137
+}
+"84
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 852 ]
+[e $ < -> _i `i -> _numberWaitingUsers `i 849  ]
+[e :U 850 ]
+"137
+}
+[; ;logic.c: 134: }
+[; ;logic.c: 135: }
+[; ;logic.c: 136: }
+[; ;logic.c: 137: }
+[; ;logic.c: 138: }
+"138
 [e :UE 848 ]
 }
-"169
-[v _Can_GetMessage `(uc ~T0 @X0 1 ef1`*S829 ]
-"170
+"140
+[v _onTimeout `(v ~T0 @X0 1 ef ]
+"141
 {
-[; ;can.c: 169: uint8_t Can_GetMessage(struct CANMESSAGE * msgPtr)
-[; ;can.c: 170: {
-[e :U _Can_GetMessage ]
-"169
-[v _msgPtr `*S829 ~T0 @X0 1 r1 ]
-"170
+[; ;logic.c: 140: void onTimeout()
+[; ;logic.c: 141: {
+[e :U _onTimeout ]
 [f ]
-"171
+[; ;logic.c: 142: for(uint8_t i = 0; i < 12; i++)
+"142
+{
 [v _i `uc ~T0 @X0 1 a ]
-[; ;can.c: 171: uint8_t i;
-[; ;can.c: 172: if(rxBufferCount > 0)
-"172
-[e $ ! > -> _rxBufferCount `i -> 0 `i 850  ]
-[; ;can.c: 173: {
-"173
-{
-[; ;can.c: 174: msgPtr->dlc = rxBuffer[rxBufferPtrOut].dlc;
-"174
-[e = . *U _msgPtr 2 . *U + &U _rxBuffer * -> _rxBufferPtrOut `ux -> -> # *U &U _rxBuffer `ui `ux 2 ]
-[; ;can.c: 175: msgPtr->extended_identifier = rxBuffer[rxBufferPtrOut].extended_identifier;
-"175
-[e = . *U _msgPtr 0 . *U + &U _rxBuffer * -> _rxBufferPtrOut `ux -> -> # *U &U _rxBuffer `ui `ux 0 ]
-[; ;can.c: 176: msgPtr->filhit = rxBuffer[rxBufferPtrOut].filhit;
-"176
-[e = . *U _msgPtr 5 . *U + &U _rxBuffer * -> _rxBufferPtrOut `ux -> -> # *U &U _rxBuffer `ui `ux 5 ]
-[; ;can.c: 177: msgPtr->identifier = rxBuffer[rxBufferPtrOut].identifier;
-"177
-[e = . *U _msgPtr 1 . *U + &U _rxBuffer * -> _rxBufferPtrOut `ux -> -> # *U &U _rxBuffer `ui `ux 1 ]
-[; ;can.c: 178: msgPtr->rtr = rxBuffer[rxBufferPtrOut].rtr;
-"178
-[e = . *U _msgPtr 4 . *U + &U _rxBuffer * -> _rxBufferPtrOut `ux -> -> # *U &U _rxBuffer `ui `ux 4 ]
-[; ;can.c: 179: for(i=0;i< msgPtr->dlc;i++)
-"179
-{
 [e = _i -> -> 0 `i `uc ]
-[e $U 854  ]
-"180
-[e :U 851 ]
-[; ;can.c: 180: {
-{
-[; ;can.c: 181: msgPtr->dta[i] = rxBuffer[rxBufferPtrOut].dta[i];
-"181
-[e = *U + &U . *U _msgPtr 3 * -> _i `ux -> -> # *U &U . *U _msgPtr 3 `ui `ux *U + &U . *U + &U _rxBuffer * -> _rxBufferPtrOut `ux -> -> # *U &U _rxBuffer `ui `ux 3 * -> _i `ux -> -> # *U &U . *U + &U _rxBuffer * -> _rxBufferPtrOut `ux -> -> # *U &U _rxBuffer `ui `ux 3 `ui `ux ]
-"182
-}
-"179
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 854 ]
-[e $ < -> _i `i -> . *U _msgPtr 2 `i 851  ]
-[e :U 852 ]
-"182
-}
-[; ;can.c: 182: }
-[; ;can.c: 183: INT3IE = 0;
-"183
-[e = _INT3IE -> -> 0 `i `b ]
-[; ;can.c: 184: rxBufferPtrOut = (rxBufferPtrOut + 1) % 4;
-"184
-[e = _rxBufferPtrOut -> % + -> _rxBufferPtrOut `i -> 1 `i -> 4 `i `uc ]
-[; ;can.c: 185: rxBufferCount--;
-"185
-[e -- _rxBufferCount -> -> 1 `i `uc ]
-[; ;can.c: 186: INT3IE = 1;
-"186
-[e = _INT3IE -> -> 1 `i `b ]
-[; ;can.c: 187: return 0;
-"187
-[e ) -> -> 0 `i `uc ]
-[e $UE 849  ]
-"188
-}
-[e :U 850 ]
-[; ;can.c: 188: }
-[; ;can.c: 189: return 1;
-"189
-[e ) -> -> 1 `i `uc ]
-[e $UE 849  ]
-[; ;can.c: 190: }
-"190
-[e :UE 849 ]
-}
-"200
-[v _Can_PutMessage `(uc ~T0 @X0 1 ef1`*S829 ]
-"201
-{
-[; ;can.c: 200: uint8_t Can_PutMessage(struct CANMESSAGE * msgPtr)
-[; ;can.c: 201: {
-[e :U _Can_PutMessage ]
-"200
-[v _msgPtr `*S829 ~T0 @X0 1 r1 ]
-"201
-[f ]
-"202
-[v _i `uc ~T0 @X0 1 a ]
-[; ;can.c: 202: uint8_t i;
-[; ;can.c: 204: if((txBufferCount) < 4)
-"204
-[e $ ! < -> _txBufferCount `i -> 4 `i 856  ]
-[; ;can.c: 205: {
-"205
-{
-[; ;can.c: 206: txBuffer[txBufferPtrIn].dlc = msgPtr->dlc;
-"206
-[e = . *U + &U _txBuffer * -> _txBufferPtrIn `ux -> -> # *U &U _txBuffer `ui `ux 2 . *U _msgPtr 2 ]
-[; ;can.c: 207: txBuffer[txBufferPtrIn].extended_identifier = msgPtr->extended_identifier;
-"207
-[e = . *U + &U _txBuffer * -> _txBufferPtrIn `ux -> -> # *U &U _txBuffer `ui `ux 0 . *U _msgPtr 0 ]
-[; ;can.c: 208: txBuffer[txBufferPtrIn].filhit = msgPtr->filhit;
-"208
-[e = . *U + &U _txBuffer * -> _txBufferPtrIn `ux -> -> # *U &U _txBuffer `ui `ux 5 . *U _msgPtr 5 ]
-[; ;can.c: 209: txBuffer[txBufferPtrIn].identifier = msgPtr->identifier;
-"209
-[e = . *U + &U _txBuffer * -> _txBufferPtrIn `ux -> -> # *U &U _txBuffer `ui `ux 1 . *U _msgPtr 1 ]
-[; ;can.c: 210: txBuffer[txBufferPtrIn].rtr = msgPtr->rtr;
-"210
-[e = . *U + &U _txBuffer * -> _txBufferPtrIn `ux -> -> # *U &U _txBuffer `ui `ux 4 . *U _msgPtr 4 ]
-[; ;can.c: 211: txBuffer[txBufferPtrIn].txPrio = msgPtr->txPrio;
-"211
-[e = . *U + &U _txBuffer * -> _txBufferPtrIn `ux -> -> # *U &U _txBuffer `ui `ux 6 . *U _msgPtr 6 ]
-[; ;can.c: 212: for(i=0;i< msgPtr->dlc;i++)
-"212
-{
-[e = _i -> -> 0 `i `uc ]
-[e $U 860  ]
-"213
-[e :U 857 ]
-[; ;can.c: 213: {
-{
-[; ;can.c: 214: txBuffer[txBufferPtrIn].dta[i] = msgPtr->dta[i];
-"214
-[e = *U + &U . *U + &U _txBuffer * -> _txBufferPtrIn `ux -> -> # *U &U _txBuffer `ui `ux 3 * -> _i `ux -> -> # *U &U . *U + &U _txBuffer * -> _txBufferPtrIn `ux -> -> # *U &U _txBuffer `ui `ux 3 `ui `ux *U + &U . *U _msgPtr 3 * -> _i `ux -> -> # *U &U . *U _msgPtr 3 `ui `ux ]
-"215
-}
-"212
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 860 ]
-[e $ < -> _i `i -> . *U _msgPtr 2 `i 857  ]
-[e :U 858 ]
-"215
-}
-[; ;can.c: 215: }
-[; ;can.c: 216: INT3IE = 0;
-"216
-[e = _INT3IE -> -> 0 `i `b ]
-[; ;can.c: 217: txBufferCount++;
-"217
-[e ++ _txBufferCount -> -> 1 `i `uc ]
-[; ;can.c: 218: txBufferPtrIn = (txBufferPtrIn + 1) % 4;
-"218
-[e = _txBufferPtrIn -> % + -> _txBufferPtrIn `i -> 1 `i -> 4 `i `uc ]
-[; ;can.c: 219: INT3IE = 1;
-"219
-[e = _INT3IE -> -> 1 `i `b ]
-[; ;can.c: 220: INT3IF = 1;
-"220
-[e = _INT3IF -> -> 1 `i `b ]
-[; ;can.c: 221: return 0;
-"221
-[e ) -> -> 0 `i `uc ]
-[e $UE 855  ]
-"222
-}
-[; ;can.c: 222: }
-[e $U 861  ]
-"223
-[e :U 856 ]
-[; ;can.c: 223: else
-[; ;can.c: 224: {
-"224
-{
-[; ;can.c: 225: return 1;
-"225
-[e ) -> -> 1 `i `uc ]
-[e $UE 855  ]
-"226
-}
-[e :U 861 ]
-[; ;can.c: 226: }
-[; ;can.c: 227: }
-"227
-[e :UE 855 ]
-}
-"237
-[v _Can_Init `(v ~T0 @X0 1 ef2`*CS827`*S828 ]
-"239
-{
-[; ;can.c: 237: void Can_Init(const struct CANSPEED * speedCfg,
-[; ;can.c: 238: struct CANFILTER * filterCfg)
-[; ;can.c: 239: {
-[e :U _Can_Init ]
-"237
-[v _speedCfg `*CS827 ~T0 @X0 1 r1 ]
-"238
-[v _filterCfg `*S828 ~T0 @X0 1 r2 ]
-"239
-[f ]
-[; ;can.c: 240: TRISF6 = 0;
-"240
-[e = _TRISF6 -> -> 0 `i `b ]
-[; ;can.c: 241: TRISF7 = 0;
-"241
-[e = _TRISF7 -> -> 0 `i `b ]
-[; ;can.c: 242: LATF6 = 1;
-"242
-[e = _LATF6 -> -> 1 `i `b ]
-[; ;can.c: 243: LATF7 = 0;
-"243
-[e = _LATF7 -> -> 0 `i `b ]
-[; ;can.c: 244: TRISC4 = 1;
-"244
-[e = _TRISC4 -> -> 1 `i `b ]
-[; ;can.c: 245: TRISC5 = 0;
-"245
-[e = _TRISC5 -> -> 0 `i `b ]
-[; ;can.c: 246: TRISC3 = 0;
-"246
-[e = _TRISC3 -> -> 0 `i `b ]
-[; ;can.c: 247: TRISD1 = 0;
-"247
-[e = _TRISD1 -> -> 0 `i `b ]
-[; ;can.c: 251: CKE1 = 0;
-"251
-[e = _CKE1 -> -> 0 `i `b ]
-[; ;can.c: 252: CKP1 = 1;
-"252
-[e = _CKP1 -> -> 1 `i `b ]
-[; ;can.c: 253: SSPCON1 = 0b00111010;
-"253
-[e = _SSPCON1 -> -> 58 `i `uc ]
-[; ;can.c: 254: SSPEN1 = 1;
-"254
-[e = _SSPEN1 -> -> 1 `i `b ]
-[; ;can.c: 258: Mcp2515_Init(speedCfg,filterCfg);
-"258
-[e ( _Mcp2515_Init (2 , _speedCfg _filterCfg ]
-[; ;can.c: 259: INT3IE = 1;
-"259
-[e = _INT3IE -> -> 1 `i `b ]
-[; ;can.c: 260: INTEDG3 = 0;
-"260
-[e = _INTEDG3 -> -> 0 `i `b ]
-[; ;can.c: 262: }
-"262
-[e :UE 862 ]
-}
-"272
-[v _Can_PowerOff `(v ~T0 @X0 1 ef ]
-"273
-{
-[; ;can.c: 272: void Can_PowerOff(void)
-[; ;can.c: 273: {
-[e :U _Can_PowerOff ]
-[f ]
-[; ;can.c: 274: Mcp2515Sleep();
-"274
-[e ( _Mcp2515Sleep ..  ]
-[; ;can.c: 275: LATF7 = 1;
-"275
-[e = _LATF7 -> -> 1 `i `b ]
-[; ;can.c: 276: }
-"276
-[e :UE 863 ]
-}
-"288
-[v _SPIRW `(v ~T0 @X0 1 sf3`*Cuc`*uc`ul ]
-"289
-{
-[; ;can.c: 288: static void SPIRW(const uint8_t *tx, uint8_t *rx, uint32_t size)
-[; ;can.c: 289: {
-[e :U _SPIRW ]
-"288
-[v _tx `*Cuc ~T0 @X0 1 r1 ]
-[v _rx `*uc ~T0 @X0 1 r2 ]
-[v _size `ul ~T0 @X0 1 r3 ]
-"289
-[f ]
-"290
-[v _i `ul ~T0 @X0 1 a ]
-[; ;can.c: 290: uint32_t i;
-[; ;can.c: 292: SSPCON1 = 0b00111010;
-"292
-[e = _SSPCON1 -> -> 58 `i `uc ]
-[; ;can.c: 294: LATD1 = 0;
-"294
-[e = _LATD1 -> -> 0 `i `b ]
-[; ;can.c: 295: for(i=0;i<size;i++)
-"295
-{
-[e = _i -> -> -> 0 `i `l `ul ]
+[e $ < -> _i `i -> 12 `i 867  ]
 [e $U 868  ]
-"296
-[e :U 865 ]
-[; ;can.c: 296: {
+"143
+[e :U 867 ]
+[; ;logic.c: 143: {
 {
-[; ;can.c: 297: SSPBUF = tx[i];
-"297
-[e = _SSPBUF *U + _tx * -> _i `ux -> -> # *U _tx `ui `ux ]
-[; ;can.c: 298: while(SSPIF == 0){}
-"298
-[e $U 869  ]
-[e :U 870 ]
-{
+[; ;logic.c: 144: durationLights[i] += 1;
+"144
+[e =+ *U + &U _durationLights * -> _i `ux -> -> # *U &U _durationLights `ui `ux -> -> 1 `i `uc ]
+"145
 }
-[e :U 869 ]
-[e $ == -> _SSPIF `i -> 0 `i 870  ]
-[e :U 871 ]
-[; ;can.c: 299: SSP1IF = 0;
-"299
-[e = _SSP1IF -> -> 0 `i `b ]
-[; ;can.c: 300: if(rx != 0)
-"300
-[e $ ! != _rx -> -> 0 `i `*uc 872  ]
-[; ;can.c: 301: rx[i] = SSPBUF;
-"301
-[e = *U + _rx * -> _i `ux -> -> # *U _rx `ui `ux _SSPBUF ]
-[e :U 872 ]
-"302
-}
-"295
-[e ++ _i -> -> -> 1 `i `l `ul ]
+"142
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 12 `i 867  ]
 [e :U 868 ]
-[e $ < _i _size 865  ]
-[e :U 866 ]
-"302
+"145
 }
-[; ;can.c: 302: }
-[; ;can.c: 303: LATD1 = 1;
-"303
-[e = _LATD1 -> -> 1 `i `b ]
-[; ;can.c: 304: }
-"304
-[e :UE 864 ]
+[; ;logic.c: 145: }
+[; ;logic.c: 146: firstRound();
+"146
+[e ( _firstRound ..  ]
+[; ;logic.c: 147: secondRound();
+"147
+[e ( _secondRound ..  ]
+[; ;logic.c: 148: }
+"148
+[e :UE 866 ]
 }
-"314
-[v _Spi_ReadWrite `(v ~T0 @X0 1 ef2`*uc`ul ]
-"315
+"150
+[v _setLight `(v ~T0 @X0 1 ef2`uc`uc ]
+"151
 {
-[; ;can.c: 314: void Spi_ReadWrite(uint8_t * rx_tx, uint32_t size)
-[; ;can.c: 315: {
-[e :U _Spi_ReadWrite ]
-"314
-[v _rx_tx `*uc ~T0 @X0 1 r1 ]
-[v _size `ul ~T0 @X0 1 r2 ]
-"315
+[; ;logic.c: 150: void setLight(uint8_t light, uint8_t color)
+[; ;logic.c: 151: {
+[e :U _setLight ]
+"150
+[v _light `uc ~T0 @X0 1 r1 ]
+[v _color `uc ~T0 @X0 1 r2 ]
+"151
 [f ]
-[; ;can.c: 316: SPIRW(rx_tx, rx_tx, size);
-"316
-[e ( _SPIRW (3 , , -> _rx_tx `*Cuc _rx_tx _size ]
-[; ;can.c: 317: }
-"317
-[e :UE 873 ]
-}
-"327
-[v _Spi_Write `(v ~T0 @X0 1 ef2`*uc`ul ]
-"328
+[; ;logic.c: 152: durationLights[light] = 0;
+"152
+[e = *U + &U _durationLights * -> _light `ux -> -> # *U &U _durationLights `ui `ux -> -> 0 `i `uc ]
+[; ;logic.c: 153: colorLights[light] = color;
+"153
+[e = *U + &U _colorLights * -> _light `ux -> -> # *U &U _colorLights `ui `ux _color ]
+[; ;logic.c: 156: if(light < 8){
+"156
+[e $ ! < -> _light `i -> 8 `i 871  ]
 {
-[; ;can.c: 327: void Spi_Write(uint8_t * tx, uint32_t size)
-[; ;can.c: 328: {
-[e :U _Spi_Write ]
-"327
-[v _tx `*uc ~T0 @X0 1 r1 ]
-[v _size `ul ~T0 @X0 1 r2 ]
-"328
+[; ;logic.c: 157: sendTrafficLight(light,color);
+"157
+[e ( _sendTrafficLight (2 , _light _color ]
+"158
+}
+[; ;logic.c: 158: }
+[e $U 872  ]
+"159
+[e :U 871 ]
+[; ;logic.c: 159: else if(light > 7 && light < 12){
+[e $ ! && > -> _light `i -> 7 `i < -> _light `i -> 12 `i 873  ]
+{
+[; ;logic.c: 160: sendPedestrianLight((light-8),color);
+"160
+[e ( _sendPedestrianLight (2 , -> - -> _light `i -> 8 `i `uc _color ]
+"161
+}
+[e :U 873 ]
+"164
+[e :U 872 ]
+[; ;logic.c: 161: }
+[; ;logic.c: 164: }
+[e :UE 870 ]
+}
+"166
+[v _setWarningLight `(v ~T0 @X0 1 ef2`uc`uc ]
+"167
+{
+[; ;logic.c: 166: void setWarningLight(uint8_t light, uint8_t state)
+[; ;logic.c: 167: {
+[e :U _setWarningLight ]
+"166
+[v _light `uc ~T0 @X0 1 r1 ]
+[v _state `uc ~T0 @X0 1 r2 ]
+"167
 [f ]
-[; ;can.c: 329: SPIRW(tx, 0, size);
-"329
-[e ( _SPIRW (3 , , -> _tx `*Cuc -> -> 0 `i `*uc _size ]
-[; ;can.c: 330: }
-"330
+[; ;logic.c: 169: sendWarningLight(light,state);
+"169
+[e ( _sendWarningLight (2 , _light _state ]
+[; ;logic.c: 170: }
+"170
 [e :UE 874 ]
 }
-"344
-[v _Can_GetStatus `(uc ~T0 @X0 1 sf ]
-"345
+"172
+[v _setPriority `(v ~T0 @X0 1 ef1`uc ]
+"173
 {
-[; ;can.c: 344: static uint8_t Can_GetStatus(void)
-[; ;can.c: 345: {
-[e :U _Can_GetStatus ]
+[; ;logic.c: 172: void setPriority(uint8_t carPerson)
+[; ;logic.c: 173: {
+[e :U _setPriority ]
+"172
+[v _carPerson `uc ~T0 @X0 1 r1 ]
+"173
 [f ]
-"346
-[v _status `uc ~T0 @X0 1 a ]
-[v F8262 `uc ~T0 @X0 -> 0 `x s ]
-[i F8262
-:U ..
-"347
--> -> 3 `i `uc
--> -> 44 `i `uc
--> -> 0 `i `uc
-..
-]
-[v _msg `uc ~T0 @X0 3  a ]
-[; ;can.c: 346: uint8_t status;
-[; ;can.c: 347: uint8_t msg[]={0x03,0x2C,0};
-[e = _msg F8262 ]
-[v F8264 `uc ~T0 @X0 -> 0 `x s ]
-[i F8264
-:U ..
-"348
--> -> 5 `i `uc
--> -> 44 `i `uc
--> -> 28 `i `uc
--> -> 0 `i `uc
-..
-]
-[v _msg4 `uc ~T0 @X0 4  a ]
-[; ;can.c: 348: uint8_t msg4[]={0x05,0x2C,0x1C,0};
-[e = _msg4 F8264 ]
-[; ;can.c: 350: Spi_ReadWrite(msg,sizeof(msg));
-"350
-[e ( _Spi_ReadWrite (2 , &U _msg -> -> # _msg `ui `ul ]
-[; ;can.c: 351: status = msg[2];
-"351
-[e = _status *U + &U _msg * -> -> -> 2 `i `ui `ux -> -> # *U &U _msg `ui `ux ]
-[; ;can.c: 352: msg4[2] = status & 0x1C;
-"352
-[e = *U + &U _msg4 * -> -> -> 2 `i `ui `ux -> -> # *U &U _msg4 `ui `ux -> & -> _status `i -> 28 `i `uc ]
-[; ;can.c: 353: Spi_ReadWrite(msg4,sizeof(msg4));
-"353
-[e ( _Spi_ReadWrite (2 , &U _msg4 -> -> # _msg4 `ui `ul ]
-[; ;can.c: 354: return status;
-"354
-[e ) _status ]
-[e $UE 875  ]
-[; ;can.c: 355: }
-"355
+[; ;logic.c: 174: if(numberWaitingUsers < 12)
+"174
+[e $ ! < -> _numberWaitingUsers `i -> 12 `i 876  ]
+[; ;logic.c: 175: {
+"175
+{
+[; ;logic.c: 176: priorityUser[numberWaitingUsers] = carPerson;
+"176
+[e = *U + &U _priorityUser * -> _numberWaitingUsers `ux -> -> # *U &U _priorityUser `ui `ux _carPerson ]
+[; ;logic.c: 177: numberWaitingUsers++;
+"177
+[e ++ _numberWaitingUsers -> -> 1 `i `uc ]
+"178
+}
+[e :U 876 ]
+[; ;logic.c: 178: }
+[; ;logic.c: 179: }
+"179
 [e :UE 875 ]
 }
-"367
-[v _Can_ReadMessage `(uc ~T0 @X0 1 sf1`*S829 ]
-"368
+"181
+[v _decrPriority `(v ~T0 @X0 1 ef1`uc ]
+"182
 {
-[; ;can.c: 367: static uint8_t Can_ReadMessage(struct CANMESSAGE *msg)
-[; ;can.c: 368: {
-[e :U _Can_ReadMessage ]
-"367
-[v _msg `*S829 ~T0 @X0 1 r1 ]
-"368
+[; ;logic.c: 181: void decrPriority(uint8_t user)
+[; ;logic.c: 182: {
+[e :U _decrPriority ]
+"181
+[v _user `uc ~T0 @X0 1 r1 ]
+"182
 [f ]
-"369
-[v _buf `uc ~T0 @X0 -> 4 `i a ]
-[; ;can.c: 369: uint8_t buf[4];
-[; ;can.c: 371: buf[0] = 0xA0;
-"371
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 160 `i `uc ]
-[; ;can.c: 372: Spi_ReadWrite(buf,2);
-"372
-[e ( _Spi_ReadWrite (2 , &U _buf -> -> -> 2 `i `l `ul ]
-[; ;can.c: 374: if ( buf[1] & (1<<0) )
-"374
-[e $ ! != & -> *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux `i << -> 1 `i -> 0 `i -> 0 `i 877  ]
-[; ;can.c: 375: {
-"375
+"183
+[v _modified `uc ~T0 @X0 1 a ]
+[; ;logic.c: 183: uint8_t modified = 0;
+[e = _modified -> -> 0 `i `uc ]
+[; ;logic.c: 186: for(uint8_t i = 0; i < 12; i++)
+"186
 {
-[; ;can.c: 376: Mcp2515ReadCanMsg( (0x61), msg);
-"376
-[e ( _Mcp2515ReadCanMsg (2 , -> -> 97 `i `uc _msg ]
-[; ;can.c: 377: buf[0] = 0x05;
-"377
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 5 `i `uc ]
-[; ;can.c: 378: buf[1] = 0x2C;
-"378
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 44 `i `uc ]
-[; ;can.c: 379: buf[2] = 0x01;
-"379
-[e = *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 1 `i `uc ]
-[; ;can.c: 380: buf[3] = 0;
-"380
-[e = *U + &U _buf * -> -> -> 3 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 0 `i `uc ]
-[; ;can.c: 381: Spi_Write(buf,4);
-"381
-[e ( _Spi_Write (2 , &U _buf -> -> -> 4 `i `l `ul ]
-[; ;can.c: 382: buf[0] = 0x05;
-"382
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 5 `i `uc ]
-[; ;can.c: 383: buf[1] = 0x2B;
-"383
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 43 `i `uc ]
-[; ;can.c: 384: buf[2] = 0x01;
-"384
-[e = *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 1 `i `uc ]
-[; ;can.c: 385: buf[3] = 0xFF;
-"385
-[e = *U + &U _buf * -> -> -> 3 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 255 `i `uc ]
-[; ;can.c: 386: Spi_Write(buf,4);
-"386
-[e ( _Spi_Write (2 , &U _buf -> -> -> 4 `i `l `ul ]
-[; ;can.c: 387: return (0);
-"387
-[e ) -> -> 0 `i `uc ]
-[e $UE 876  ]
-"388
-}
-[; ;can.c: 388: }
-[e $U 878  ]
-"390
-[e :U 877 ]
-[; ;can.c: 390: else if ( buf[1] & (1<<1) )
-[e $ ! != & -> *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux `i << -> 1 `i -> 1 `i -> 0 `i 879  ]
-[; ;can.c: 391: {
-"391
-{
-[; ;can.c: 393: Mcp2515ReadCanMsg( (0x71), msg);
-"393
-[e ( _Mcp2515ReadCanMsg (2 , -> -> 113 `i `uc _msg ]
-[; ;can.c: 394: buf[0] = 0x05;
-"394
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 5 `i `uc ]
-[; ;can.c: 395: buf[1] = 0x2C;
-"395
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 44 `i `uc ]
-[; ;can.c: 396: buf[2] = 0x02;
-"396
-[e = *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 2 `i `uc ]
-[; ;can.c: 397: buf[3] = 0;
-"397
-[e = *U + &U _buf * -> -> -> 3 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 0 `i `uc ]
-[; ;can.c: 398: Spi_Write(buf,4);
-"398
-[e ( _Spi_Write (2 , &U _buf -> -> -> 4 `i `l `ul ]
-[; ;can.c: 399: buf[0] = 0x05;
-"399
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 5 `i `uc ]
-[; ;can.c: 400: buf[1] = 0x2B;
-"400
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 43 `i `uc ]
-[; ;can.c: 401: buf[2] = 0x02;
-"401
-[e = *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 2 `i `uc ]
-[; ;can.c: 402: buf[3] = 0xFF;
-"402
-[e = *U + &U _buf * -> -> -> 3 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 255 `i `uc ]
-[; ;can.c: 403: Spi_Write(buf,4);
-"403
-[e ( _Spi_Write (2 , &U _buf -> -> -> 4 `i `l `ul ]
-[; ;can.c: 404: return (0);
-"404
-[e ) -> -> 0 `i `uc ]
-[e $UE 876  ]
-"405
-}
-[e :U 879 ]
-"407
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 12 `i 878  ]
+[e $U 879  ]
+"187
 [e :U 878 ]
-[; ;can.c: 405: }
-[; ;can.c: 407: return (4);
-[e ) -> -> 4 `i `uc ]
-[e $UE 876  ]
-[; ;can.c: 408: }
-"408
-[e :UE 876 ]
-}
-"421
-[v _Can_SendMessage `(uc ~T0 @X0 1 sf1`*CS829 ]
-"422
+[; ;logic.c: 187: {
 {
-[; ;can.c: 421: static uint8_t Can_SendMessage(const struct CANMESSAGE * msg)
-[; ;can.c: 422: {
-[e :U _Can_SendMessage ]
-"421
-[v _msg `*CS829 ~T0 @X0 1 r1 ]
-"422
-[f ]
-"423
-[v _res `uc ~T0 @X0 1 a ]
-[v _txbuf_n `uc ~T0 @X0 1 a ]
-"424
-[v _buf `uc ~T0 @X0 -> 4 `i a ]
-[; ;can.c: 423: uint8_t res, txbuf_n;
-[; ;can.c: 424: uint8_t buf[4];
-[; ;can.c: 427: do
-"427
-[e :U 883 ]
-[; ;can.c: 428: {
-"428
+[; ;logic.c: 188: if(priorityUser[i] == user)
+"188
+[e $ ! == -> *U + &U _priorityUser * -> _i `ux -> -> # *U &U _priorityUser `ui `ux `i -> _user `i 881  ]
+[; ;logic.c: 189: {
+"189
 {
-[; ;can.c: 429: res = Mcp2515GetNextFreeTXBuf(&txbuf_n);
-"429
-[e = _res ( _Mcp2515GetNextFreeTXBuf (1 &U _txbuf_n ]
-"431
+[; ;logic.c: 190: modified = 1;
+"190
+[e = _modified -> -> 1 `i `uc ]
+"191
 }
-[; ;can.c: 431: } while (res == (2));
-[e $ == -> _res `i -> 2 `i 883  ]
+[e :U 881 ]
+[; ;logic.c: 191: }
+[; ;logic.c: 192: if(modified == 1 && i < 12-1)
+"192
+[e $ ! && == -> _modified `i -> 1 `i < -> _i `i - -> 12 `i -> 1 `i 882  ]
+[; ;logic.c: 193: {
+"193
+{
+[; ;logic.c: 194: priorityUser[i] = priorityUser[i+1];
+"194
+[e = *U + &U _priorityUser * -> _i `ux -> -> # *U &U _priorityUser `ui `ux *U + &U _priorityUser * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _priorityUser `ui `ux ]
+"195
+}
+[; ;logic.c: 195: }
+[e $U 883  ]
+"196
 [e :U 882 ]
-[; ;can.c: 433: if (res != (2))
-"433
-[e $ ! != -> _res `i -> 2 `i 884  ]
-[; ;can.c: 434: {
-"434
+[; ;logic.c: 196: else if(modified == 1 && i == 11)
+[e $ ! && == -> _modified `i -> 1 `i == -> _i `i -> 11 `i 884  ]
+[; ;logic.c: 197: {
+"197
 {
-[; ;can.c: 435: Mcp2515WriteCanMsg( txbuf_n, msg);
-"435
-[e ( _Mcp2515WriteCanMsg (2 , _txbuf_n _msg ]
-[; ;can.c: 436: buf[0] = 0x02;
-"436
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux -> -> 2 `i `uc ]
-[; ;can.c: 437: buf[1] = txbuf_n-1;
-"437
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux -> - -> _txbuf_n `i -> 1 `i `uc ]
-[; ;can.c: 438: buf[2] = 0x08 | msg->txPrio;
-"438
-[e = *U + &U _buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _buf `ui `ux -> | -> 8 `i -> . *U _msg 6 `i `uc ]
-[; ;can.c: 439: Spi_Write(buf,3);
-"439
-[e ( _Spi_Write (2 , &U _buf -> -> -> 3 `i `l `ul ]
-[; ;can.c: 440: return (0);
-"440
-[e ) -> -> 0 `i `uc ]
-[e $UE 880  ]
-"441
+[; ;logic.c: 198: priorityUser[i] = 255;
+"198
+[e = *U + &U _priorityUser * -> _i `ux -> -> # *U &U _priorityUser `ui `ux -> -> 255 `i `uc ]
+"199
 }
-[; ;can.c: 441: }
-[e $U 885  ]
-"442
 [e :U 884 ]
-[; ;can.c: 442: else
-[; ;can.c: 443: {
-"443
+"200
+[e :U 883 ]
+}
+"186
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 12 `i 878  ]
+[e :U 879 ]
+"200
+}
+[; ;logic.c: 199: }
+[; ;logic.c: 200: }
+[; ;logic.c: 202: if(modified==1)
+"202
+[e $ ! == -> _modified `i -> 1 `i 885  ]
+[; ;logic.c: 203: {
+"203
 {
-[; ;can.c: 444: return (2);
-"444
-[e ) -> -> 2 `i `uc ]
-[e $UE 880  ]
-"445
+[; ;logic.c: 204: numberWaitingUsers--;
+"204
+[e -- _numberWaitingUsers -> -> 1 `i `uc ]
+"205
 }
 [e :U 885 ]
-[; ;can.c: 445: }
-[; ;can.c: 446: }
-"446
-[e :UE 880 ]
+[; ;logic.c: 205: }
+[; ;logic.c: 206: }
+"206
+[e :UE 877 ]
+}
+"208
+[v _shiftPriority `(v ~T0 @X0 1 ef ]
+"209
+{
+[; ;logic.c: 208: void shiftPriority()
+[; ;logic.c: 209: {
+[e :U _shiftPriority ]
+[f ]
+"210
+[v _temp `uc ~T0 @X0 1 a ]
+[; ;logic.c: 210: uint8_t temp = priorityUser[0];
+[e = _temp *U + &U _priorityUser * -> -> -> 0 `i `ui `ux -> -> # *U &U _priorityUser `ui `ux ]
+[; ;logic.c: 211: for(uint8_t i = 0; i < numberWaitingUsers-1; i++)
+"211
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 890  ]
+"212
+[e :U 887 ]
+[; ;logic.c: 212: {
+{
+[; ;logic.c: 213: priorityUser[i] = priorityUser[i+1];
+"213
+[e = *U + &U _priorityUser * -> _i `ux -> -> # *U &U _priorityUser `ui `ux *U + &U _priorityUser * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _priorityUser `ui `ux ]
+"214
+}
+"211
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 890 ]
+[e $ < -> _i `i - -> _numberWaitingUsers `i -> 1 `i 887  ]
+[e :U 888 ]
+"214
+}
+[; ;logic.c: 214: }
+[; ;logic.c: 215: priorityUser[numberWaitingUsers-1] = temp;
+"215
+[e = *U + &U _priorityUser * -> -> - -> _numberWaitingUsers `i -> 1 `i `ui `ux -> -> # *U &U _priorityUser `ui `ux _temp ]
+[; ;logic.c: 216: }
+"216
+[e :UE 886 ]
+}
+"218
+[v _getConflict `(uc ~T0 @X0 1 ef2`uc`uc ]
+"219
+{
+[; ;logic.c: 218: uint8_t getConflict(uint8_t carPersonConcerned, uint8_t carPersonToLookAt)
+[; ;logic.c: 219: {
+[e :U _getConflict ]
+"218
+[v _carPersonConcerned `uc ~T0 @X0 1 r1 ]
+[v _carPersonToLookAt `uc ~T0 @X0 1 r2 ]
+"219
+[f ]
+[; ;logic.c: 220: return conflicts[carPersonConcerned][carPersonToLookAt];
+"220
+[e ) *U + &U *U + &U _conflicts * -> _carPersonConcerned `ux -> * -> # *U &U *U &U _conflicts `ui -> -> 12 `i `ui `ux * -> _carPersonToLookAt `ux -> -> # *U &U *U + &U _conflicts * -> _carPersonConcerned `ux -> * -> # *U &U *U &U _conflicts `ui -> -> 12 `i `ui `ux `ui `ux ]
+[e $UE 891  ]
+[; ;logic.c: 221: }
+"221
+[e :UE 891 ]
 }

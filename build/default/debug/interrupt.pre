@@ -9735,7 +9735,52 @@ static uint8_t Can_WriteOutBuffer(void);
 # 353
 void Can_Isr(void);
 
-# 3 "interrupt.c"
+# 46 "logic.h"
+uint8_t durationLights[12];
+
+
+uint8_t colorLights[12];
+
+
+uint8_t occupancyPaths[12];
+
+# 63
+uint8_t priorityUser[12];
+
+
+uint8_t numberWaitingUsers = 0;
+
+# 71
+void initLogic();
+
+# 77
+void firstRound();
+
+# 83
+void secondRound();
+
+# 89
+void onTimeout();
+
+# 96
+void setLight(uint8_t light, uint8_t color);
+
+# 102
+void setWarningLight(uint8_t light, uint8_t state);
+
+# 108
+void setPriority(uint8_t carPerson);
+
+# 115
+void decrPriority(uint8_t user);
+
+# 123
+void shiftPriority();
+
+# 131
+uint8_t getConflict(uint8_t carPersonConcerned, uint8_t carPersonToLookAt);
+
+# 5 "interrupt.c"
 void interrupt high_isr(void){
 if((INT3IF == 1)&&(INT3IE == 1))
 {
@@ -9745,6 +9790,18 @@ if(RB3 == 0)
 {
 INT3IF = 1;
 }
+}
+if(TMR0IF == 1){
+
+T0CONbits.TMR0ON = 1;
+
+
+onTimeout();
+
+
+TMR0IF = 0;
+TMR0 = 0xe17b;
+T0CONbits.TMR0ON = 1;
 
 }
 }

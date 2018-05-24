@@ -4,6 +4,7 @@
 #include <pic18.h>
 #include <stdint.h>
 
+
 //define the length of the arrays
 #define NUMBERLIGHTS_CAR_PERSON 12
 
@@ -14,21 +15,21 @@
 #define RED_ORANGE 3
 
 //define the blinking lights state
-#define ORANGE_BLINKING_OFF
+#define ORANGE_BLINKING_OFF 0
 #define ORANGE_BLINKING_ON 1
 
 
 //the sequence of the color is the following one : RED, RED_ORANGE, GREEN, ORANGE, RED, ...
 
 //define the T of the timer
-#define T 0.5
+#define T 1
 
 //define the time to wait depending of the state of the light
-#define RED_TIME 1
-#define ORANGE_CAR_TIME 2.5
-#define ORANGE_PERSON_TIME 4
-#define GREEN_TIME 2
-#define RED_ORANGE_TIME 1
+#define RED_TIME 2
+#define ORANGE_CAR_TIME 5
+#define ORANGE_PERSON_TIME 8
+#define GREEN_TIME 4
+#define RED_ORANGE_TIME 2
 
 //define the conflicts code
 #define NO_CONFLICT 0
@@ -50,12 +51,7 @@ uint8_t colorLights[NUMBERLIGHTS_CAR_PERSON];
 //store the occupancy of a path or not : 0 = free, 1 = one or some cars
 uint8_t occupancyPaths[NUMBERLIGHTS_CAR_PERSON];
 
-/*
- * store the conflicts in a 12x12 array
- * first index means the car/person concerned, the second index is all the car persons to look at for this car/person
- * for example : [1][4] encode the conflict of the car 4 compared to the car 1 (Is the reference).
- */
-uint8_t conflicts[NUMBERLIGHTS_CAR_PERSON][NUMBERLIGHTS_CAR_PERSON];
+
 
 /*
  * store the first car/person who arrived at the crossroad at the first index, the second car/person at the second index, ...
@@ -64,10 +60,10 @@ uint8_t conflicts[NUMBERLIGHTS_CAR_PERSON][NUMBERLIGHTS_CAR_PERSON];
  * priorityCarPerson contains : [6][2][9][1][255][255][255][255][255][255][255][255]
  * it means : car 6 is waiting since the longest time, followed by car 2, followed by person 2 , followed by car 1, and nobody else is waiting anymoroe then
  */
-uint8_t priorityCarPerson[NUMBERLIGHTS_CAR_PERSON];
+uint8_t priorityUser[NUMBERLIGHTS_CAR_PERSON];
 
 // next priority for a new car/person in a path
-static uint8_t priority = 0;
+uint8_t numberWaitingUsers = 0;
 
 /*
  * init arrays
@@ -116,7 +112,7 @@ void setPriority(uint8_t carPerson);
  * used when a path is newly free
  * shifts the array to the left of one
  */ 
-void decrPriority();
+void decrPriority(uint8_t user);
 
 /*
  * used to shift the priority 

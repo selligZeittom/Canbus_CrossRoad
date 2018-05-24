@@ -33,12 +33,16 @@
 [v _Can_ReadInBuffer Can_ReadInBuffer `(uc  1 s 1 Can_ReadInBuffer ]
 "127
 [v _Can_WriteOutBuffer Can_WriteOutBuffer `(uc  1 s 1 Can_WriteOutBuffer ]
+"143
+[v _Can_InBufferStatus Can_InBufferStatus `(uc  1 e 1 0 ]
 "156
 [v _Can_OutBufferStatus Can_OutBufferStatus `(uc  1 e 1 0 ]
 "169
 [v _Can_GetMessage Can_GetMessage `(uc  1 e 1 0 ]
+[v i2_Can_GetMessage Can_GetMessage `(uc  1 e 1 0 ]
 "200
 [v _Can_PutMessage Can_PutMessage `(uc  1 e 1 0 ]
+[v i2_Can_PutMessage Can_PutMessage `(uc  1 e 1 0 ]
 "237
 [v _Can_Init Can_Init `(v  1 e 1 0 ]
 "293
@@ -55,17 +59,45 @@
 [v _Can_ReadMessage Can_ReadMessage `(uc  1 s 1 Can_ReadMessage ]
 "426
 [v _Can_SendMessage Can_SendMessage `(uc  1 s 1 Can_SendMessage ]
-"3 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\interrupt.c
-[v _high_isr high_isr `II(v  1 e 1 0 ]
-"44 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\main.c
+"3 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\function.c
 [v _init init `(v  1 e 1 0 ]
-"55
+"25
 [v _readID readID `(uc  1 e 1 0 ]
-"76
+"46
 [v _readConflictInfo readConflictInfo `(v  1 e 1 0 ]
-"105
+"82
+[v _sendTrafficLight sendTrafficLight `(v  1 e 1 0 ]
+"100
+[v _sendPedestrianLight sendPedestrianLight `(v  1 e 1 0 ]
+"115
+[v _sendWarningLight sendWarningLight `(v  1 e 1 0 ]
+"126
+[v _requestPed requestPed `(uc  1 e 1 0 ]
+"139
 [v _resetData resetData `(v  1 e 1 0 ]
-"112
+"5 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\interrupt.c
+[v _high_isr high_isr `II(v  1 e 1 0 ]
+"5 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\logic.c
+[v _initLogic initLogic `(v  1 e 1 0 ]
+"16
+[v _firstRound firstRound `(v  1 e 1 0 ]
+"81
+[v _secondRound secondRound `(v  1 e 1 0 ]
+"140
+[v _onTimeout onTimeout `(v  1 e 1 0 ]
+"150
+[v _setLight setLight `(v  1 e 1 0 ]
+"166
+[v _setWarningLight setWarningLight `(v  1 e 1 0 ]
+"172
+[v _setPriority setPriority `(v  1 e 1 0 ]
+"181
+[v _decrPriority decrPriority `(v  1 e 1 0 ]
+"208
+[v _shiftPriority shiftPriority `(v  1 e 1 0 ]
+"218
+[v _getConflict getConflict `(uc  1 e 1 0 ]
+"14 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\main.c
 [v _main main `(i  1 e 2 0 ]
 "21 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\mcp2515.c
 [v _Mcp2515_Reset Mcp2515_Reset `(v  1 e 1 0 ]
@@ -96,6 +128,22 @@
 [v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
 "16700
 [v _SPBRGH1 SPBRGH1 `VEuc  1 e 1 @4052 ]
+[s S388 . 1 `uc 1 T0PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 T08BIT 1 0 :1:6 
+`uc 1 TMR0ON 1 0 :1:7 
+]
+"16740
+[s S395 . 1 `uc 1 T0PS0 1 0 :1:0 
+`uc 1 T0PS1 1 0 :1:1 
+`uc 1 T0PS2 1 0 :1:2 
+]
+[u S399 . 1 `S388 1 . 1 0 `S395 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES399  1 e 1 @4053 ]
+"16790
+[v _TMR0 TMR0 `VEus  1 e 2 @4054 ]
 "18270
 [v _BRG161 BRG161 `VEb  1 e 0 @31531 ]
 "18276
@@ -138,6 +186,10 @@
 [v _SSPIF SSPIF `VEb  1 e 0 @31987 ]
 "20384
 [v _SYNC1 SYNC1 `VEb  1 e 0 @32100 ]
+"20592
+[v _TMR0IE TMR0IE `VEb  1 e 0 @32661 ]
+"20594
+[v _TMR0IF TMR0IF `VEb  1 e 0 @32658 ]
 "20792
 [v _TRISC3 TRISC3 `VEb  1 e 0 @31907 ]
 "20794
@@ -156,9 +208,9 @@
 [v _TXEN1 TXEN1 `VEb  1 e 0 @32101 ]
 "20970
 [v _TXIF TXIF `VEb  1 e 0 @31988 ]
-[s S39 CANSPEED 7 `uc 1 brp 1 0 `uc 1 sjw 1 1 `uc 1 prseg 1 2 `uc 1 phseg1 1 3 `uc 1 phseg2 1 4 `uc 1 sam 1 5 `uc 1 btlmode 1 6 ]
+[s S116 CANSPEED 7 `uc 1 brp 1 0 `uc 1 sjw 1 1 `uc 1 prseg 1 2 `uc 1 phseg1 1 3 `uc 1 phseg2 1 4 `uc 1 sam 1 5 `uc 1 btlmode 1 6 ]
 "21 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
-[v _canSpeed125k canSpeed125k `CS39  1 e 7 0 ]
+[v _canSpeed125k canSpeed125k `CS116  1 e 7 0 ]
 [s S31 CANMESSAGE 17 `uc 1 extended_identifier 1 0 `ul 1 identifier 4 1 `uc 1 dlc 1 5 `[8]uc 1 dta 8 6 `uc 1 rtr 1 14 `uc 1 filhit 1 15 `uc 1 txPrio 1 16 ]
 "30
 [v _rxBuffer rxBuffer `[4]S31  1 e 68 0 ]
@@ -182,49 +234,85 @@
 [v _nbTx1 nbTx1 `VEuc  1 e 1 0 ]
 "42
 [v _nbTx2 nbTx2 `VEuc  1 e 1 0 ]
-"23 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\main.c
+"21 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\function.h
 [v _id id `uc  1 e 1 0 ]
-"32
-[v _conflictTable conflictTable `[12][12]uc  1 e 144 0 ]
 [s S21 CANFILTER 33 `ul 1 mask0 4 0 `ul 1 mask1 4 4 `ul 1 filter0 4 8 `ul 1 filter1 4 12 `ul 1 filter2 4 16 `ul 1 filter3 4 20 `ul 1 filter4 4 24 `ul 1 filter5 4 28 `uc 1 ext 1 32 ]
-"36
+"30
 [v _filter filter `S21  1 e 33 0 ]
-"37
+"31
 [v _message message `S31  1 e 17 0 ]
-"38
+"32
 [v _messageTx messageTx `S31  1 e 17 0 ]
-"112
+"39
+[v _conflicts conflicts `[12][12]uc  1 e 144 0 ]
+"46 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\logic.h
+[v _durationLights durationLights `[12]uc  1 e 12 0 ]
+"49
+[v _colorLights colorLights `[12]uc  1 e 12 0 ]
+"52
+[v _occupancyPaths occupancyPaths `[12]uc  1 e 12 0 ]
+"63
+[v _priorityUser priorityUser `[12]uc  1 e 12 0 ]
+"66
+[v _numberWaitingUsers numberWaitingUsers `uc  1 e 1 0 ]
+"14 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"116
-} 0
+"67
+[v main@i_115 i `uc  1 a 1 77 ]
 "44
+[v main@i i `uc  1 a 1 76 ]
+"43
+[v main@isAlreadyWaiting isAlreadyWaiting `uc  1 a 1 75 ]
+"30
+[v main@cmd cmd `ui  1 a 2 73 ]
+"31
+[v main@user user `uc  1 a 1 78 ]
+"89
+} 0
+"172 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\logic.c
+[v _setPriority setPriority `(v  1 e 1 0 ]
+{
+[v setPriority@carPerson carPerson `uc  1 a 1 wreg ]
+[v setPriority@carPerson carPerson `uc  1 a 1 wreg ]
+"174
+[v setPriority@carPerson carPerson `uc  1 a 1 0 ]
+"179
+} 0
+"5
+[v _initLogic initLogic `(v  1 e 1 0 ]
+{
+"7
+[v initLogic@i i `uc  1 a 1 0 ]
+"14
+} 0
+"3 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\function.c
 [v _init init `(v  1 e 1 0 ]
 {
-"53
+"23
 } 0
-"55
+"25
 [v _readID readID `(uc  1 e 1 0 ]
 {
-"56
+"26
 [v readID@retVal retVal `uc  1 a 1 5 ]
-"74
+"44
 } 0
-"76
+"46
 [v _readConflictInfo readConflictInfo `(v  1 e 1 0 ]
 {
-"84
+"54
 [v readConflictInfo@j j `i  1 a 2 14 ]
-"83
+"53
 [v readConflictInfo@i i `i  1 a 2 12 ]
-"104
+"74
 } 0
-"105
+"139
 [v _resetData resetData `(v  1 e 1 0 ]
 {
-"106
+"140
 [v resetData@i i `i  1 a 2 0 ]
-"110
+"144
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -259,8 +347,8 @@
 "237
 [v _Can_Init Can_Init `(v  1 e 1 0 ]
 {
-[s S39 CANSPEED 7 `uc 1 brp 1 0 `uc 1 sjw 1 1 `uc 1 prseg 1 2 `uc 1 phseg1 1 3 `uc 1 phseg2 1 4 `uc 1 sam 1 5 `uc 1 btlmode 1 6 ]
-[v Can_Init@speedCfg speedCfg `*.32CS39  1 p 2 60 ]
+[s S116 CANSPEED 7 `uc 1 brp 1 0 `uc 1 sjw 1 1 `uc 1 prseg 1 2 `uc 1 phseg1 1 3 `uc 1 phseg2 1 4 `uc 1 sam 1 5 `uc 1 btlmode 1 6 ]
+[v Can_Init@speedCfg speedCfg `*.32CS116  1 p 2 60 ]
 [s S21 CANFILTER 33 `ul 1 mask0 4 0 `ul 1 mask1 4 4 `ul 1 filter0 4 8 `ul 1 filter1 4 12 `ul 1 filter2 4 16 `ul 1 filter3 4 20 `ul 1 filter4 4 24 `ul 1 filter5 4 28 `uc 1 ext 1 32 ]
 "238
 [v Can_Init@filterCfg filterCfg `*.39S21  1 p 2 62 ]
@@ -275,9 +363,9 @@
 [v Mcp2515_Init@cmdWrite3 cmdWrite3 `[3]uc  1 a 3 57 ]
 "40
 [v Mcp2515_Init@i i `uc  1 a 1 52 ]
-[s S39 CANSPEED 7 `uc 1 brp 1 0 `uc 1 sjw 1 1 `uc 1 prseg 1 2 `uc 1 phseg1 1 3 `uc 1 phseg2 1 4 `uc 1 sam 1 5 `uc 1 btlmode 1 6 ]
+[s S116 CANSPEED 7 `uc 1 brp 1 0 `uc 1 sjw 1 1 `uc 1 prseg 1 2 `uc 1 phseg1 1 3 `uc 1 phseg2 1 4 `uc 1 sam 1 5 `uc 1 btlmode 1 6 ]
 "38
-[v Mcp2515_Init@speedCfg speedCfg `*.32CS39  1 p 2 35 ]
+[v Mcp2515_Init@speedCfg speedCfg `*.32CS116  1 p 2 35 ]
 [s S21 CANFILTER 33 `ul 1 mask0 4 0 `ul 1 mask1 4 4 `ul 1 filter0 4 8 `ul 1 filter1 4 12 `ul 1 filter2 4 16 `ul 1 filter3 4 20 `ul 1 filter4 4 24 `ul 1 filter5 4 28 `uc 1 ext 1 32 ]
 [v Mcp2515_Init@filterCfg filterCfg `*.39S21  1 p 2 37 ]
 "40
@@ -329,12 +417,158 @@
 [v SPIRW@size size `ul  1 p 4 4 ]
 "309
 } 0
-"3 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\interrupt.c
+"181 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\logic.c
+[v _decrPriority decrPriority `(v  1 e 1 0 ]
+{
+[v decrPriority@user user `uc  1 a 1 wreg ]
+"186
+[v decrPriority@i i `uc  1 a 1 4 ]
+"183
+[v decrPriority@modified modified `uc  1 a 1 3 ]
+"181
+[v decrPriority@user user `uc  1 a 1 wreg ]
+"183
+[v decrPriority@user user `uc  1 a 1 2 ]
+"206
+} 0
+"143 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
+[v _Can_InBufferStatus Can_InBufferStatus `(uc  1 e 1 0 ]
+{
+"146
+} 0
+"5 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\interrupt.c
 [v _high_isr high_isr `II(v  1 e 1 0 ]
 {
-"14
+"28
 } 0
-"50 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
+"140 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\logic.c
+[v _onTimeout onTimeout `(v  1 e 1 0 ]
+{
+"142
+[v onTimeout@i i `uc  1 a 1 18 ]
+"148
+} 0
+"81
+[v _secondRound secondRound `(v  1 e 1 0 ]
+{
+"93
+[v secondRound@conflict conflict `uc  1 a 1 15 ]
+"90
+[v secondRound@j j `uc  1 a 1 16 ]
+"87
+[v secondRound@waitingUser waitingUser `uc  1 a 1 17 ]
+"84
+[v secondRound@i i `uc  1 a 1 14 ]
+"138
+} 0
+"208
+[v _shiftPriority shiftPriority `(v  1 e 1 0 ]
+{
+"211
+[v shiftPriority@i i `uc  1 a 1 8 ]
+"210
+[v shiftPriority@temp temp `uc  1 a 1 7 ]
+"216
+} 0
+"166
+[v _setWarningLight setWarningLight `(v  1 e 1 0 ]
+{
+[v setWarningLight@light light `uc  1 a 1 wreg ]
+[v setWarningLight@light light `uc  1 a 1 wreg ]
+[v setWarningLight@state state `uc  1 p 1 11 ]
+"169
+[v setWarningLight@light light `uc  1 a 1 12 ]
+"170
+} 0
+"115 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\function.c
+[v _sendWarningLight sendWarningLight `(v  1 e 1 0 ]
+{
+[v sendWarningLight@trafficLight trafficLight `uc  1 a 1 wreg ]
+[v sendWarningLight@trafficLight trafficLight `uc  1 a 1 wreg ]
+[v sendWarningLight@state state `uc  1 p 1 5 ]
+"117
+[v sendWarningLight@trafficLight trafficLight `uc  1 a 1 10 ]
+"124
+} 0
+"218 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\logic.c
+[v _getConflict getConflict `(uc  1 e 1 0 ]
+{
+[v getConflict@carPersonConcerned carPersonConcerned `uc  1 a 1 wreg ]
+[v getConflict@carPersonConcerned carPersonConcerned `uc  1 a 1 wreg ]
+[v getConflict@carPersonToLookAt carPersonToLookAt `uc  1 p 1 0 ]
+"220
+[v getConflict@carPersonConcerned carPersonConcerned `uc  1 a 1 3 ]
+"221
+} 0
+"16
+[v _firstRound firstRound `(v  1 e 1 0 ]
+{
+"22
+[v firstRound@duration duration `uc  1 a 1 15 ]
+"21
+[v firstRound@occupancy occupancy `uc  1 a 1 14 ]
+"20
+[v firstRound@color color `uc  1 a 1 13 ]
+"18
+[v firstRound@i i `uc  1 a 1 16 ]
+"79
+} 0
+"150
+[v _setLight setLight `(v  1 e 1 0 ]
+{
+[v setLight@light light `uc  1 a 1 wreg ]
+[v setLight@light light `uc  1 a 1 wreg ]
+[v setLight@color color `uc  1 p 1 9 ]
+"152
+[v setLight@light light `uc  1 a 1 10 ]
+"164
+} 0
+"82 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\function.c
+[v _sendTrafficLight sendTrafficLight `(v  1 e 1 0 ]
+{
+[v sendTrafficLight@trafficLight trafficLight `uc  1 a 1 wreg ]
+[v sendTrafficLight@trafficLight trafficLight `uc  1 a 1 wreg ]
+[v sendTrafficLight@color color `uc  1 p 1 5 ]
+"85
+[v sendTrafficLight@trafficLight trafficLight `uc  1 a 1 8 ]
+"93
+} 0
+"100
+[v _sendPedestrianLight sendPedestrianLight `(v  1 e 1 0 ]
+{
+[v sendPedestrianLight@trafficLight trafficLight `uc  1 a 1 wreg ]
+[v sendPedestrianLight@trafficLight trafficLight `uc  1 a 1 wreg ]
+[v sendPedestrianLight@color color `uc  1 p 1 5 ]
+"102
+[v sendPedestrianLight@trafficLight trafficLight `uc  1 a 1 8 ]
+"109
+} 0
+"126
+[v _requestPed requestPed `(uc  1 e 1 0 ]
+{
+[v requestPed@ped ped `uc  1 a 1 wreg ]
+[v requestPed@ped ped `uc  1 a 1 wreg ]
+"128
+[v requestPed@ped ped `uc  1 a 1 11 ]
+"138
+} 0
+"200 C:\Users\yan.michello\MPLABXProjects\Canbus_CrossRoad.X\can.c
+[v i2_Can_PutMessage Can_PutMessage `(uc  1 e 1 0 ]
+{
+[v i2Can_PutMessage@i Can_PutMessage `uc  1 a 1 4 ]
+[s S31 CANMESSAGE 17 `uc 1 extended_identifier 1 0 `ul 1 identifier 4 1 `uc 1 dlc 1 5 `[8]uc 1 dta 8 6 `uc 1 rtr 1 14 `uc 1 filhit 1 15 `uc 1 txPrio 1 16 ]
+[v i2Can_PutMessage@msgPtr msgPtr `*.39S31  1 p 2 0 ]
+"227
+} 0
+"169
+[v i2_Can_GetMessage Can_GetMessage `(uc  1 e 1 0 ]
+{
+[v i2Can_GetMessage@i Can_GetMessage `uc  1 a 1 4 ]
+[s S31 CANMESSAGE 17 `uc 1 extended_identifier 1 0 `ul 1 identifier 4 1 `uc 1 dlc 1 5 `[8]uc 1 dta 8 6 `uc 1 rtr 1 14 `uc 1 filhit 1 15 `uc 1 txPrio 1 16 ]
+[v i2Can_GetMessage@msgPtr msgPtr `*.39S31  1 p 2 0 ]
+"190
+} 0
+"50
 [v _Can_Isr Can_Isr `(v  1 e 1 0 ]
 {
 "53

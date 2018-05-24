@@ -5,41 +5,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 "103
 [s S830 `uc 1 `ul 1 `uc 1 `uc -> 8 `i `uc 1 `uc 1 `uc 1 ]
 [n S830 CANMESSAGE extended_identifier identifier dlc dta rtr filhit txPrio ]
-"65
-[s S828 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S828 CANSPEED brp sjw prseg phseg1 phseg2 sam btlmode ]
-"197
-[v _Can_Init `(v ~T0 @X0 0 ef2`*CS828`*S829 ]
-"133
-[v _canSpeed125k `CS828 ~T0 @X0 0 e ]
-"19774 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f87k22.h
-[v _PEIE `Vb ~T0 @X0 0 e@32662 ]
-"19010
-[v _GIE `Vb ~T0 @X0 0 e@32663 ]
-"40 main.c
-[v _readID `(uc ~T0 @X0 0 ef ]
-"41
-[v _readConflictInfo `(v ~T0 @X0 0 ef ]
-"16726 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f87k22.h
-[s S749 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S749 . T0PS PSA T0SE T0CS T08BIT TMR0ON ]
-"16734
-[s S750 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S750 . T0PS0 T0PS1 T0PS2 ]
-"16725
-[u S748 `S749 1 `S750 1 ]
-[n S748 . . . ]
-"16740
-[v _T0CONbits `VS748 ~T0 @X0 0 e@4053 ]
-"16790
-[v _TMR0 `Vus ~T0 @X0 0 e@4054 ]
-"42 main.c
-[v _resetData `(v ~T0 @X0 0 ef ]
-"301 can.h
-[v _Can_PutMessage `(uc ~T0 @X0 0 ef1`*S830 ]
+[p mainexit ]
+"41 function.h
+[v _init `(v ~T0 @X0 0 ef ]
+"71 logic.h
+[v _initLogic `(v ~T0 @X0 0 ef ]
+"260 can.h
+[v _Can_InBufferStatus `(uc ~T0 @X0 0 ef ]
 "280
 [v _Can_GetMessage `(uc ~T0 @X0 0 ef1`*S830 ]
-[p mainexit ]
+"115 logic.h
+[v _decrPriority `(v ~T0 @X0 0 ef1`uc ]
+"108
+[v _setPriority `(v ~T0 @X0 0 ef1`uc ]
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
@@ -7327,41 +7305,65 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;can.h: 314: static uint8_t Can_ReadInBuffer(void);
 [; ;can.h: 327: static uint8_t Can_WriteOutBuffer(void);
 [; ;can.h: 353: void Can_Isr(void);
-"23 main.c
+"46 logic.h
+[v _durationLights `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 46: uint8_t durationLights[12];
+"49
+[v _colorLights `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 49: uint8_t colorLights[12];
+"52
+[v _occupancyPaths `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 52: uint8_t occupancyPaths[12];
+"63
+[v _priorityUser `uc ~T0 @X0 -> 12 `i e ]
+[; ;logic.h: 63: uint8_t priorityUser[12];
+"66
+[v _numberWaitingUsers `uc ~T0 @X0 1 e ]
+[i _numberWaitingUsers
+-> -> 0 `i `uc
+]
+[; ;logic.h: 66: uint8_t numberWaitingUsers = 0;
+[; ;logic.h: 71: void initLogic();
+[; ;logic.h: 77: void firstRound();
+[; ;logic.h: 83: void secondRound();
+[; ;logic.h: 89: void onTimeout();
+[; ;logic.h: 96: void setLight(uint8_t light, uint8_t color);
+[; ;logic.h: 102: void setWarningLight(uint8_t light, uint8_t state);
+[; ;logic.h: 108: void setPriority(uint8_t carPerson);
+[; ;logic.h: 115: void decrPriority(uint8_t user);
+[; ;logic.h: 123: void shiftPriority();
+[; ;logic.h: 131: uint8_t getConflict(uint8_t carPersonConcerned, uint8_t carPersonToLookAt);
+"21 function.h
 [v _id `uc ~T0 @X0 1 e ]
 [i _id
 -> -> 0 `i `uc
 ]
-[; ;main.c: 23: uint8_t id = 0;
-"26
+[; ;function.h: 21: uint8_t id = 0;
+"24
 [v _bottomRight `uc ~T0 @X0 1 e ]
 [i _bottomRight
 -> -> 0 `i `uc
 ]
-[; ;main.c: 26: uint8_t bottomRight = 0;
-"27
+[; ;function.h: 24: uint8_t bottomRight = 0;
+"25
 [v _topRight `uc ~T0 @X0 1 e ]
 [i _topRight
 -> -> 0 `i `uc
 ]
-[; ;main.c: 27: uint8_t topRight = 0;
-"28
+[; ;function.h: 25: uint8_t topRight = 0;
+"26
 [v _topLeft `uc ~T0 @X0 1 e ]
 [i _topLeft
 -> -> 0 `i `uc
 ]
-[; ;main.c: 28: uint8_t topLeft = 0;
-"29
+[; ;function.h: 26: uint8_t topLeft = 0;
+"27
 [v _bottomLeft `uc ~T0 @X0 1 e ]
 [i _bottomLeft
 -> -> 0 `i `uc
 ]
-[; ;main.c: 29: uint8_t bottomLeft = 0;
-[v F8156 `uc ~T0 @X0 -> 12 `i t ]
-"32
-[v _conflictTable `F8156 ~T0 @X0 -> 12 `i e ]
-[; ;main.c: 32: uint8_t conflictTable[12][12];
-"36
+[; ;function.h: 27: uint8_t bottomLeft = 0;
+"30
 [v _filter `S829 ~T0 @X0 1 e ]
 [i _filter
 :U ..
@@ -7378,8 +7380,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;main.c: 36: struct CANFILTER filter = { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0};
-"37
+[; ;function.h: 30: struct CANFILTER filter = { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0};
+"31
 [v _message `S830 ~T0 @X0 1 e ]
 [i _message
 :U ..
@@ -7396,8 +7398,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;main.c: 37: struct CANMESSAGE message = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
-"38
+[; ;function.h: 31: struct CANMESSAGE message = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
+"32
 [v _messageTx `S830 ~T0 @X0 1 e ]
 [i _messageTx
 :U ..
@@ -7414,343 +7416,239 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;main.c: 38: struct CANMESSAGE messageTx = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
-[; ;main.c: 40: uint8_t readID(void);
-[; ;main.c: 41: void readConflictInfo(void);
-[; ;main.c: 42: void resetData(void);
-[; ;main.c: 43: void sendTrafficLight(uint8_t , uint8_t );
-[; ;main.c: 44: void sendPedestrianLight(uint8_t , uint8_t);
-"46
-[v _init `(v ~T0 @X0 1 ef ]
-{
-[; ;main.c: 46: void init(void){
-[e :U _init ]
-[f ]
-[; ;main.c: 47: Can_Init( &canSpeed125k , &filter);
-"47
-[e ( _Can_Init (2 , &U _canSpeed125k &U _filter ]
-[; ;main.c: 48: PEIE = 1;
-"48
-[e = _PEIE -> -> 1 `i `b ]
-[; ;main.c: 49: GIE = 1;
-"49
-[e = _GIE -> -> 1 `i `b ]
-[; ;main.c: 50: id = readID();
-"50
-[e = _id ( _readID ..  ]
-[; ;main.c: 51: filter.mask0 = 0X00F;
-"51
-[e = . _filter 0 -> -> -> 15 `i `l `ul ]
-[; ;main.c: 52: filter.filter0 = id;
-"52
-[e = . _filter 2 -> _id `ul ]
-[; ;main.c: 53: Can_Init( &canSpeed125k , &filter);
-"53
-[e ( _Can_Init (2 , &U _canSpeed125k &U _filter ]
-[; ;main.c: 54: readConflictInfo();
-"54
-[e ( _readConflictInfo ..  ]
-[; ;main.c: 57: T0CONbits.T08BIT = 0;
-"57
-[e = . . _T0CONbits 0 4 -> -> 0 `i `uc ]
-[; ;main.c: 58: T0CONbits.T0CS = 0;
-"58
-[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 59: T0CONbits.PSA = 0;
-"59
-[e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
-[; ;main.c: 60: T0CONbits.T0PS = 0x7;
-"60
-[e = . . _T0CONbits 0 0 -> -> 7 `i `uc ]
-[; ;main.c: 61: TMR0 = 0xe17b;
-"61
-[e = _TMR0 -> -> 57723 `ui `us ]
-[; ;main.c: 62: T0CONbits.TMR0ON = 1;
-"62
-[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
-[; ;main.c: 63: }
-"63
-[e :UE 831 ]
-}
-"65
-[v _readID `(uc ~T0 @X0 1 ef ]
-{
-[; ;main.c: 65: uint8_t readID(void){
-[e :U _readID ]
-[f ]
-"66
-[v _retVal `uc ~T0 @X0 1 a ]
-[; ;main.c: 66: uint8_t retVal = 0;
-[e = _retVal -> -> 0 `i `uc ]
-[; ;main.c: 69: messageTx.identifier = ((10<<7) | 0xF) ;
-"69
-[e = . _messageTx 1 -> -> | << -> 10 `i -> 7 `i -> 15 `i `l `ul ]
-[; ;main.c: 70: resetData();
-"70
-[e ( _resetData ..  ]
-[; ;main.c: 71: message.rtr = 1;
-"71
-[e = . _message 4 -> -> 1 `i `uc ]
-[; ;main.c: 74: Can_PutMessage(&messageTx);
-"74
-[e ( _Can_PutMessage (1 &U _messageTx ]
-[; ;main.c: 77: while(Can_GetMessage(&message) != 0){};
-"77
-[e $U 833  ]
-[e :U 834 ]
-{
-}
-[e :U 833 ]
-[e $ != -> ( _Can_GetMessage (1 &U _message `i -> 0 `i 834  ]
-[e :U 835 ]
-[; ;main.c: 79: retVal = message.dta[0];
-"79
-[e = _retVal *U + &U . _message 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _message 3 `ui `ux ]
-[; ;main.c: 81: resetData();
-"81
-[e ( _resetData ..  ]
-[; ;main.c: 83: return retVal;
-"83
-[e ) _retVal ]
-[e $UE 832  ]
-[; ;main.c: 84: }
-"84
-[e :UE 832 ]
-}
-"86
-[v _readConflictInfo `(v ~T0 @X0 1 ef ]
-{
-[; ;main.c: 86: void readConflictInfo(void){
-[e :U _readConflictInfo ]
-[f ]
-[; ;main.c: 89: resetData();
-"89
-[e ( _resetData ..  ]
-[; ;main.c: 90: messageTx.rtr = 1;
-"90
-[e = . _messageTx 4 -> -> 1 `i `uc ]
-"93
-[v _i `i ~T0 @X0 1 a ]
-"94
-[v _j `i ~T0 @X0 1 a ]
-[; ;main.c: 93: int i;
-[; ;main.c: 94: int j;
-[; ;main.c: 95: for (i = 0 ; i < 12 ; i++){
-"95
-{
-[e = _i -> 0 `i ]
-[e $ < _i -> 12 `i 837  ]
-[e $U 838  ]
-[e :U 837 ]
-{
-[; ;main.c: 97: messageTx.identifier = ((8<<7) | (i << 4) | id);
-"97
-[e = . _messageTx 1 -> -> | | << -> 8 `i -> 7 `i << _i -> 4 `i -> _id `i `l `ul ]
-[; ;main.c: 100: Can_PutMessage(&messageTx);
-"100
-[e ( _Can_PutMessage (1 &U _messageTx ]
-[; ;main.c: 102: while(Can_GetMessage(&message) != 0){};
-"102
-[e $U 840  ]
-[e :U 841 ]
-{
-}
-[e :U 840 ]
-[e $ != -> ( _Can_GetMessage (1 &U _message `i -> 0 `i 841  ]
-[e :U 842 ]
-[; ;main.c: 105: for ( j = 0 ; j < 3 ; j ++){
-"105
-{
-[e = _j -> 0 `i ]
-[e $ < _j -> 3 `i 843  ]
-[e $U 844  ]
-[e :U 843 ]
-{
-[; ;main.c: 106: conflictTable[i][(4*j) + 0] = (message.dta[j] & 0x03);
-"106
-[e = *U + &U *U + &U _conflictTable * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflictTable `ui -> -> 12 `i `ui `ux * -> -> + * -> 4 `i _j -> 0 `i `ui `ux -> -> # *U &U *U + &U _conflictTable * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflictTable `ui -> -> 12 `i `ui `ux `ui `ux -> & -> *U + &U . _message 3 * -> -> _j `ui `ux -> -> # *U &U . _message 3 `ui `ux `i -> 3 `i `uc ]
-[; ;main.c: 107: conflictTable[i][(4*j) + 1] = (message.dta[j] & 0x0c) >> 2;
-"107
-[e = *U + &U *U + &U _conflictTable * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflictTable `ui -> -> 12 `i `ui `ux * -> -> + * -> 4 `i _j -> 1 `i `ui `ux -> -> # *U &U *U + &U _conflictTable * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflictTable `ui -> -> 12 `i `ui `ux `ui `ux -> >> & -> *U + &U . _message 3 * -> -> _j `ui `ux -> -> # *U &U . _message 3 `ui `ux `i -> 12 `i -> 2 `i `uc ]
-[; ;main.c: 108: conflictTable[i][(4*j) + 2] = (message.dta[j] & 0x30) >> 4;
-"108
-[e = *U + &U *U + &U _conflictTable * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflictTable `ui -> -> 12 `i `ui `ux * -> -> + * -> 4 `i _j -> 2 `i `ui `ux -> -> # *U &U *U + &U _conflictTable * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflictTable `ui -> -> 12 `i `ui `ux `ui `ux -> >> & -> *U + &U . _message 3 * -> -> _j `ui `ux -> -> # *U &U . _message 3 `ui `ux `i -> 48 `i -> 4 `i `uc ]
-[; ;main.c: 109: conflictTable[i][(4*j) + 3] = (message.dta[j] & 0xc0) >> 6;
-"109
-[e = *U + &U *U + &U _conflictTable * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflictTable `ui -> -> 12 `i `ui `ux * -> -> + * -> 4 `i _j -> 3 `i `ui `ux -> -> # *U &U *U + &U _conflictTable * -> -> _i `ui `ux -> * -> # *U &U *U &U _conflictTable `ui -> -> 12 `i `ui `ux `ui `ux -> >> & -> *U + &U . _message 3 * -> -> _j `ui `ux -> -> # *U &U . _message 3 `ui `ux `i -> 192 `i -> 6 `i `uc ]
-"110
-}
-"105
-[e ++ _j -> 1 `i ]
-[e $ < _j -> 3 `i 843  ]
-[e :U 844 ]
-"110
-}
-[; ;main.c: 110: }
-[; ;main.c: 112: resetData();
-"112
-[e ( _resetData ..  ]
-"113
-}
-"95
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 12 `i 837  ]
-[e :U 838 ]
-"113
-}
-[; ;main.c: 113: }
-[; ;main.c: 114: }
-"114
-[e :UE 836 ]
-}
-"122
-[v _sendTrafficLight `(v ~T0 @X0 1 ef2`uc`uc ]
-{
-[; ;main.c: 122: void sendTrafficLight(uint8_t trafficLight, uint8_t color){
-[e :U _sendTrafficLight ]
-[v _trafficLight `uc ~T0 @X0 1 r1 ]
-[v _color `uc ~T0 @X0 1 r2 ]
-[f ]
-[; ;main.c: 125: messageTx.identifier = ((0<<7) | (trafficLight << 4) | id );
-"125
-[e = . _messageTx 1 -> -> | | << -> 0 `i -> 7 `i << -> _trafficLight `i -> 4 `i -> _id `i `l `ul ]
-[; ;main.c: 126: messageTx.rtr = 0;
-"126
-[e = . _messageTx 4 -> -> 0 `i `uc ]
-[; ;main.c: 127: messageTx.dta[0] = color;
-"127
-[e = *U + &U . _messageTx 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _messageTx 3 `ui `ux _color ]
-[; ;main.c: 128: messageTx.dlc = 1;
-"128
-[e = . _messageTx 2 -> -> 1 `i `uc ]
-[; ;main.c: 131: Can_PutMessage(&messageTx);
-"131
-[e ( _Can_PutMessage (1 &U _messageTx ]
-[; ;main.c: 133: }
-"133
-[e :UE 846 ]
-}
-"140
-[v _sendPedestrianLight `(v ~T0 @X0 1 ef2`uc`uc ]
-{
-[; ;main.c: 140: void sendPedestrianLight(uint8_t trafficLight , uint8_t color){
-[e :U _sendPedestrianLight ]
-[v _trafficLight `uc ~T0 @X0 1 r1 ]
-[v _color `uc ~T0 @X0 1 r2 ]
-[f ]
-[; ;main.c: 142: messageTx.identifier = ((1<<7) | (trafficLight << 4) | id );
-"142
-[e = . _messageTx 1 -> -> | | << -> 1 `i -> 7 `i << -> _trafficLight `i -> 4 `i -> _id `i `l `ul ]
-[; ;main.c: 143: messageTx.rtr = 0;
-"143
-[e = . _messageTx 4 -> -> 0 `i `uc ]
-[; ;main.c: 144: messageTx.dta[0] = color;
-"144
-[e = *U + &U . _messageTx 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _messageTx 3 `ui `ux _color ]
-[; ;main.c: 145: messageTx.dlc = 1;
-"145
-[e = . _messageTx 2 -> -> 1 `i `uc ]
-[; ;main.c: 148: Can_PutMessage(&messageTx);
-"148
-[e ( _Can_PutMessage (1 &U _messageTx ]
-[; ;main.c: 149: }
-"149
-[e :UE 847 ]
-}
-"155
-[v _sendWarningLight `(v ~T0 @X0 1 ef2`uc`uc ]
-{
-[; ;main.c: 155: void sendWarningLight(uint8_t trafficLight , uint8_t state){
-[e :U _sendWarningLight ]
-[v _trafficLight `uc ~T0 @X0 1 r1 ]
-[v _state `uc ~T0 @X0 1 r2 ]
-[f ]
-[; ;main.c: 157: messageTx.identifier = ((2<<7) | (trafficLight << 4) | id );
-"157
-[e = . _messageTx 1 -> -> | | << -> 2 `i -> 7 `i << -> _trafficLight `i -> 4 `i -> _id `i `l `ul ]
-[; ;main.c: 158: messageTx.rtr = 0;
-"158
-[e = . _messageTx 4 -> -> 0 `i `uc ]
-[; ;main.c: 159: messageTx.dta[0] = state;
-"159
-[e = *U + &U . _messageTx 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _messageTx 3 `ui `ux _state ]
-[; ;main.c: 160: messageTx.dlc = 1;
-"160
-[e = . _messageTx 2 -> -> 1 `i `uc ]
-[; ;main.c: 163: Can_PutMessage(&messageTx);
-"163
-[e ( _Can_PutMessage (1 &U _messageTx ]
-[; ;main.c: 164: }
-"164
-[e :UE 848 ]
-}
-"165
-[v _resetData `(v ~T0 @X0 1 ef ]
-{
-[; ;main.c: 165: void resetData(void){
-[e :U _resetData ]
-[f ]
-"166
-[v _i `i ~T0 @X0 1 a ]
-[; ;main.c: 166: int i;
-[; ;main.c: 167: for (i = 0 ; i < 4 ; i++){
-"167
-{
-[e = _i -> 0 `i ]
-[e $ < _i -> 4 `i 850  ]
-[e $U 851  ]
-[e :U 850 ]
-{
-[; ;main.c: 168: message.dta[i] = 0;
-"168
-[e = *U + &U . _message 3 * -> -> _i `ui `ux -> -> # *U &U . _message 3 `ui `ux -> -> 0 `i `uc ]
-"169
-}
-"167
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 4 `i 850  ]
-[e :U 851 ]
-"169
-}
-[; ;main.c: 169: }
-[; ;main.c: 170: }
-"170
-[e :UE 849 ]
-}
+[; ;function.h: 32: struct CANMESSAGE messageTx = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
+[v F8182 `uc ~T0 @X0 -> 12 `i t ]
+"39
+[v _conflicts `F8182 ~T0 @X0 -> 12 `i e ]
+[; ;function.h: 39: uint8_t conflicts[12][12];
+[; ;function.h: 41: void init(void);
+[; ;function.h: 42: uint8_t readID(void);
+[; ;function.h: 43: void readConflictInfo(void);
+[; ;function.h: 44: void resetData(void);
+[; ;function.h: 45: void sendTrafficLight(uint8_t , uint8_t );
+[; ;function.h: 46: void sendPedestrianLight(uint8_t , uint8_t);
+[; ;function.h: 47: void sendWarningLight(uint8_t trafficLight , uint8_t state);
+[; ;function.h: 48: uint8_t requestPed(uint8_t ped);
 [v $root$_main `(v ~T0 @X0 0 e ]
-"172
+"14 main.c
 [v _main `(i ~T0 @X0 1 ef2`i`**uc ]
 {
-[; ;main.c: 172: int main(int argc, char** argv) {
+[; ;main.c: 14: int main(int argc, char** argv) {
 [e :U _main ]
 [v _argc `i ~T0 @X0 1 r1 ]
 [v _argv `**uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;main.c: 173: init();
-"173
+[; ;main.c: 15: init();
+"15
 [e ( _init ..  ]
-[; ;main.c: 174: sendTrafficLight(1,3);
-"174
-[e ( _sendTrafficLight (2 , -> -> 1 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 175: sendWarningLight(0,1);
-"175
-[e ( _sendWarningLight (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 176: sendPedestrianLight(0,2);
-"176
-[e ( _sendPedestrianLight (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
-[; ;main.c: 177: while(1){};
-"177
-[e :U 855 ]
+[; ;main.c: 16: initLogic();
+"16
+[e ( _initLogic ..  ]
+[; ;main.c: 23: while(1){
+"23
+[e :U 833 ]
 {
+[; ;main.c: 25: if(Can_InBufferStatus != 0){
+[v F8205 `(uc ~T0 @X0 1 tf ]
+"25
+[e $ ! != &U _Can_InBufferStatus -> -> 0 `i `*F8205 835  ]
+{
+[; ;main.c: 27: Can_GetMessage(&message);
+"27
+[e ( _Can_GetMessage (1 &U _message ]
+"30
+[v _cmd `ui ~T0 @X0 1 a ]
+[; ;main.c: 30: uint16_t cmd = (message.identifier & 0b11110000000);
+[e = _cmd -> & . _message 1 -> -> -> 1920 `i `l `ul `ui ]
+"31
+[v _user `uc ~T0 @X0 1 a ]
+[; ;main.c: 31: uint8_t user = (message.identifier & 0b00001110000) >> 4;
+[e = _user -> >> & . _message 1 -> -> -> 112 `i `l `ul -> 4 `i `uc ]
+[; ;main.c: 33: switch(cmd)
+"33
+[e $U 837  ]
+[; ;main.c: 34: {
+"34
+{
+[; ;main.c: 35: case (3<<7) :
+"35
+[e :U 838 ]
+[; ;main.c: 37: if(occupancyPaths[user] == 1 && message.dta[0] == 0)
+"37
+[e $ ! && == -> *U + &U _occupancyPaths * -> _user `ux -> -> # *U &U _occupancyPaths `ui `ux `i -> 1 `i == -> *U + &U . _message 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _message 3 `ui `ux `i -> 0 `i 839  ]
+[; ;main.c: 38: {
+"38
+{
+[; ;main.c: 39: decrPriority(user);
+"39
+[e ( _decrPriority (1 _user ]
+"40
 }
-[e :U 854 ]
-[e $U 855  ]
-[e :U 856 ]
-[; ;main.c: 178: return (0);
-"178
+[e :U 839 ]
+[; ;main.c: 40: }
+[; ;main.c: 41: occupancyPaths[user] = message.dta[0];
+"41
+[e = *U + &U _occupancyPaths * -> _user `ux -> -> # *U &U _occupancyPaths `ui `ux *U + &U . _message 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _message 3 `ui `ux ]
+"43
+[v _isAlreadyWaiting `uc ~T0 @X0 1 a ]
+[; ;main.c: 43: uint8_t isAlreadyWaiting = 0;
+[e = _isAlreadyWaiting -> -> 0 `i `uc ]
+[; ;main.c: 44: for(uint8_t i = 0; i < 12;i++)
+"44
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 12 `i 840  ]
+[e $U 841  ]
+"45
+[e :U 840 ]
+[; ;main.c: 45: {
+{
+[; ;main.c: 46: if(priorityUser[i] == user)
+"46
+[e $ ! == -> *U + &U _priorityUser * -> _i `ux -> -> # *U &U _priorityUser `ui `ux `i -> _user `i 843  ]
+[; ;main.c: 47: {
+"47
+{
+[; ;main.c: 48: isAlreadyWaiting = 1;
+"48
+[e = _isAlreadyWaiting -> -> 1 `i `uc ]
+"49
+}
+[e :U 843 ]
+"50
+}
+"44
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 12 `i 840  ]
+[e :U 841 ]
+"50
+}
+[; ;main.c: 49: }
+[; ;main.c: 50: }
+[; ;main.c: 52: if(isAlreadyWaiting == 0)
+"52
+[e $ ! == -> _isAlreadyWaiting `i -> 0 `i 844  ]
+[; ;main.c: 53: {
+"53
+{
+[; ;main.c: 54: setPriority(user);
+"54
+[e ( _setPriority (1 _user ]
+"55
+}
+[e :U 844 ]
+[; ;main.c: 55: }
+[; ;main.c: 57: break;
+"57
+[e $U 836  ]
+[; ;main.c: 58: case (4<<7) :
+"58
+[e :U 845 ]
+[; ;main.c: 59: user+=8;
+"59
+[e =+ _user -> -> 8 `i `uc ]
+[; ;main.c: 60: if(occupancyPaths[user] == 1 && message.dta[0] == 0)
+"60
+[e $ ! && == -> *U + &U _occupancyPaths * -> _user `ux -> -> # *U &U _occupancyPaths `ui `ux `i -> 1 `i == -> *U + &U . _message 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _message 3 `ui `ux `i -> 0 `i 846  ]
+[; ;main.c: 61: {
+"61
+{
+[; ;main.c: 62: decrPriority(user);
+"62
+[e ( _decrPriority (1 _user ]
+"63
+}
+[e :U 846 ]
+[; ;main.c: 63: }
+[; ;main.c: 64: occupancyPaths[user] = message.dta[0];
+"64
+[e = *U + &U _occupancyPaths * -> _user `ux -> -> # *U &U _occupancyPaths `ui `ux *U + &U . _message 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _message 3 `ui `ux ]
+[; ;main.c: 66: uint8_t isAlreadyWaiting = 0;
+"66
+[e = _isAlreadyWaiting -> -> 0 `i `uc ]
+[; ;main.c: 67: for(uint8_t i = 0; i < 12;i++)
+"67
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 12 `i 847  ]
+[e $U 848  ]
+"68
+[e :U 847 ]
+[; ;main.c: 68: {
+{
+[; ;main.c: 69: if(priorityUser[i] == user)
+"69
+[e $ ! == -> *U + &U _priorityUser * -> _i `ux -> -> # *U &U _priorityUser `ui `ux `i -> _user `i 850  ]
+[; ;main.c: 70: {
+"70
+{
+[; ;main.c: 71: isAlreadyWaiting = 1;
+"71
+[e = _isAlreadyWaiting -> -> 1 `i `uc ]
+"72
+}
+[e :U 850 ]
+"73
+}
+"67
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 12 `i 847  ]
+[e :U 848 ]
+"73
+}
+[; ;main.c: 72: }
+[; ;main.c: 73: }
+[; ;main.c: 75: if(isAlreadyWaiting == 0)
+"75
+[e $ ! == -> _isAlreadyWaiting `i -> 0 `i 851  ]
+[; ;main.c: 76: {
+"76
+{
+[; ;main.c: 77: setPriority(user);
+"77
+[e ( _setPriority (1 _user ]
+"78
+}
+[e :U 851 ]
+[; ;main.c: 78: }
+[; ;main.c: 79: break;
+"79
+[e $U 836  ]
+[; ;main.c: 80: default:
+"80
+[e :U 852 ]
+[; ;main.c: 81: break;
+"81
+[e $U 836  ]
+"83
+}
+[; ;main.c: 83: }
+[e $U 836  ]
+"33
+[e :U 837 ]
+[e [\ _cmd , $ -> << -> 3 `i -> 7 `i `ui 838
+ , $ -> << -> 4 `i -> 7 `i `ui 845
+ 852 ]
+"83
+[e :U 836 ]
+"84
+}
+[e :U 835 ]
+"87
+}
+[e :U 832 ]
+"23
+[e $U 833  ]
+[e :U 834 ]
+[; ;main.c: 84: }
+[; ;main.c: 87: };
+[; ;main.c: 88: return (0);
+"88
 [e ) -> 0 `i ]
-[e $UE 853  ]
-[; ;main.c: 179: }
-"179
-[e :UE 853 ]
+[e $UE 831  ]
+[; ;main.c: 89: }
+"89
+[e :UE 831 ]
 }

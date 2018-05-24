@@ -1,5 +1,5 @@
 
-# 1 "../../Desktop/can.c"
+# 1 "function.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -9573,110 +9573,6 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\__size_t.h"
-typedef unsigned size_t;
-
-# 14 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\string.h"
-extern void * memcpy(void *, const void *, size_t);
-extern void * memmove(void *, const void *, size_t);
-extern void * memset(void *, int, size_t);
-
-# 36
-extern char * strcat(char *, const char *);
-extern char * strcpy(char *, const char *);
-extern char * strncat(char *, const char *, size_t);
-extern char * strncpy(char *, const char *, size_t);
-extern char * strdup(const char *);
-extern char * strtok(char *, const char *);
-
-
-extern int memcmp(const void *, const void *, size_t);
-extern int strcmp(const char *, const char *);
-extern int stricmp(const char *, const char *);
-extern int strncmp(const char *, const char *, size_t);
-extern int strnicmp(const char *, const char *, size_t);
-extern void * memchr(const void *, int, size_t);
-extern size_t strcspn(const char *, const char *);
-extern char * strpbrk(const char *, const char *);
-extern size_t strspn(const char *, const char *);
-extern char * strstr(const char *, const char *);
-extern char * stristr(const char *, const char *);
-extern char * strerror(int);
-extern size_t strlen(const char *);
-extern char * strchr(const char *, int);
-extern char * strichr(const char *, int);
-extern char * strrchr(const char *, int);
-extern char * strrichr(const char *, int);
-
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdlib.h"
-typedef unsigned short wchar_t;
-
-# 15
-typedef struct {
-int rem;
-int quot;
-} div_t;
-typedef struct {
-unsigned rem;
-unsigned quot;
-} udiv_t;
-typedef struct {
-long quot;
-long rem;
-} ldiv_t;
-typedef struct {
-unsigned long quot;
-unsigned long rem;
-} uldiv_t;
-
-# 53
-extern double atof(const char *);
-extern double strtod(const char *, const char **);
-extern int atoi(const char *);
-extern unsigned xtoi(const char *);
-extern long atol(const char *);
-extern long strtol(const char *, char **, int);
-
-extern int rand(void);
-extern void srand(unsigned int);
-extern void * calloc(size_t, size_t);
-extern div_t div(int numer, int denom);
-extern udiv_t udiv(unsigned numer, unsigned denom);
-extern ldiv_t ldiv(long numer, long denom);
-extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
-extern unsigned long _lrotl(unsigned long value, unsigned int shift);
-extern unsigned long _lrotr(unsigned long value, unsigned int shift);
-extern unsigned int _rotl(unsigned int value, unsigned int shift);
-extern unsigned int _rotr(unsigned int value, unsigned int shift);
-
-
-
-
-extern void * malloc(size_t);
-extern void free(void *);
-extern void * realloc(void *, size_t);
-
-# 86
-extern int atexit(void (*)(void));
-extern char * getenv(const char *);
-extern char ** environ;
-extern int system(char *);
-extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
-extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
-extern int abs(int);
-extern long labs(long);
-
-extern char * itoa(char * buf, int val, int base);
-extern char * utoa(char * buf, unsigned val, int base);
-
-
-
-
-extern char * ltoa(char * buf, long val, int base);
-extern char * ultoa(char * buf, unsigned long val, int base);
-
-extern char * ftoa(float f, int * status);
-
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdint.h"
 typedef signed char int8_t;
 
@@ -9749,7 +9645,7 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 65 "../../Desktop/can.h"
+# 65 "can.h"
 struct CANSPEED
 {
 uint8_t brp;
@@ -9839,367 +9735,161 @@ static uint8_t Can_WriteOutBuffer(void);
 # 353
 void Can_Isr(void);
 
-# 34 "../../Desktop/mcp2515.h"
-void mcp2515_reset(void);
-
-uint8_t mcp2515_readRegister(const uint8_t address);
-void mcp2515_setRegisterS(const uint8_t address,
-const uint8_t values[],
-const uint8_t n);
-
-void mcp2515_setRegister(const uint8_t address,
-const uint8_t value);
-void mcp2515_setRegisterS(const uint8_t address,
-const uint8_t values[],
-const uint8_t n);
-void mcp2515_modifyRegister(const uint8_t address, const uint8_t mask,
-const uint8_t data);
-
-uint8_t mcp2515_readStatus(void);
-uint8_t mcp2515_RXStatus(void);
-
-uint8_t mcp2515_setCANCTRL_Mode(const uint8_t newmode);
-
-void Mcp2515_Init(const struct CANSPEED * speedCfg,struct CANFILTER * filterCfg);
-void Mcp2515WriteCanId(uint8_t mcp_addr, uint8_t ext,uint32_t can_id );
-
-# 61
-void mcp2515_read_can_id( const uint8_t mcp_addr,
-uint8_t* ext, uint32_t* can_id );
-
-void Mcp2515ReadCanMsg( const uint8_t buffer_sidh_addr,
-struct CANMESSAGE* msg);
+# 21 "function.h"
+uint8_t id = 0;
 
 
+uint8_t bottomRight = 0;
+uint8_t topRight = 0;
+uint8_t topLeft = 0;
+uint8_t bottomLeft = 0;
 
 
-void Mcp2515WriteCanMsg( const uint8_t buffer_sidh_addr,
-const struct CANMESSAGE* msg);
+struct CANFILTER filter = { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0};
+struct CANMESSAGE message = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
+struct CANMESSAGE messageTx = { 0 , 0 , 0 , 0 , 0 , 0 , 0};
 
-void mcp2515_start_transmit(const uint8_t mcp_addr);
+# 39
+uint8_t conflicts[12][12];
 
-uint8_t Mcp2515GetNextFreeTXBuf(uint8_t *txbuf_n);
+void init(void);
+uint8_t readID(void);
+void readConflictInfo(void);
+void resetData(void);
+void sendTrafficLight(uint8_t , uint8_t );
+void sendPedestrianLight(uint8_t , uint8_t);
+void sendWarningLight(uint8_t trafficLight , uint8_t state);
+uint8_t requestPed(uint8_t ped);
 
-void Mcp2515Sleep(void);
-
-
-void mcp2515_dumpExtendedStatus(void);
-
-# 17 "../../Desktop/can.c"
-const struct CANSPEED canSpeed10k = {31 ,1, 7,7,7, 1,1};
-const struct CANSPEED canSpeed20k = {19 ,1, 6,6,4, 1,1};
-const struct CANSPEED canSpeed50k = {15 ,1, 2,3,1, 1,1};
-const struct CANSPEED canSpeed100k = {7 ,1, 2,3,1, 1,1};
-const struct CANSPEED canSpeed125k = {7 ,1, 0,3,1, 1,1};
-const struct CANSPEED canSpeed250k = {3 ,1, 0,3,1, 1,1};
-const struct CANSPEED canSpeed500k = {1 ,1, 0,3,1, 1,1};
-const struct CANSPEED canSpeed800k = {0 ,1, 2,3,1, 1,1};
-const struct CANSPEED canSpeed1000k = {0 ,1, 0,3,1, 1,1};
+# 3 "function.c"
+void init(void){
+Can_Init( &canSpeed125k , &filter);
+PEIE = 1;
+GIE = 1;
+id = readID();
+filter.mask0 = 0X00F;
+filter.filter0 = id;
+Can_Init( &canSpeed125k , &filter);
+readConflictInfo();
 
 
 
-
-struct CANMESSAGE rxBuffer[4];
-uint8_t rxBufferPtrIn;
-uint8_t rxBufferPtrOut;
-uint8_t rxBufferCount;
-
-struct CANMESSAGE txBuffer[4];
-uint8_t txBufferPtrIn;
-uint8_t txBufferPtrOut;
-uint8_t txBufferCount;
-
-volatile uint8_t nbTx0 = 0;
-volatile uint8_t nbTx1 = 0;
-volatile uint8_t nbTx2 = 0;
-
-# 50
-void Can_Isr(void)
-{
-static uint8_t nbTxBuf=3;
-uint8_t retCode;
-
-retCode = Can_GetStatus();
-
-if((retCode & 0x03) != 0)
-{
-Can_ReadInBuffer();
+T0CONbits.T08BIT = 0;
+T0CONbits.T0CS = 0;
+T0CONbits.PSA = 0;
+T0CONbits.T0PS = 0x7;
+TMR0IF = 0;
+TMR0IE = 1;
+TMR0 = 0xe17b;
+T0CONbits.TMR0ON = 1;
 }
 
-if((retCode & 0x1C) != 0)
-{
-if((retCode & 0x10) != 0)
-{
-nbTxBuf++;
+uint8_t readID(void){
+uint8_t retVal = 0;
+
+
+messageTx.identifier = ((10<<7) | 0xF) ;
+resetData();
+messageTx.rtr = 1;
+
+
+Can_PutMessage(&messageTx);
+
+
+while(Can_GetMessage(&message) != 0){};
+
+retVal = message.dta[0];
+
+resetData();
+
+return retVal;
 }
-if((retCode & 0x08) != 0)
-{
-nbTxBuf++;
+
+void readConflictInfo(void){
+
+
+resetData();
+messageTx.rtr = 1;
+
+
+int i;
+int j;
+for (i = 0 ; i < 12 ; i++){
+
+messageTx.identifier = ((8<<7) | (i << 4) | id);
+
+
+Can_PutMessage(&messageTx);
+
+while(Can_GetMessage(&message) != 0){};
+
+
+for ( j = 0 ; j < 3 ; j ++){
+conflicts[i][(4*j) + 0] = (message.dta[j] & 0x03);
+conflicts[i][(4*j) + 1] = (message.dta[j] & 0x0c) >> 2;
+conflicts[i][(4*j) + 2] = (message.dta[j] & 0x30) >> 4;
+conflicts[i][(4*j) + 3] = (message.dta[j] & 0xc0) >> 6;
 }
-if((retCode & 0x04) != 0)
-{
-nbTxBuf++;
+
+resetData();
 }
 }
 
-while((Can_OutBufferStatus() != 0) && (nbTxBuf != 0))
-{
-Can_WriteOutBuffer();
-nbTxBuf--;
-}
+# 82
+void sendTrafficLight(uint8_t trafficLight, uint8_t color){
+
+
+messageTx.identifier = ((0<<7) | (trafficLight << 4) | id );
+messageTx.rtr = 0;
+messageTx.dta[0] = color;
+messageTx.dlc = 1;
+
+
+Can_PutMessage(&messageTx);
 
 }
 
-# 94
-static uint8_t Can_ReadInBuffer(void)
-{
-uint8_t i;
-uint8_t error=0;
-uint8_t rdStatus;
+# 100
+void sendPedestrianLight(uint8_t trafficLight , uint8_t color){
 
-for(i=0;i<2;i++)
-{
-rdStatus = Can_ReadMessage(&rxBuffer[rxBufferPtrIn]);
-if((rxBufferCount) < 4)
-{
-if(rdStatus == (0))
-{
-rxBufferCount++;
-rxBufferPtrIn = (rxBufferPtrIn + 1) % 4;
-}
-}
-else
-{
-error = 1;
-}
-}
-return error;
+messageTx.identifier = ((1<<7) | (trafficLight << 4) | id );
+messageTx.rtr = 0;
+messageTx.dta[0] = color;
+messageTx.dlc = 1;
+
+
+Can_PutMessage(&messageTx);
 }
 
-# 127
-static uint8_t Can_WriteOutBuffer(void)
-{
-Can_SendMessage(&txBuffer[txBufferPtrOut]);
-txBufferPtrOut = (txBufferPtrOut + 1) % 4;
-txBufferCount--;
-return 0;
+# 115
+void sendWarningLight(uint8_t trafficLight , uint8_t state){
+
+messageTx.identifier = ((2<<7) | (trafficLight << 4) | id );
+messageTx.rtr = 0;
+messageTx.dta[0] = state;
+messageTx.dlc = 1;
+
+
+Can_PutMessage(&messageTx);
 }
 
-# 143
-uint8_t Can_InBufferStatus(void)
-{
-return rxBufferCount;
+uint8_t requestPed(uint8_t ped){
+
+messageTx.identifier = ((4<<7) | ((ped-8) << 4) | id );
+messageTx.rtr = 1;
+
+
+Can_PutMessage(&messageTx);
+
+
+while(Can_GetMessage(&message) != 0){};
+
+return message.dta[0];
 }
-
-# 156
-uint8_t Can_OutBufferStatus(void)
-{
-return txBufferCount;
-}
-
-# 169
-uint8_t Can_GetMessage(struct CANMESSAGE * msgPtr)
-{
-uint8_t i;
-if(rxBufferCount > 0)
-{
-msgPtr->dlc = rxBuffer[rxBufferPtrOut].dlc;
-msgPtr->extended_identifier = rxBuffer[rxBufferPtrOut].extended_identifier;
-msgPtr->filhit = rxBuffer[rxBufferPtrOut].filhit;
-msgPtr->identifier = rxBuffer[rxBufferPtrOut].identifier;
-msgPtr->rtr = rxBuffer[rxBufferPtrOut].rtr;
-for(i=0;i< msgPtr->dlc;i++)
-{
-msgPtr->dta[i] = rxBuffer[rxBufferPtrOut].dta[i];
-}
-INT3IE = 0;
-rxBufferPtrOut = (rxBufferPtrOut + 1) % 4;
-rxBufferCount--;
-INT3IE = 1;
-return 0;
-}
-return 1;
-}
-
-# 200
-uint8_t Can_PutMessage(struct CANMESSAGE * msgPtr)
-{
-uint8_t i;
-
-if((txBufferCount) < 4)
-{
-txBuffer[txBufferPtrIn].dlc = msgPtr->dlc;
-txBuffer[txBufferPtrIn].extended_identifier = msgPtr->extended_identifier;
-txBuffer[txBufferPtrIn].filhit = msgPtr->filhit;
-txBuffer[txBufferPtrIn].identifier = msgPtr->identifier;
-txBuffer[txBufferPtrIn].rtr = msgPtr->rtr;
-txBuffer[txBufferPtrIn].txPrio = msgPtr->txPrio;
-for(i=0;i< msgPtr->dlc;i++)
-{
-txBuffer[txBufferPtrIn].dta[i] = msgPtr->dta[i];
-}
-INT3IE = 0;
-txBufferCount++;
-txBufferPtrIn = (txBufferPtrIn + 1) % 4;
-INT3IE = 1;
-INT3IF = 1;
-return 0;
-}
-else
-{
-return 1;
-}
-}
-
-# 237
-void Can_Init(const struct CANSPEED * speedCfg,
-struct CANFILTER * filterCfg)
-{
-TRISF6 = 0;
-TRISF7 = 0;
-LATF6 = 1;
-LATF7 = 0;
-TRISC4 = 1;
-TRISC5 = 0;
-TRISC3 = 0;
-TRISD1 = 0;
-
-
-
-CKE1 = 0;
-CKP1 = 1;
-SSPCON1 = 0b00111010;
-SSPEN1 = 1;
-
-
-
-Mcp2515_Init(speedCfg,filterCfg);
-INT3IE = 1;
-INTEDG3 = 0;
-
-}
-
-# 272
-void Can_PowerOff(void)
-{
-Mcp2515Sleep();
-LATF7 = 1;
-}
-
-# 288
-static void SPIRW(const uint8_t *tx, uint8_t *rx, uint32_t size)
-{
-uint32_t i;
-
-SSPCON1 = 0b00111010;
-
-LATD1 = 0;
-for(i=0;i<size;i++)
-{
-SSPBUF = tx[i];
-while(SSPIF == 0){}
-SSP1IF = 0;
-if(rx != 0)
-rx[i] = SSPBUF;
-}
-LATD1 = 1;
-}
-
-# 314
-void Spi_ReadWrite(uint8_t * rx_tx, uint32_t size)
-{
-SPIRW(rx_tx, rx_tx, size);
-}
-
-# 327
-void Spi_Write(uint8_t * tx, uint32_t size)
-{
-SPIRW(tx, 0, size);
-}
-
-# 344
-static uint8_t Can_GetStatus(void)
-{
-uint8_t status;
-uint8_t msg[]={0x03,0x2C,0};
-uint8_t msg4[]={0x05,0x2C,0x1C,0};
-
-Spi_ReadWrite(msg,sizeof(msg));
-status = msg[2];
-msg4[2] = status & 0x1C;
-Spi_ReadWrite(msg4,sizeof(msg4));
-return status;
-}
-
-# 367
-static uint8_t Can_ReadMessage(struct CANMESSAGE *msg)
-{
-uint8_t buf[4];
-
-buf[0] = 0xA0;
-Spi_ReadWrite(buf,2);
-
-if ( buf[1] & (1<<0) )
-{
-Mcp2515ReadCanMsg( (0x61), msg);
-buf[0] = 0x05;
-buf[1] = 0x2C;
-buf[2] = 0x01;
-buf[3] = 0;
-Spi_Write(buf,4);
-buf[0] = 0x05;
-buf[1] = 0x2B;
-buf[2] = 0x01;
-buf[3] = 0xFF;
-Spi_Write(buf,4);
-return (0);
-}
-
-else if ( buf[1] & (1<<1) )
-{
-
-Mcp2515ReadCanMsg( (0x71), msg);
-buf[0] = 0x05;
-buf[1] = 0x2C;
-buf[2] = 0x02;
-buf[3] = 0;
-Spi_Write(buf,4);
-buf[0] = 0x05;
-buf[1] = 0x2B;
-buf[2] = 0x02;
-buf[3] = 0xFF;
-Spi_Write(buf,4);
-return (0);
-}
-
-return (4);
-}
-
-# 421
-static uint8_t Can_SendMessage(const struct CANMESSAGE * msg)
-{
-uint8_t res, txbuf_n;
-uint8_t buf[4];
-
-
-do
-{
-res = Mcp2515GetNextFreeTXBuf(&txbuf_n);
-
-} while (res == (2));
-
-if (res != (2))
-{
-Mcp2515WriteCanMsg( txbuf_n, msg);
-buf[0] = 0x02;
-buf[1] = txbuf_n-1;
-buf[2] = 0x08 | msg->txPrio;
-Spi_Write(buf,3);
-return (0);
-}
-else
-{
-return (2);
+void resetData(void){
+int i;
+for (i = 0 ; i < 4 ; i++){
+message.dta[i] = 0;
 }
 }
 
