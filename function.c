@@ -5,12 +5,20 @@ void init(void){
     PEIE = 1;
     GIE = 1;
     id = readID();
-    filter.mask0 = 0X00F;
-    filter.filter0 = id;
+    filter.mask0 = 0X78F;
+    filter.filter0 = REQ_SENSOR_CAR | id;
+    filter.filter1 = REQ_SENSOR_PED | id;
+    filter.ext = 0;
     Can_Init( &canSpeed125k , &filter);
     readConflictInfo();
     
-    
+    filter.mask1 = 0X78F;
+    filter.filter2 = REQ_SENSOR_PED| id;
+    filter.filter3 = REQ_SENSOR_PED | id;
+    filter.filter4 = REQ_SENSOR_PED | id;
+    filter.filter5 = REQ_SENSOR_PED | id;
+    Can_Init( &canSpeed125k , &filter);
+
     // init timer 0 to make an interrupt each 0.5s
     T0CONbits.T08BIT = 0; // configured as an 16 bit timer
     T0CONbits.T0CS = 0; // Fosc/4
@@ -63,10 +71,10 @@ void readConflictInfo(void){
         
         // read message and save data
         for ( j = 0 ; j < CONFLICTSIZE ; j ++){
-            conflicts[i][(4*j) + 0] = (message.dta[j] & 0x03); 
-            conflicts[i][(4*j) + 1] = (message.dta[j] & 0x0c) >> 2; 
-            conflicts[i][(4*j) + 2] = (message.dta[j] & 0x30) >> 4; 
-            conflicts[i][(4*j) + 3] = (message.dta[j] & 0xc0) >> 6; 
+            conflicts[i][(4*j) + 3] = (message.dta[j] & 0x03); 
+            conflicts[i][(4*j) + 2] = (message.dta[j] & 0x0c) >> 2; 
+            conflicts[i][(4*j) + 1] = (message.dta[j] & 0x30) >> 4; 
+            conflicts[i][(4*j) + 0] = (message.dta[j] & 0xc0) >> 6; 
         }
         // reset data in the message
         resetData();

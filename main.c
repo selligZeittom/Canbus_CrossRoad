@@ -37,6 +37,8 @@ int main(int argc, char** argv) {
                     if(occupancyPaths[user] == 1 && message.dta[0] == 0)
                     {
                         decrPriority(user);
+                        occupancyPaths[user] = message.dta[0];
+                        break;
                     }
                     occupancyPaths[user] = message.dta[0];
                     

@@ -17,7 +17,7 @@ void interrupt high_isr(void){
     T0CONbits.TMR0ON = 1;
         
     // action to do
-        onTimeout();
+    onTimeout();
         
     // reset timer 0
     TMR0IF = 0;

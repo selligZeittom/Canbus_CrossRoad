@@ -95,7 +95,7 @@ void secondRound()
             //non conflict -> don't need to think more
             if(conflict == NO_CONFLICT)
             { 
-                 if( colorLights[waitingUser] == RED && durationLights[waitingUser] == RED_TIME)
+                 if( colorLights[waitingUser] == RED && durationLights[waitingUser] >= RED_TIME)
                 {
                     //if the red light stayed long enough, let's go in red orange light
                     setLight(waitingUser, RED_ORANGE);
