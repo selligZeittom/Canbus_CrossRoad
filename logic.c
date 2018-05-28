@@ -31,7 +31,7 @@ void firstRound()
             case ORANGE:
                 if(i<8) //means it's about a car
                 {
-                    if(duration == ORANGE_CAR_TIME) //if the orange light stayed enough long
+                    if(duration >= ORANGE_CAR_TIME) //if the orange light stayed enough long
                     {
                         //go to red
                         setLight(i,RED);
@@ -39,7 +39,7 @@ void firstRound()
                 }
                 else //means it's about a person
                 {
-                    if(duration == ORANGE_PERSON_TIME) //if the orange light stayed enough long and nobody is waiting anymore
+                    if(duration >= ORANGE_PERSON_TIME) //if the orange light stayed enough long and nobody is waiting anymore
                     {
                         //go to red
                         setLight(i,RED);
@@ -49,13 +49,13 @@ void firstRound()
                 
             case GREEN:
 
-                if(i > 7 && duration == GREEN_TIME)
+                if(i > 7 && duration >= GREEN_TIME)
                 {
                     //do a request if it's a pedestrian
                     occupancyPaths[i] = requestPed(i);
                     occupancy = occupancyPaths[i];
                 }
-                if(duration == GREEN_TIME && occupancy == 0) //if the green light stayed enough long and nobody is waiting anymore
+                if(duration >= GREEN_TIME && occupancy == 0) //if the green light stayed enough long and nobody is waiting anymore
                 {
                     //go to orange
                     setLight(i,ORANGE);
@@ -64,7 +64,7 @@ void firstRound()
                 break;
                 
             case RED_ORANGE:
-                if(duration == RED_ORANGE_TIME) //if the red_orange light stayed enough long
+                if(duration >= RED_ORANGE_TIME) //if the red_orange light stayed enough long
                 {
                     //go to green
                     setLight(i,GREEN);
@@ -79,11 +79,14 @@ void firstRound()
 }
 
 void secondRound()
-{
+{   
     //look for every car/person waiting if there is a solution 
     for(uint8_t i = 0; i < numberWaitingUsers; i++)
     {
-        //the car/person which is waiting
+        //store the potentials conflicts : 0 = no conflict, 1 = conflict
+        uint8_t conflictUnresolved = 0;
+     
+       //the car/person which is waiting
         uint8_t waitingUser = priorityUser[i];
         
         //check all the other car/persons which may cause a conflict with the waiting car
@@ -92,48 +95,40 @@ void secondRound()
             //get the code for the conflict between thoses 2 users
             uint8_t conflict = getConflict(waitingUser, j);
             
-            //non conflict -> don't need to think more
-            if(conflict == NO_CONFLICT)
-            { 
-                 if( colorLights[waitingUser] == RED && durationLights[waitingUser] >= RED_TIME)
-                {
-                    //if the red light stayed long enough, let's go in red orange light
-                    setLight(waitingUser, RED_ORANGE);
-                }    
-            }
-            
             //warning for pedestrian
-            else if(conflict == WARNING)
+            if(conflict == WARNING)
             { 
-                if(colorLights[waitingUser] == RED && durationLights[waitingUser] == RED_TIME)
+                if(colorLights[waitingUser] == RED && durationLights[waitingUser] >= RED_TIME)
                 {
                     //set the warning light for the user j-8, because person are from 8 to 11 in the array
                     setWarningLight(j-8, ORANGE_BLINKING_ON);
-                    
-                    //if the red light stayed long enough, let's go in red orange light
-                    setLight(waitingUser, RED_ORANGE);
-                  
                 }    
             }
             
             //conflict : check if the user involved in the conflict has a green, orange or red_orange light
             else if(conflict == CONFLICT)
             {
+                //set the unresolvedConflict to 1, because if the color is red-orange, orange or green there is a problem...
+                if(colorLights[j] == GREEN || colorLights[j] == ORANGE || colorLights[j] == RED_ORANGE)
+                {
+                    conflictUnresolved = 1;    
+                }
+                
                 //set to orange if the user got a green enough long
-                if(colorLights[j] == GREEN && durationLights[j] == GREEN_TIME)
+                if(colorLights[j] == GREEN && durationLights[j] >= GREEN_TIME)
                 {
                     //set this user to orange to let the waiting user go soon
                     setLight(j, ORANGE);
                     shiftPriority(); //set this user at the end of the priority array
                 }
-                //if both are red and their duration is over
-                else if(colorLights[j] == RED && durationLights[j] == RED_TIME && colorLights[waitingUser] == RED && durationLights[waitingUser] == RED_TIME)
-                {
-                    //if the red light stayed long enough, let's go in red orange light
-                    setLight(waitingUser, RED_ORANGE);
-                } 
             }
-        }   
+        } 
+        
+        //only if there isn't a conflict and the color is red and the duration is enough long we can let the car go...
+        if(conflictUnresolved == 0 && colorLights[waitingUser] == RED && durationLights[waitingUser] >= RED_TIME)
+        {
+            setLight(waitingUser, RED_ORANGE);
+        }
     }
 }
 
