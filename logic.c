@@ -10,6 +10,7 @@ void initLogic()
         colorLights[i] = RED; //set everything to red
         occupancyPaths[i] = 0; //nobody waits
         priorityUser[i] = 255; //nobody has the priority
+        numberWaitingUsers = 0;
     }
 }
 
