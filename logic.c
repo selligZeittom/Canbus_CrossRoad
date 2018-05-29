@@ -64,7 +64,7 @@ void firstRound()
                 break;
                 
             case RED_ORANGE:
-                if(duration >= RED_ORANGE_TIME) //if the red_orange light stayed enough long
+                if(duration >= RED_ORANGE_TIME && colorLights[i] == RED_ORANGE) //if the red_orange light stayed enough long
                 {
                     //go to green
                     setLight(i,GREEN);
