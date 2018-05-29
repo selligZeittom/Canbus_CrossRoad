@@ -82,6 +82,10 @@ int main(int argc, char** argv) {
                     
                 case SYSTEM_RESET:
                     initLogic();
+                    // reset timer 0
+                    TMR0IF = 0;
+                    TMR0 = 0xe17b;
+                    T0CONbits.TMR0ON = 1;
                     break;
                 default:
                     break;

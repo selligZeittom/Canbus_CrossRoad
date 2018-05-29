@@ -24,8 +24,8 @@ void init(void){
     T0CONbits.T0CS = 0; // Fosc/4
     T0CONbits.PSA = 0;// use prescaler
     T0CONbits.T0PS = 0x7; // prescaler @ 256
-    TMR0IF = 0; // clean flag
     TMR0IE = 1;
+    TMR0IF = 0; // clean flag
     TMR0 = 0xe17b;
     T0CONbits.TMR0ON = 1;// enable timer
 }
