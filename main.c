@@ -79,6 +79,10 @@ int main(int argc, char** argv) {
                         setPriority(user);
                     }
                     break;
+                    
+                case SYSTEM_RESET:
+                    initLogic();
+                    break;
                 default:
                     break;
                 
