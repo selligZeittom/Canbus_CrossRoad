@@ -14,6 +14,7 @@
 #define REQ_SENSOR_PED (4<<7) // command 4
 #define REQ_CROSS_CONFIG (8<<7) // command 8
 #define REQ_CROSS_ID    ((10<<7) | 0xF) // command 10
+#define SYSTEM_RESET (11<<7) // command 11
 #define NUMBER_USER 12 // number of path
 #define CONFLICTSIZE 3 // number of byte in each path
 

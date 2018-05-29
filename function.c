@@ -12,11 +12,11 @@ void init(void){
     Can_Init( &canSpeed125k , &filter);
     readConflictInfo();
     
-    filter.mask1 = 0X78F;
-    filter.filter2 = REQ_SENSOR_PED| id;
-    filter.filter3 = REQ_SENSOR_PED | id;
-    filter.filter4 = REQ_SENSOR_PED | id;
-    filter.filter5 = REQ_SENSOR_PED | id;
+    filter.mask1 = 0X7FF;
+    filter.filter2 = SYSTEM_RESET | id;
+    filter.filter3 = SYSTEM_RESET | id;
+    filter.filter4 = SYSTEM_RESET | id;
+    filter.filter5 = SYSTEM_RESET | id;
     Can_Init( &canSpeed125k , &filter);
 
     // init timer 0 to make an interrupt each 0.5s
