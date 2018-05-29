@@ -80,11 +80,14 @@ void firstRound()
 
 void secondRound()
 {   
+     uint8_t firstUserIsGone = 0;
+     
     //look for every car/person waiting if there is a solution 
     for(uint8_t i = 0; i < numberWaitingUsers; i++)
     {
         //store the potentials conflicts : 0 = no conflict, 1 = conflict
         uint8_t conflictUnresolved = 0;
+       
      
        //the car/person which is waiting
         uint8_t waitingUser = priorityUser[i];
@@ -127,7 +130,14 @@ void secondRound()
         //only if there isn't a conflict and the color is red and the duration is enough long we can let the car go...
         if(conflictUnresolved == 0 && colorLights[waitingUser] == RED && durationLights[waitingUser] >= RED_TIME)
         {
-            setLight(waitingUser, RED_ORANGE);
+            if(i == 0)
+            {
+                firstUserIsGone = 1;
+            }
+            if(firstUserIsGone == 1)
+            {
+                setLight(waitingUser, RED_ORANGE);
+             }
         }
     }
 }
