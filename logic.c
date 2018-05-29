@@ -59,12 +59,11 @@ void firstRound()
                 {
                     //go to orange
                     setLight(i,ORANGE);
-                    //this user will be removed from the priority array by the can message from the crossroad
                 }
                 break;
                 
             case RED_ORANGE:
-                if(duration >= RED_ORANGE_TIME && colorLights[i] == RED_ORANGE) //if the red_orange light stayed enough long
+                if(duration >= RED_ORANGE_TIME) //if the red_orange light stayed enough long
                 {
                     //go to green
                     setLight(i,GREEN);

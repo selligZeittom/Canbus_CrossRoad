@@ -22,7 +22,7 @@
 //the sequence of the color is the following one : RED, RED_ORANGE, GREEN, ORANGE, RED, ...
 
 //define the T of the timer
-#define T 1
+#define T 2
 
 //define the time to wait depending of the state of the light
 #define RED_TIME 2
