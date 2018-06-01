@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/Canbus_CrossRoad.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=Canbus_CrossRoad.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=canbuscrossroad/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/Canbus_CrossRoad.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=Canbus_CrossRoad.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=canbuscrossroad.x/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/canbuscrossroad/bin
+makeDirectory ${TMPDIR}/canbuscrossroad.x/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/canbuscrossroad.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/canbuscrossroad.x.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/canbuscrossroad.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/canbuscrossroad.x.tar *
 checkReturnCode
 
 # Cleanup

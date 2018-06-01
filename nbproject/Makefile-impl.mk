@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Canbus_CrossRoad
+PROJECTNAME=Canbus_CrossRoad.X
 
 # Active Configuration
 DEFAULTCONF=default

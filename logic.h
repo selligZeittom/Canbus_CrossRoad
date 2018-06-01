@@ -8,6 +8,9 @@
 //define the length of the arrays
 #define NUMBERLIGHTS_CAR_PERSON 12
 
+// define the number of warnig lights
+#define NUMBER_WARNING_LIGHTS 4
+
 //define the colors of the lights
 #define RED 0
 #define ORANGE 1
@@ -22,7 +25,7 @@
 //the sequence of the color is the following one : RED, RED_ORANGE, GREEN, ORANGE, RED, ...
 
 //define the T of the timer
-#define T 2
+#define T 1
 
 //define the time to wait depending of the state of the light
 #define RED_TIME 2
@@ -51,7 +54,8 @@ uint8_t colorLights[NUMBERLIGHTS_CAR_PERSON];
 //store the occupancy of a path or not : 0 = free, 1 = one or some cars
 uint8_t occupancyPaths[NUMBERLIGHTS_CAR_PERSON];
 
-
+// store the state of warnin lights
+uint8_t warningLights[NUMBER_WARNING_LIGHTS];
 
 /*
  * store the first car/person who arrived at the crossroad at the first index, the second car/person at the second index, ...

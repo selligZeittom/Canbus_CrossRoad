@@ -20,6 +20,7 @@ int main(int argc, char** argv) {
     sendWarningLight(0,1);
     sendPedestrianLight(0,2);
      */
+        
     while(1){
     
         if(Can_InBufferStatus() != 0){

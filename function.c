@@ -134,13 +134,20 @@ void sendWarningLight(uint8_t trafficLight , uint8_t state){
 uint8_t requestPed(uint8_t ped){
      // create message 
     messageTx.identifier = (REQ_SENSOR_PED | ((ped-8) << 4) | id );
+    messageTx.dlc = 0;
     messageTx.rtr = 1;
     
     // send message
     Can_PutMessage(&messageTx);
     
+    uint8_t nMessages = Can_InBufferStatus();
+    
      // wait until the message is received
-     while(Can_GetMessage(&message) != 0){};
+     while(nMessages == 0){
+         nMessages = Can_InBufferStatus();
+     };
+     
+     Can_GetMessage(&message);
      
      return message.dta[0];
 }
