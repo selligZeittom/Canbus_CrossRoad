@@ -141,6 +141,9 @@ void secondRound()
             {
                 firstUserIsGone = 1;
             }
+            if(colorLights[waitingUser] == GREEN){
+                firstUserIsGone = 1;
+            }
             if(firstUserIsGone == 1)
             {
                 if(waitingUser < 8 ){
