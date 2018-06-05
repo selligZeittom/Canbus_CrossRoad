@@ -21,7 +21,7 @@ void interrupt high_isr(void){
         
     // reset timer 0
     TMR0IF = 0;
-    TMR0 = 0xe17b;
+    TMR0 = 0xe796;
     T0CONbits.TMR0ON = 1;
     
     }

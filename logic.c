@@ -160,8 +160,6 @@ void onTimeout()
     {
         durationLights[i] += T; //increment every duration of T period of the timer
     }
-    firstRound();
-    secondRound();
 }
 
 void setLight(uint8_t light, uint8_t color)

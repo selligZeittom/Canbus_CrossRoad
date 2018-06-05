@@ -1,6 +1,8 @@
 #include "function.h"
+#include "picebs2.h"
 
 void init(void){
+    enable_high_speed();
     Can_Init( &canSpeed125k , &filter);
     PEIE = 1;
     GIE = 1;
@@ -19,14 +21,14 @@ void init(void){
     filter.filter5 = SYSTEM_RESET | id;
     Can_Init( &canSpeed125k , &filter);
 
-    // init timer 0 to make an interrupt each 0.5s
+    // init timer 0 to make an interrupt each 0.1s
     T0CONbits.T08BIT = 0; // configured as an 16 bit timer
     T0CONbits.T0CS = 0; // Fosc/4
     T0CONbits.PSA = 0;// use prescaler
     T0CONbits.T0PS = 0x7; // prescaler @ 256
     TMR0IE = 1;
     TMR0IF = 0; // clean flag
-    TMR0 = 0xe17b;
+    TMR0 = 0xe796; // 10Hz interrupt
     T0CONbits.TMR0ON = 1;// enable timer
 }
 

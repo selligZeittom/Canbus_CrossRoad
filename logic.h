@@ -28,11 +28,11 @@
 #define T 1
 
 //define the time to wait depending of the state of the light
-#define RED_TIME 2
-#define ORANGE_CAR_TIME 5
-#define ORANGE_PERSON_TIME 8
-#define GREEN_TIME 4
-#define RED_ORANGE_TIME 2
+#define RED_TIME 11
+#define ORANGE_CAR_TIME 26
+#define ORANGE_PERSON_TIME 41
+#define GREEN_TIME 21
+#define RED_ORANGE_TIME 11
 
 //define the conflicts code
 #define NO_CONFLICT 0

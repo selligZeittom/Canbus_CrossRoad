@@ -94,7 +94,8 @@ int main(int argc, char** argv) {
             }
         }
         
-        
+    firstRound();
+    secondRound();
     };
     return (EXIT_SUCCESS);
 }
