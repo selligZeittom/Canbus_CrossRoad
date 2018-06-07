@@ -110,9 +110,11 @@ void secondRound()
                 if(colorLights[waitingUser] == RED && durationLights[waitingUser] >= RED_TIME && occupancyPaths[j] == 1)
                 {
                     //set the warning light for the user j-8, because person are from 8 to 11 in the array
-                    setWarningLight(j-8, ORANGE_BLINKING_ON);
-                    warningLights[j-8] = 1;
-                }    
+                    setWarningLight((waitingUser-8), ORANGE_BLINKING_ON);
+                    warningLights[waitingUser-8] = 1;
+                }
+                
+                
             }
             
             //conflict : check if the user involved in the conflict has a green, orange or red_orange light
