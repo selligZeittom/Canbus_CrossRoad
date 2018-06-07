@@ -60,7 +60,7 @@ void firstRound()
                 if(i > 7 && duration >= GREEN_TIME)
                 {
                     occupancyPaths[i] = 0;
-                    decrPriority(i);
+                    //decrPriority(i);
                 } 
                 if(duration >= GREEN_TIME && occupancy == 0) //if the green light stayed enough long and nobody is waiting anymore
                 {
@@ -94,6 +94,11 @@ void secondRound()
         //store the potentials conflicts : 0 = no conflict, 1 = conflict
         uint8_t conflictUnresolved = 0;
        
+        //store the potential warning users
+        uint8_t storedWarningPedestrian = 255;
+        
+        //is there a warning with all the others users
+        uint8_t warningUnresolved = 0;
      
        //the car/person which is waiting
         uint8_t waitingUser = priorityUser[i];
@@ -109,12 +114,15 @@ void secondRound()
             { 
                 if(colorLights[waitingUser] == RED && durationLights[waitingUser] >= RED_TIME && occupancyPaths[j] == 1)
                 {
+                    /*
                     //set the warning light for the user j-8, because person are from 8 to 11 in the array
                     setWarningLight((waitingUser-8), ORANGE_BLINKING_ON);
                     warningLights[waitingUser-8] = 1;
-                }
-                
-                
+                     * */
+                    
+                    warningUnresolved = 1;
+                    storedWarningPedestrian = waitingUser-8;
+                }    
             }
             
             //conflict : check if the user involved in the conflict has a green, orange or red_orange light
@@ -153,11 +161,17 @@ void secondRound()
             }
             if(firstUserIsGone == 1)
             {
+                if(warningUnresolved == 1)
+                {
+                    setWarningLight((storedWarningPedestrian), ORANGE_BLINKING_ON);
+                    warningLights[storedWarningPedestrian] = 1;
+                }
                 if(waitingUser < 8 ){
                     setLight(waitingUser, RED_ORANGE);
                 }
                 else{
                     setLight(waitingUser, GREEN);
+                    decrPriority(waitingUser);
                 }
              }
         }
