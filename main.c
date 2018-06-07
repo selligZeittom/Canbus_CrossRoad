@@ -60,11 +60,6 @@ int main(int argc, char** argv) {
                     break;
                 case REQ_SENSOR_PED : 
                     user+=8;
-                    if(occupancyPaths[user] == 1 && message.dta[0] == 0)
-                    {
-                        decrPriority(user);
-                    }
-                    occupancyPaths[user] = message.dta[0];
                     
                     uint8_t isAlreadyWaiting = 0;
                     for(uint8_t i = 0; i < NUMBER_USER;i++)

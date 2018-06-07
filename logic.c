@@ -141,7 +141,12 @@ void secondRound()
             {
                 firstUserIsGone = 1;
             }
-            if(colorLights[waitingUser] == GREEN){
+            if(colorLights[waitingUser] == GREEN)
+            {
+                firstUserIsGone = 1;
+            }
+            if(colorLights[priorityUser[0]] == GREEN)
+            {
                 firstUserIsGone = 1;
             }
             if(firstUserIsGone == 1)
