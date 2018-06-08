@@ -125,6 +125,7 @@ void decrPriority(uint8_t user);
  * priority will be given to the car 3, and the car 1 will go at the last place of the priority array
  */ 
 void shiftPriority();
+void shiftPriorityUser(uint8_t user);
 
 /*
  * return the code conflict from a 12x12 array
