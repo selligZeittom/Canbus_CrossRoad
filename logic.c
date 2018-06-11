@@ -48,9 +48,11 @@ void firstRound()
                         setLight(i,RED);
                         if(warningLights[i-8] == 1)
                         {
+							//disable the warning lights when they aren't necessary anymore
                             setWarningLight(i-8, ORANGE_BLINKING_OFF);
                             warningLights[i-8] = 0;
                         }
+						//delete the user i from the waiting users
                         decrPriority(i);
                     }
                 }
@@ -59,6 +61,7 @@ void firstRound()
             case GREEN:
                 if(i > 7 && duration >= GREEN_TIME)
                 {
+					//means that all the pedestrian are gone
                     occupancyPaths[i] = 0;
                 } 
                 if(duration >= GREEN_TIME && occupancy == 0) //if the green light stayed enough long and nobody is waiting anymore
@@ -148,18 +151,27 @@ void secondRound()
         //only if there isn't a conflict and the color is red and the duration is enough long we can let the car go...
         if(conflictUnresolved == 0 && colorLights[waitingUser] == RED && durationLights[waitingUser] >= RED_TIME)
         {
+			//if the first waiting user is going to be set to green
             if(i == 0)
             {
                 firstUserIsGone = 1;
             }
+			/*
+			* vraiment ???????????????????????????????????????????????????????????????
+			* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			*/
             if(colorLights[waitingUser] == GREEN)
             {
                 firstUserIsGone = 1;
             }
+			
+			//if the first user is currently going
             if(colorLights[priorityUser[0]] == GREEN)
             {
                 firstUserIsGone = 1;
             }
+			
+			//we can let other users going only if the first one is going too
             if(firstUserIsGone == 1)
             {      
                 if(warningUnresolved == 1)
