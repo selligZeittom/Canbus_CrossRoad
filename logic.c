@@ -159,11 +159,12 @@ void secondRound()
 			/*
 			* vraiment ???????????????????????????????????????????????????????????????
 			* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			*/
+			
             if(colorLights[waitingUser] == GREEN)
             {
                 firstUserIsGone = 1;
             }
+            */
 			
 			//if the first user is currently going
             if(colorLights[priorityUser[0]] == GREEN)
@@ -284,7 +285,13 @@ void shiftPriorityUser(uint8_t user)
             priorityUser[i] = priorityUser[i+1]; //shift the array
         }
     }
-    priorityUser[numberWaitingUsers-1] = temp; //put the old priority at the first place
+    
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    if(foundUser == 1)
+    {
+        priorityUser[numberWaitingUsers-1] = temp; //put the old priority at the first place    
+    }
+    
 }
 
 uint8_t getConflict(uint8_t carPersonConcerned, uint8_t carPersonToLookAt)

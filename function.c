@@ -1,5 +1,6 @@
 #include "function.h"
 #include "picebs2.h"
+#include "logic.h"
 
 void init(void){
     enable_high_speed();
@@ -97,6 +98,22 @@ void sendTrafficLight(uint8_t trafficLight, uint8_t color){
     messageTx.dta[0] = color;
     messageTx.dlc = 1;
     
+    switch(color)
+    {
+        case RED:
+            messageTx.txPrio = 3;
+            break;
+        case RED_ORANGE:
+            messageTx.txPrio = 1;
+            break;
+        case GREEN:
+            messageTx.txPrio = 1;
+            break;
+        case ORANGE:
+            messageTx.txPrio = 2;
+            break;
+    }
+    
     // send message
     Can_PutMessage(&messageTx);
     
@@ -113,6 +130,20 @@ void sendPedestrianLight(uint8_t trafficLight , uint8_t color){
     messageTx.rtr = 0;
     messageTx.dta[0] = color;
     messageTx.dlc = 1;
+    
+    switch(color)
+    {
+        case RED:
+            messageTx.txPrio = 3;
+            break;
+        case GREEN:
+            messageTx.txPrio = 1;
+            break;
+        case ORANGE:
+            messageTx.txPrio = 2;
+            break;
+    }
+    
 
     // send message
     Can_PutMessage(&messageTx);
@@ -128,6 +159,16 @@ void sendWarningLight(uint8_t trafficLight , uint8_t state){
     messageTx.rtr = 0;
     messageTx.dta[0] = state;
     messageTx.dlc = 1;
+    
+    switch(state)
+    {
+        case ORANGE_BLINKING_ON:
+            messageTx.txPrio = 3;
+            break;
+        case ORANGE_BLINKING_OFF:
+            messageTx.txPrio = 0;
+            break;
+    }
     
     // send message
     Can_PutMessage(&messageTx);
