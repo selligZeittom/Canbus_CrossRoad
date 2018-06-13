@@ -62,11 +62,11 @@ uint8_t warningLights[NUMBER_WARNING_LIGHTS];
  * 255 means no one is waiting 
  * for example : 
  * priorityCarPerson contains : [6][2][9][1][255][255][255][255][255][255][255][255]
- * it means : car 6 is waiting since the longest time, followed by car 2, followed by person 2 , followed by car 1, and nobody else is waiting anymoroe then
+ * it means : car 6 is waiting since the longest time, followed by car 2, followed by person 1 , followed by car 1, and nobody else is waiting anymore then
  */
 uint8_t priorityUser[NUMBERLIGHTS_CAR_PERSON];
 
-// next priority for a new car/person in a path
+// next priority index for a new user 
 uint8_t numberWaitingUsers = 0;
 
 /*
@@ -76,7 +76,7 @@ void initLogic();
 
 /*
  * used to check the first time if there are paths that aren't used anymore and that their 
- * duration is enough long : ->> take them to the next color
+ * duration is enough long : ->> put them to the next color
  */
 void firstRound();
 
@@ -114,7 +114,7 @@ void setPriority(uint8_t carPerson);
 /*
  * used to decrement the priority of every light
  * used when a path is newly free
- * shifts the array to the left of one
+ * shifts the array to the left of the user who was deleted
  */ 
 void decrPriority(uint8_t user);
 
@@ -123,8 +123,9 @@ void decrPriority(uint8_t user);
  * for example : car 1 has been going GREEN the last 2 seconds, there are still car 1 waiting, 
  * but also car 3 which will create a conflict ->>
  * priority will be given to the car 3, and the car 1 will go at the last place of the priority array
+ * user : the user to delete
  */ 
-void shiftPriority();
+//void shiftPriority();
 void shiftPriorityUser(uint8_t user);
 
 /*
@@ -134,20 +135,5 @@ void shiftPriorityUser(uint8_t user);
  * attention : for a person : add 8 to the index
  */
 uint8_t getConflict(uint8_t carPersonConcerned, uint8_t carPersonToLookAt);
-
-/*
- * get the car or person which was waiting the first
- * return : the index from 0 to 11 if there are car waiting or 255 if nobody is waiting
- 
-uint8_t getHighestPriority();
-
-/*
- * get the car or person which was waiting the first when a car was already crossing the road
- * return : the index from 0 to 11 if there are car waiting or 255 if nobody is waiting
- 
-uint8_t getSecondHighestPriority();
-*/
-
-
 
 #endif

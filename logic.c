@@ -19,18 +19,17 @@ void initLogic()
 
 void firstRound()
 {
+    //look for every light if there are some logic-less changes to do, like an orange-timeout
     for(uint8_t i = 0; i < NUMBERLIGHTS_CAR_PERSON; i++)
     {
         uint8_t color = colorLights[i]; //get the color of the light
         uint8_t occupancy = occupancyPaths[i]; //look if there are still cars
-        uint8_t duration = durationLights[i];
+        uint8_t duration = durationLights[i]; //the duration
         
-        //depending on the color of the light switching off the lights
+        //switching on the color of this light to do some changes
         switch (color)
         {
-            case RED : 
-                break;
-                
+            //if the light is in orange, we can change to red if the time is over
             case ORANGE:
                 if(i<8) //means it's about a car
                 {
@@ -46,6 +45,8 @@ void firstRound()
                     {  
                         //go to red
                         setLight(i,RED);
+                        
+                        //check if there is a warning light
                         if(warningLights[i-8] == 1)
                         {
 							//disable the warning lights when they aren't necessary anymore
@@ -58,19 +59,25 @@ void firstRound()
                 }
                 break;
                 
+            //we can set to orange if there isn't anybody waiting and the time is over    
             case GREEN:
+                
+                //no request sensor to say that there aren't anymore pedestrian : we use only the timer
                 if(i > 7 && duration >= GREEN_TIME)
                 {
 					//means that all the pedestrian are gone
                     occupancyPaths[i] = 0;
                 } 
+                
+                //if there isn't anybody waiting and the timer is over : go to orange
                 if(duration >= GREEN_TIME && occupancy == 0) //if the green light stayed enough long and nobody is waiting anymore
                 {
                     //go to orange
                     setLight(i,ORANGE);
                 }
                 break;
-                
+            
+            //if the timer is over for a red orange, set the green light    
             case RED_ORANGE:
                 if(duration >= RED_ORANGE_TIME && i < 8) //if the red_orange light stayed enough long
                 {
@@ -88,9 +95,10 @@ void firstRound()
 
 void secondRound()
 {   
+    //we can let a car go only if the first user is gone
      uint8_t firstUserIsGone = 0;
      
-    //look for every car/person waiting if there is a solution 
+    //look for every user waiting if there is a solution 
     for(uint8_t i = 0; i < numberWaitingUsers; i++)
     {
         //store the potentials conflicts : 0 = no conflict, 1 = conflict
@@ -102,10 +110,10 @@ void secondRound()
         //is there a warning with all the others users
         uint8_t warningUnresolved = 0;
      
-       //the car/person which is waiting
+       //the user which is waiting
         uint8_t waitingUser = priorityUser[i];
                 
-        //check all the other car/persons which may cause a conflict with the waiting car
+        //check all the other users which may cause a conflict with the waiting car
         for(uint8_t j = 0; j < NUMBERLIGHTS_CAR_PERSON; j++)
         {
             //get the code for the conflict between thoses 2 users
@@ -114,12 +122,14 @@ void secondRound()
             //warning for pedestrian
             if(conflict == WARNING)
             { 
-                //if(colorLights[waitingUser] == RED && durationLights[waitingUser] >= RED_TIME && occupancyPaths[j] == 1 && waitingUser > 7)
+                //if the waiting user is a pedestrian and waited enough long at the red, and the potential car creating a warning is going to cross or is crossing
                 if(colorLights[waitingUser] == RED && durationLights[waitingUser] >= RED_TIME && (colorLights[j] == GREEN || colorLights[j] == RED_ORANGE || colorLights[j] == ORANGE) && waitingUser > 7)
                 {   
                     warningUnresolved = 1;
                     storedWarningPedestrian = waitingUser-8;
                 }
+                
+                //if the waiting user is a car, and the potential pedestrian creating a warning is crossing or going to cross  
                 else if(waitingUser < 8 && (colorLights[j] == GREEN || colorLights[j] == ORANGE))
                 {
                     warningUnresolved = 1;
@@ -142,7 +152,7 @@ void secondRound()
                 {
                     //set this user to orange to let the waiting user go soon
                     setLight(j, ORANGE);
-                    //shiftPriority(); //set this user at the end of the priority array
+                    //set this user at the end of the priority array
                     shiftPriorityUser(j);
                 }
             }
@@ -156,15 +166,6 @@ void secondRound()
             {
                 firstUserIsGone = 1;
             }
-			/*
-			* vraiment ???????????????????????????????????????????????????????????????
-			* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			
-            if(colorLights[waitingUser] == GREEN)
-            {
-                firstUserIsGone = 1;
-            }
-            */
 			
 			//if the first user is currently going
             if(colorLights[priorityUser[0]] == GREEN)
@@ -174,7 +175,8 @@ void secondRound()
 			
 			//we can let other users going only if the first one is going too
             if(firstUserIsGone == 1)
-            {      
+            {   
+                //if there are some warning 
                 if(warningUnresolved == 1)
                 {
                     setWarningLight((storedWarningPedestrian), ORANGE_BLINKING_ON);
@@ -186,7 +188,6 @@ void secondRound()
                 else
                 {  
                     setLight(waitingUser, GREEN);
-                    //decrPriority(waitingUser);
                 }
             }
         }
@@ -243,6 +244,8 @@ void decrPriority(uint8_t user)
         {
             modified = 1;
         }
+        
+        //replace when it has been found
         if(modified == 1 && i < NUMBERLIGHTS_CAR_PERSON-1)
         {
             priorityUser[i] = priorityUser[i+1];
@@ -257,16 +260,6 @@ void decrPriority(uint8_t user)
     {
         numberWaitingUsers--; //decrement the index of the array if we shifted the array
     }
-}
-
-void shiftPriority()
-{
-    uint8_t temp = priorityUser[0]; //store the first priority that was stopped
-    for(uint8_t i = 0; i < numberWaitingUsers-1; i++)
-    {
-        priorityUser[i] = priorityUser[i+1]; //shift the array
-    }
-    priorityUser[numberWaitingUsers-1] = temp; //put the old priority at the first place
 }
 
 void shiftPriorityUser(uint8_t user)
@@ -286,7 +279,6 @@ void shiftPriorityUser(uint8_t user)
         }
     }
     
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     if(foundUser == 1)
     {
         priorityUser[numberWaitingUsers-1] = temp; //put the old priority at the first place    
